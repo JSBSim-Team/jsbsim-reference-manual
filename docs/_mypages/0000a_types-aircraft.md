@@ -14,9 +14,9 @@ respectively, upon whether the lift is produced by buoyancy, or by the motion of
 the vehicle (or a part of the vehicle) through the air.
 
 {% include image.html
-  url="/assets/img/Airlander.jpg"
+  url="/assets/img/ac_sideview_climb_simplified.svg"
   width="50%"
-  description="A lighter-than-air vehicle, the hybrid airship HAV 304 dynastat."
+  description="An example."
   %}
 
 Into the LTA category fall the
@@ -25,9 +25,9 @@ either *fixed-wing*, or *rotary-wing* craft depending upon whether their wings a
 or rotary relative to the main structure.
 
 {% include image.html
-  url="/assets/img/Eurofighter.jpg"
+  url="/assets/img/ac_center_of_gravity.svg"
   width="70%"
-  description="A fixed-wing aircraft, the Eurofighter Typhoon."
+  description="An example."
   %}
 
 The fixed-wing aircraft include the airplanes
@@ -37,7 +37,7 @@ currently in operation, they can be thought of as being aerodynamic vehicles in 
 class separate from the fixed-wing and the rotary-wing vehicles.
 
 {% include image.html
-  url="/assets/img/AgustaWestland_AW-139M_AMI.jpg"
+  url="/assets/img/ac_airspeeds_recap.svg"
   width="70%"
-  description="A rotary-wing vehicle, the helicopter AgustaWestland AW 139M."
+  description="An example."
   %}
