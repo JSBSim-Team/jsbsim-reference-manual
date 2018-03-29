@@ -1,0 +1,40 @@
+<p>
+  {% for item in site.data.contentlist.toc %}
+    <h3>
+      {% if item.url == page.url %}
+        {{ item.title }}
+      {% else %}
+        <a href="{{ site.url }}{{ item.url }}">{{ item.title }}</a>
+      {% endif %}
+    </h3>
+      {% if item.subfolderitems[0] %}
+        <ul>
+          {% for entry in item.subfolderitems %}
+            <li>
+              {% if entry.url == page.url %}
+                {{ entry.page }}
+              {% else %}
+              <a href="{{ site.url }}{{ entry.url }}">
+                {{ entry.page }}
+              </a>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+  {% endfor %}
+<hr />
+  <h3>Jupyter notebooks</h3>
+  <ul>
+    {% for collection in site.collections %}
+      {% assign name = collection.label %}
+      {% for page in site[name] %}
+        {% if page.categories contains 'menu' and page.categories contains 'notebook'%}
+          <li>
+            <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  <ul>
+</p>

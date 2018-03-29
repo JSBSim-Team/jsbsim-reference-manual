@@ -1,0 +1,34 @@
+theme: jekyll-theme-cayman
+markdown: kramdown
+mathjax: true
+
+title: JSBSim User Manual
+description: An open source, platform-independent, flight dynamics model in C++
+
+url: https://JSBSim-Team.github.io/jsbsim-user-manual
+repository: JSBSim-Team/jsbsim-user-manual
+# repository: https://github.com/JSBSim-Team/jsbsim-user-manual
+# github: [metadata]
+
+# include: ['_mypages']
+defaults:
+  - scope:
+      path: "_mypages"
+      type: "mypages"
+    values:
+      layout: "mypages"
+  - scope:
+      path: "assets/img"
+    values:
+      image: true
+  - scope:
+      path: "_mypages/img_jupyter"
+    values:
+      image: true
+
+collections:
+  mypages:
+    permalink: /:collection/:path/
+    output: true
+
+categories: [menu, info, content, notebook, references, nomenclature]

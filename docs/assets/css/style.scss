@@ -1,0 +1,52 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/** 1. Set default font family to sans-serif. 2. Prevent iOS text size adjust after orientation change, without disabling user zoom. */
+body { font-family: "Georgia", serif; /* 1 */ -ms-text-size-adjust: 100%; /* 2 */ -webkit-text-size-adjust: 100%; /* 2 */ }
+
+aside#sidebar {
+  float: left;
+  width: 210px;
+  min-height: 504px;
+  padding-left: 15px;
+  padding-right: 20px;
+  font-size: 12px;
+  line-height: 1.2;
+  background-color: white;
+
+  h3{
+      padding: 0px;
+      margin: 0.30em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0 0 0 30px;
+  }
+
+  li {
+    margin: 0;
+  }
+
+  li + li {
+    margin-top: 0.0em;
+  }
+
+}
+
+.page-header {
+  @include large {
+    padding: 0.2rem 0.2rem;
+  }
+}
+
+.main-content {
+  @include large {
+    max-width: 84rem; // <--------
+    padding: 2rem 6rem;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+}

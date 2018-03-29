@@ -1,0 +1,20 @@
+toc:
+  - title: Home
+    url: /
+
+  - title: User Manual
+    url: /mypages/introduction/
+    subfolderitems:
+      - page: Types of Aircraft
+        url: /mypages/types-aircraft/
+
+  - title: Programmer Manual
+    url: /mypages/aircraft-environment/
+    subfolderitems:
+      - page: The Atmosphere
+        url: /mypages/atmosphere/
+
+  - title: References
+    url: /mypages/references/
+  - title: Contact
+    url: /mypages/contact/

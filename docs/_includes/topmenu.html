@@ -1,0 +1,55 @@
+<p>
+  <!-- first row -->
+  &rarr; <a href="{{ site.url }}">Home</a> .
+  {% for collection in site.collections %}
+    {% assign name = collection.label %}
+    {% for page in site[name] %}
+      {% if page.categories contains 'menu' and page.categories contains 'content'%}
+        <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a> .
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  <br>
+  <!-- second row -->
+  &rarr;
+  {% for collection in site.collections %}
+    {% assign name = collection.label %}
+    {% for page in site[name] %}
+      {% if page.categories contains 'menu'%}
+        {% if page.categories contains 'references' or page.categories contains 'nomenclature'%}
+          <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a> .
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  {% for collection in site.collections %}
+    {% assign name = collection.label %}
+    {% for page in site[name] %}
+      {% if page.categories contains 'menu' and page.categories contains 'info'%}
+        <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a> .
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  <!--
+  <br>
+  &rarr;
+  {% for collection in site.collections %}
+    {% assign name = collection.label %}
+    {% for page in site[name] %}
+      {% if page.categories contains 'menu' and page.categories contains 'test'%}
+        <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a> .
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+  -->
+  <br>
+  Jupyter notebooks: &rarr;
+  {% for collection in site.collections %}
+    {% assign name = collection.label %}
+    {% for page in site[name] %}
+      {% if page.categories contains 'menu' and page.categories contains 'notebook'%}
+        <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a> .
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</p>

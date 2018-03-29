@@ -1,0 +1,8 @@
+{% for collection in site.collections %}
+  {% assign name = collection.label %}
+  {% for page in site[name] %}
+    {% if page.categories contains include.page_category %}
+      <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
