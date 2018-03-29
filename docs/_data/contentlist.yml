@@ -2,17 +2,43 @@ toc:
   - title: Home
     url: /
 
-  - title: User Manual
-    url: /mypages/introduction/
+  - title: Acknowledgements
+    url: /mypages/acknowledgements/
+
+  - title: Preface
+    url: /mypages/preface/
+
+  - title: Quickstart
+    url: /mypages/quickstart/
     subfolderitems:
-      - page: Types of Aircraft
-        url: /mypages/types-aircraft/
+      - page: Getting the source
+        url: /mypages/getting-the-source/
+      - page: Building the program
+        url: /mypages/building-the-program/
+      - page: Running the program
+        url: /mypages/running-the-program/
+
+  - title: User manual
+    url: /mypages/user-manual/
+    subfolderitems:
+      - page: Overview
+        url: /mypages/user-manual-overview/
+      - page: Concepts
+        url: /mypages/concepts/
+      - page: Authoring configuration files
+        url: /mypages/authoring-configuration-files/
 
   - title: Programmer Manual
-    url: /mypages/aircraft-environment/
+    url: /mypages/programmer-manual/
     subfolderitems:
-      - page: The Atmosphere
-        url: /mypages/atmosphere/
+      - page: Overview
+        url: /mypages/programmer-manual-overview/
+
+  - title: Formulation Manual
+    url: /mypages/formulation-manual/
+    subfolderitems:
+      - page: Overview
+        url: /mypages/formulation-manual-overview/
 
   - title: References
     url: /mypages/references/

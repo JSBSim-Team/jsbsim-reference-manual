@@ -1,10 +1,16 @@
 ---
 layout: default
-title: The Atmosphere
-categories: [menu, content, aircraft-environment, atmosphere]
-permalink: /mypages/atmosphere/
+title: Quickstart - Building the program
+categories: [menu, content, quickstart, building-the-program]
+permalink: /mypages/building-the-program/
 ---
-# The Atmosphere
+
+# Building the program
+
+TBD
+
+<p align="right">
+{% include search_page_put.html page_category='running-the-program' put_text='Next ▶' %}</p>
 
 Humans live at the base of an invisible ocean of air, which is referred to as the atmosphere.
 The atmosphere is always in a state of physical change, giving rise to changing weather
@@ -207,4 +213,4 @@ at unfamiliar airfields, at high altitudes, on hot days. The problem is further
 accentuated if the day is also humid, because humidity reduces the density of dry air.
 
 <p align="right">
-{% include search_page_put.html page_category='isa-atmosphere' put_text='Next ▶' %}</p>
+{% include search_page_put.html page_category='running-the-program' put_text='Next ▶' %}</p>
