@@ -9,7 +9,7 @@ permalink: /mypages/preface/
 
 JSBSim was conceived in 1996 as a lightweight, data-driven, non-linear, six-degree-of-freedom (6DoF), batch simulation application aimed at modeling flight dynamics and control for aircraft. Since the earliest versions, JSBSim has benefited from the open source development environment it has grown within and from the wide variety of users that have contributed ideas for its continued improvement.
 
-### About this Manual
+## About this Manual
 
 This online document is split up into several parts. This is because JSBSim can be viewed from several different perspectives: from that of a flight vehicle model developer, from that of an integrator who will incorporate JSBSim into a full flight simulation architecture with visuals, and from that of a software developer who wants to adapt or enhance JSBSim with additional capabilities.
 
@@ -23,6 +23,6 @@ Section Three is the *Formulation Manual*, which contains a description of the m
 
 Section Four is a collection of some examples and case studies showing how JSBSim has been used.
 
-### What this document is and what it is not
+## What this document is not
 
 This document is not an exhaustive reference on the derivation of the equations of motion and flight dynamics. For a text on that, see (Stevens & Lewis, 2003), and (Zipfel, 2007). This document is meant to be the authoritative document about JSBSim.

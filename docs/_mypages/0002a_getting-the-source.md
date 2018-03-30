@@ -11,11 +11,11 @@ The GitHub repository of JSBSim is reachable at this link: [github.com/JSBSim-Te
 
 ## What you need to download the source
 
-You need to have the Git software installed.
+You need to have the [Git software](https://git-scm.com/) installed. Git is a *version control software*, a system that records changes to a file or set of files over time so that you can recall specific versions later. The JSBSim software source code files are being version controlled by Git.
 
-**TBD**
+To install Git [go to its download site](https://git-scm.com/downloads) and grab the version for your platform. You can chose to use Git locally on your computer in two ways: via one of the [GUI clients](https://git-scm.com/downloads/guis), or through a command shell (e.g. a *Bash shell* on Linux or Windows).
 
-Once you have installed Git, the source code can be downloaded in one of the two following ways.
+Once you have installed Git, assuming you are going to use Git from the command shell, the JSBSim source code public repository can be *cloned* from one of the two following locations.
 
 ## Downloading from [SourceForge](https://sourceforge.net/p/jsbsim/code/ci/master/tree/)
 

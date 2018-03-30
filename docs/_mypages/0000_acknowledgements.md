@@ -7,4 +7,4 @@ permalink: /mypages/acknowledgements/
 
 # Acknowledgements
 
-TBD
+TBD, but many.
