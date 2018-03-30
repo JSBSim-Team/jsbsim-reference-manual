@@ -2,7 +2,7 @@ theme: jekyll-theme-cayman
 markdown: kramdown
 mathjax: true
 
-title: JSBSim User Manual
+title: JSBSim Reference Manual
 description: An open source, platform-independent, flight dynamics model in C++
 
 url: https://JSBSim-Team.github.io/jsbsim-user-manual
