@@ -41,6 +41,8 @@ toc:
     subfolderitems:
       - page: Overview
         url: /mypages/formulation-manual-overview/
+      - page: Equations of motion
+        url: /mypages/formulation-manual-equations-of-motion/
 
   - title: References
     url: /mypages/references/

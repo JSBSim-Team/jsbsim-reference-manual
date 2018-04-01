@@ -25,4 +25,4 @@ Section Four is a collection of some examples and case studies showing how JSBSi
 
 ## What this document is not
 
-This document is not an exhaustive reference on the derivation of the equations of motion and flight dynamics. For a text on that, see (Stevens & Lewis, 2003), and (Zipfel, 2007). This document is meant to be the authoritative document about JSBSim.
+This document is not an exhaustive reference on the derivation of the equations of motion and flight dynamics. For a text on that, see **(Stevens:Lewis:Johnson:2015)**, and **(Zipfel:2003)**. Yet, this document is meant to be the authoritative document about JSBSim.
