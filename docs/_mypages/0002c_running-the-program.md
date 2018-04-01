@@ -7,7 +7,7 @@ permalink: /mypages/running-the-program/
 
 # Running the program
 
-The path where the JSBSim is located will be called here *`<JSBSim-root-dir>`*. If you have built JSBSim from source code there will be an executable (`JSBSim` on Linux or `JSBSim.exe` on Windows) under the path `<JSBSim-root-dir>/src/` subdirectory. This is the JSBSim *standalone application*, that you might want to copy in the root directory:
+The path where the JSBSim repository is located will be called here *`<JSBSim-root-dir>`*. If you have built JSBSim from source code there will be an executable (`JSBSim` on Linux or `JSBSim.exe` on Windows) under the path `<JSBSim-root-dir>/src/` subdirectory. This is the JSBSim *standalone application*, that you might want to copy in the root directory:
 
 ```
 <JSBSim-root-dir>$ cp src/JSBSim .
