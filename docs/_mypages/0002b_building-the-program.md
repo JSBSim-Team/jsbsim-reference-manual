@@ -7,7 +7,11 @@ permalink: /mypages/building-the-program/
 
 # Building the program and the library
 
-TBD
+**TBD**
+
+JSBSim build system is based on [CMake](https://cmake.org).
+
+For Windows users who want to build JSBSim with Visual Studio, Microsoft has included CMake to VS2017 and everything builds like a breeze.
 
 ---
 
