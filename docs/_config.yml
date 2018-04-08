@@ -5,8 +5,8 @@ mathjax: true
 title: JSBSim Reference Manual
 description: An open source, platform-independent, flight dynamics model in C++
 
-url: https://JSBSim-Team.github.io/jsbsim-user-manual
-repository: JSBSim-Team/jsbsim-user-manual
+url: https://JSBSim-Team.github.io/jsbsim-reference-manual
+repository: JSBSim-Team/jsbsim-reference-manual
 # repository: https://github.com/JSBSim-Team/jsbsim-user-manual
 # github: [metadata]
 
