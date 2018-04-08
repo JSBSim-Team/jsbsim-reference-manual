@@ -7,7 +7,7 @@ permalink: /mypages/concepts/
 
 # Concepts
 
-## Simulation
+## Simulation 
 
 While the JSBSim user does not need to know some of the finer details of the flight simulator operation, it can be helpful to understand basically how JSBSim works. Some of the most important concepts are described in this section.
 
