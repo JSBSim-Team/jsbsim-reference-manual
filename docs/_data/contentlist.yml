@@ -35,6 +35,8 @@ toc:
     subfolderitems:
       - page: Overview
         url: /mypages/programmer-manual-overview/
+      - page: Class hierarchy
+        url: /mypages/programmer-manual-class-hierarchy
 
   - title: Formulation Manual
     url: /mypages/formulation-manual/
@@ -46,5 +48,9 @@ toc:
 
   - title: References
     url: /mypages/references/
+
   - title: Contact
     url: /mypages/contact/
+
+  - title: Licensing
+    url: /mypages/licensing/
