@@ -7,7 +7,7 @@ permalink: /mypages/concepts/
 
 # Concepts
 
-## Simulation 
+## Simulation
 
 While the JSBSim user does not need to know some of the finer details of the flight simulator operation, it can be helpful to understand basically how JSBSim works. Some of the most important concepts are described in this section.
 
@@ -29,7 +29,13 @@ This frame is a common manufacturer's frame of reference and is used to define p
 
 In the structural frame the X-axis increases from the nose towards the tail, the Y-axis increases from the fuselage out towards the right (when looking forward from the cockpit), and of course the Z-axis then is positive upwards. Typically, the origin $O_\mathrm{C}$ for this frame is near the front of the aircraft (at the tip of the nose, at the firewall, or in front of the nose some distance). This frame is often named $(O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C})$.
 
-The X-axis is typically coincident with the fuselage centerline and passes through the propeller hub (thrust axis). Positions along the $x_\mathrm{C}$ axis are referred to as stations. Positions along the $z_\mathrm{C}$ axis are referred to as waterline positions. Positions along the $y_\mathrm{C}$ axis are referred to as buttline positions.
+{% include image.html
+  url="/assets/img/ac_construction_axes.svg"
+  width="90%"
+  description="Aircraft structural (or construction) frame of reference with origin $O_\mathrm{C}$. Besides the structural frame axes $x_\mathrm{C}$, $y_\mathrm{C}$, and $z_\mathrm{C})$, the standard body frame axes $x_\mathrm{B}$, $y_\mathrm{B}$, and $z_\mathrm{B})$ are also shown with their origin at the center of mass $G$. The pilot's eye-point is located at $P_\mathrm{ep}$."
+  %}
+
+The X-axis is typically coincident with the fuselage centerline and often is coincident with the thrust axis (for instance, in single engine propeller aircraft it passes through the propeller hub). Positions along the $x_\mathrm{C}$ axis are referred to as stations. Positions along the $z_\mathrm{C}$ axis are referred to as waterline positions. Positions along the $y_\mathrm{C}$ axis are referred to as buttline positions.
 
 Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBSim internally only uses the relative distances between the CG and the various objects – not the discrete locations themselves.
 
@@ -68,6 +74,14 @@ The two axes $x_\mathrm{A}$ and $z_\mathrm{A}$ belong, by definition, to the air
 This frame is similar to the stability/aerodynamic frame, except that the X-axis points directly into the relative wind $\boldsymbol{V}$. The Z-axis is perpendicular to the X-axis, and remains within the aircraft body plane $x_\mathrm{B} z_\mathrm{B}$ (also called the reference plane). The Y-axis completes a right hand coordinate system.
 
 When the sideslip angle $\beta$ is zero, the wind frame and the aerodynamic frame are coincident.
+
+{% include image.html
+  url="/assets/img/ac_wind_axes.svg"
+  width="90%"
+  description="Standard frames of reference with the origin at the aircraft center of mass $G$. In this particular
+situation the air is calm and the velocity vector $\boldsymbol{v}_\mathrm{CM/E}$, of $G$ with respect to the Earth-fixed observer, is horizontal and pointing to North; hence it gives the direction of the relative wind. The standard three aerodynamic resultant force components $D$ (drag), $L$ (lift) and $Y_\mathrm{A}$ (side force) are also shown, with the angle of attack $\alpha_\mathrm{B}$ (referred to $x_\mathrm{B}$) and the angle of sideslip $\beta$. The aircraft weight is a vector of magnitude $W = mg$, directed downwards, parallel to $z_\mathrm{V}$ (the local vertical)."
+  %}
+
 
 ## Units
 
