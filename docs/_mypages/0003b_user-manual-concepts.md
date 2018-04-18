@@ -27,7 +27,7 @@ Before moving into a description of the configuration file syntax, one must unde
 
 This frame is a common manufacturer's frame of reference and is used to define points on the aircraft such as the center of gravity, the locations of all the wheels, the pilot eye-point, point masses, thrusters, and so on. Items in the JSBSim aircraft configuration file are located using this frame.
 
-In the structural frame the X-axis increases from the nose towards the tail, the Y-axis increases from the fuselage out towards the right (when looking forward from the cockpit), and of course the Z-axis then is positive upwards. Typically, the origin $O_\mathrm{C}$ for this frame is near the front of the aircraft (at the tip of the nose, at the firewall, or in front of the nose some distance). This frame is often named $(O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C})$.
+In the structural frame the X-axis runs along the fuselage length and points towards the tail, the Y-axis points from the fuselage out towards the right wing, and of course the Z-axis then is positive upwards. Typically, the origin $O_\mathrm{C}$ for this frame is near the front of the aircraft (at the tip of the nose, at the firewall for a single engine airplane, or at some distance in front of the nose). This frame is often named $$\mathcal{F}_\mathrm{C} = \{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}$$.
 
 {% include image.html
   url="/assets/img/ac_construction_axes.svg"
@@ -40,10 +40,10 @@ The X-axis is typically coincident with the fuselage centerline and often is coi
 {% include image.html
   url="/assets/img/c172x_blender.png"
   width="70%"
-  description="A screenshot taken from the 3D modeling software [Blender](www.blender.org). The scene shows a model of Cessna 172 with its structural frame $\{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}$. The origin $O_\mathrm{C}$ in this case is located inside the cockpit, near the dashboard."
+  description="A screenshot taken from the 3D modeling software Blender. The scene shows a model of Cessna 172 with its structural frame $\mathcal{F}_\mathrm{C} = \{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}$. The origin $O_\mathrm{C}$ in this case is located inside the cockpit, near the dashboard."
   %}
 
-Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBSim internally only uses the relative distances between the CG and the various objects – not the discrete locations themselves.
+Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBSim internally only uses the *relative distances* between the CG and the various objects --- not the absolute locations themselves.
 
 {% include image.html
   url="/assets/img/ac_center_of_gravity.svg"
@@ -53,9 +53,9 @@ Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBS
 
 ### Body Frame
 
-In JSBSim, the body frame is similar to the structural frame, but rotated 180 degrees about the $y_\mathrm{C}$, with the origin coincident with the CG. Typycally, the body frame is defined by knowning the position of the airplane's center of mass $G$ and the direction of the longitudinal construction axis $x_\mathrm{C}$ with respect to the fuselage. The axis $x_\mathrm{B}$ is so taken that it originates from $G$ and points forward.
+In JSBSim, the body frame is similar to the structural frame, but rotated 180 degrees about the $y_\mathrm{C}$, with the origin coincident with the CG. Typycally, the body frame is defined by knowning the position of the airplane's center of mass $G$ and the direction of the longitudinal construction axis $x_\mathrm{C}$ with respect to the fuselage. The axis $x_\mathrm{B}$ is so taken that it originates from $G$, is parallel to $x_\mathrm{C}$, and points forward.
 
-The frame of body axes is often called $(G, x_\mathrm{B}, y_\mathrm{B}, z_\mathrm{B})$. The $x_\mathrm{B}$ axis is called the *roll axis* and points forward, the $y_\mathrm{B}$ axis is called *pitch axis* and points toward the right wing, the $z_\mathrm{B}$ axis is called *yaw axis* and points towards the fuselage belly.
+The frame of body axes is often called $$\mathcal{F}_\mathrm{B} = \{G, x_\mathrm{B}, y_\mathrm{B}, z_\mathrm{B}\}$$. The $x_\mathrm{B}$ axis is called the *roll axis* and points forward, the $y_\mathrm{B}$ axis is called *pitch axis* and points toward the right wing, the $z_\mathrm{B}$ axis is called *yaw axis* and points towards the fuselage belly.
 
 {% include image.html
   url="/assets/img/ac_body_axes.svg"
@@ -67,7 +67,9 @@ In the body frame the aircraft forces and moments are summed and the resulting a
 
 ### Stability, or "Aerodynamic" Frame
 
-This frame, named $(G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A})$, is similar to the body frame, except that the axis $x_\mathrm{A}$ points into the relative wind vector projected onto the plane of symmetry for the aircraft $x_\mathrm{B} z_\mathrm{B}$. The axis $y_\mathrm{A}$ still points out the right wing and coincides with the body axis $x_\mathrm{B}$, and the axis $z_\mathrm{A}$ completes the right-hand system.
+This frame is defined according to the instantaneous orientation of the relative wind vector with respect to the airframe. If, for simplycity, the air is still with respect to the Earth (no wind), and $\boldsymbol{V}$ is the aircraft center-of-mass velocity vector with respect to the Earth-fixed observer (also named $\boldsymbol{v}_\mathrm{CM/E}$ to emphasize the relative motion), then $-\boldsymbol{V}$ is the relative wind velocity and $V = \|\boldsymbol{V}\|$ is the airspeed.
+
+The frame, named $$\mathcal{F}_\mathrm{A} = \{ G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A} \}$$, has the axis $x_\mathrm{A}$ that points into the relative wind vector projected onto the plane of symmetry for the aircraft, $x_\mathrm{B} z_\mathrm{B}$. The axis $y_\mathrm{A}$ still points out the right wing and coincides with the body axis $y_\mathrm{B}$, and the axis $z_\mathrm{A}$ completes the right-hand system.
 
 {% include image.html
   url="/assets/img/ac_aero_axes.svg"
@@ -77,13 +79,15 @@ This frame, named $(G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A})$, is similar to
 
 The two axes $x_\mathrm{A}$ and $z_\mathrm{A}$ belong, by definition, to the aircraft symmetry plane, but *they can rotate during flight* because the orientation of the relative wind velocity vector $\boldsymbol{V}$ might change with respect to the vehicle. The above figure shows how the aerodynamic frame is constructed. The angle between the two axes $x_\mathrm{A}$ and $x_\mathrm{B}$ is the aircraft angle of attack $\alpha_\mathrm{B}$. The angle formed by the instantaneous direction of $\boldsymbol{V}$ and its projection on the plane $x_\mathrm{B} z_\mathrm{B}$ is the sideslip angle $\beta$.
 
-This frame is called an 'aerodynamic' frame because the projection of the instantaneous aerodynamic resultant force $$\boldsymbol{F}_\mathrm{A}$$ onto the axes $x_\mathrm{A}$ and $z_\mathrm{A}$ defines drag and lift. In particular, the drag $D$ is such that $-D$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $x_\mathrm{A}$; the lift $L$ is such that $-L$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $z_\mathrm{A}$. In presence of a nonzero sideslip angle $\beta$, a third nonzero component of $$\boldsymbol{F}_\mathrm{A}$$ arises along the lateral axis $y_\mathrm{B} \equiv y_\mathrm{A}$, i.e. the side force component named $Y_\mathrm{A}$.
+This frame is called an 'aerodynamic' frame because the projection of the instantaneous aerodynamic resultant force $$\boldsymbol{F}_\mathrm{A}$$ onto the axes $x_\mathrm{A}$ and $z_\mathrm{A}$ defines the aerodynamic drag and lift. In particular, the drag $D$ is such that $-D$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $x_\mathrm{A}$; the lift $L$ is such that $-L$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $z_\mathrm{A}$. In presence of a nonzero sideslip angle $\beta$, a third nonzero component of $$\boldsymbol{F}_\mathrm{A}$$ arises along the lateral axis $y_\mathrm{B} \equiv y_\mathrm{A}$, i.e. the side force component named $Y_\mathrm{A}$.
 
-*Remark* --- In dynamic stability studies the stability frame is nothing but a particular kind of body-fixed frame, defined with respect to an initial symmetrical, steady, wings-level, constant altitude flight condition. This conditions gives the direction of $x_\mathrm{S}$. Therefore, in dynamic stability studies the stability frame, unlike the aerodynamic frame, is fixed with the vehicle.
+To visualize the above observations, consider a typical maneuver studied in flight mechanics: the zero-sideslip (or 'corrected'), constant altitude turn at a steady airspeed. In this situation the wings are banked and so is the lift. In such a turn $$\mathcal{F}_\mathrm{A}$$ is banked and $x_\mathrm{A}$ is kept horizontal. In other words, for an aircraft the lift and drag are always defined in the symmetry plane.
+
+*Remark* --- In dynamic stability studies what is referred to as 'stability frame' is something slightly different from the aerodynamic frame introduced above: The stability frame in aircraft flight dynamics and stability conventions is nothing but a particular kind of body-fixed frame, defined with respect to an initial symmetrical, steady, wings-level, constant altitude flight condition. This conditions gives the direction of $x_\mathrm{S}$ (which coincides with $x_\mathrm{A}$ at that particular flight attitude). Therefore, in dynamic stability studies the stability frame, unlike the aerodynamic frame, is fixed with the vehicle.
 
 ### Wind Frame
 
-This frame is similar to the stability/aerodynamic frame, except that the X-axis points directly into the relative wind $\boldsymbol{V}$. The Z-axis is perpendicular to the X-axis, and remains within the aircraft body plane $x_\mathrm{B} z_\mathrm{B}$ (also called the reference plane). The Y-axis completes a right hand coordinate system.
+This frame is similar to the stability/aerodynamic frame, except that the X-axis points directly into the relative wind direction (velocity $$-\boldsymbol{V}=-\boldsymbol{v}_\mathrm{CM/E}$$ in calm air). The Z-axis is perpendicular to the X-axis, and remains within the aircraft body plane $x_\mathrm{B} z_\mathrm{B}$ (also called the reference plane). It turns out that the axis $z_\mathrm{W}$ coincides with the aerodynamic axis $z_\mathrm{A}$. The Y-axis completes a right hand coordinate system.
 
 When the sideslip angle $\beta$ is zero, the wind frame and the aerodynamic frame are coincident.
 
