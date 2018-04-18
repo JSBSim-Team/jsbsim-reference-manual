@@ -98,6 +98,44 @@ When the sideslip angle $\beta$ is zero, the wind frame and the aerodynamic fram
 situation the air is calm and the velocity vector $\boldsymbol{v}_\mathrm{CM/E}$, of $G$ with respect to the Earth-fixed observer, is horizontal and pointing to North; hence it gives the direction of the relative wind. The standard three aerodynamic resultant force components $D$ (drag), $L$ (lift) and $Y_\mathrm{A}$ (side force) are also shown, with the angle of attack $\alpha_\mathrm{B}$ (referred to $x_\mathrm{B}$) and the angle of sideslip $\beta$. The aircraft weight is a vector of magnitude $W = mg$, directed downwards, parallel to $z_\mathrm{V}$ (the local vertical)."
   %}
 
+In the figure below again the standard frames of reference are shown, for an aircraft in climbing flight in calm air. By definition, the two axes $z_\mathrm{A}$ and $z_\mathrm{W}$ are coincident and the wind frame $$\mathcal{F}_\mathrm{W}$$ can be superimposed to the aerodynamic frame $$\mathcal{F}_\mathrm{A}$$ when rotated around $z_\mathrm{W}$ of the angle $-\beta$. The components $-D$ and $Y_\mathrm{A}$ can also be seen as the component of the resultant aerodynamic force on the axes $x_\mathrm{W}$ and $y_\mathrm{W}$.
+
+{% include image.html
+  url="/assets/img/three_d_definitions.svg"
+  width="90%"
+  description="Standard frames of reference and aircraft in climbing flight in calm air. The CG velocity vector $\boldsymbol{V}$ forms the flight path angle $\gamma$ with the horizontal plane. The standard three aerodynamic resultant force components $D$, $L$ and $Y_\mathrm{A}$ are also shown."
+  %}
+
+Therefore, the wind frame $$\mathcal{F}_\mathrm{W}$$ can be superimposed to the body frame $$\mathcal{F}_\mathrm{B}$$ when rotated first around $z_\mathrm{W}$ of the angle $-\beta$ then around the axis $y_\mathrm{A}$ of the angle $\alpha_\mathrm{B}$:
+
+$$
+\mathcal{F}_\mathrm{W} \stackrel{-\beta \, | \, z_\mathrm{W}}{ \longrightarrow } \mathcal{F}_\mathrm{A} \stackrel{\alpha_\mathrm{B} \, | \, y_\mathrm{A}}{ \longrightarrow } \mathcal{F}_\mathrm{B}
+\label{eq:FW:To:FB}
+$$
+
+The components of the aerodynamic resultant force in body axes are then expressed as follows:
+
+$$
+\left\{\begin{matrix}
+  X_\mathrm{B} \\ Y_\mathrm{B} \\ Z_\mathrm{B}
+\end{matrix}\right\} =
+\left[\begin{matrix}
+  \cos\alpha_\mathrm{B} & 0 & -\sin\alpha_\mathrm{B} \\
+  0 & 1 & 0 \\
+  \sin\alpha_\mathrm{B} & 0 & \cos\alpha_\mathrm{B}
+\end{matrix}\right]
+  \left[\begin{matrix}
+    \cos\beta & \sin(-\beta) & 0 \\
+    -\sin(-\beta) & \cos\beta & 0 \\
+    0 & 0 & 1
+  \end{matrix}\right]
+  \left\{\begin{matrix}
+    -D \\ Y_\mathrm{A} \\ -L
+  \end{matrix}\right\}
+\label{eq:DYL:To:XYZB}  
+$$
+
+in terms of drag, side force and lift.
 
 ## Units
 
