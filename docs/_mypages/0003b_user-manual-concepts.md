@@ -119,6 +119,8 @@ The local vertical frame $$\boldsymbol{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\ma
   description="Aircraft body frame and local vertical frame (NED frame). The aircraft Euler angles are also shown: the heading angle $\psi$ (negative in the picture), the elevation angle $\theta$, and the roll angle $\phi$."
   %}
 
+The NED convention ensures that the aircraft weight is a force with components $(0,0,mg)$ in the frame $$\boldsymbol{F}_\mathrm{V}$$, with $m$ the airplane's mass and $g$ the gravitational acceleration.
+
 The above figure shows an aircraft with the two frames $$\boldsymbol{F}_\mathrm{V}$$ and $$\boldsymbol{F}_\mathrm{B}$$. The Euler angles that define the body frame orientation with respect to the local NED frame are the *aircraft Euler angles*. For atmospheric flight vehicles the sequence of rotations used to define the Euler angles is '3-2-1'. This defines the *heading* angle $\psi$, the *elevation* angle $\theta$, and the *roll* angle $\phi$ with respect to an observer fixed with the Earth.
 
 {% include image.html
