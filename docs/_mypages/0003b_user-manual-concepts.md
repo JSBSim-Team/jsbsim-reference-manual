@@ -67,9 +67,9 @@ In the body frame the aircraft forces and moments are summed and the resulting a
 
 ### Stability, or "Aerodynamic" Frame
 
-This frame is defined according to the instantaneous orientation of the relative wind vector with respect to the airframe. If, for simplycity, the air is still with respect to the Earth (no wind), and $\boldsymbol{V}$ is the aircraft center-of-mass velocity vector with respect to the Earth-fixed observer (also named $\boldsymbol{v}_\mathrm{CM/E}$ to emphasize the relative motion), then $-\boldsymbol{V}$ is the relative wind velocity and $V = \|\boldsymbol{V}\|$ is the airspeed.
+This frame is defined according to the instantaneous orientation of the relative wind vector with respect to the airframe. If, for simplicity, the air is still with respect to the Earth (no wind), and $\boldsymbol{V}$ is the aircraft center-of-mass velocity vector with respect to the Earth-fixed observer (also named $\boldsymbol{V}_\mathrm{CM/E}$ to emphasize the relative motion), then $-\boldsymbol{V}$ is the relative wind velocity and $V = \|\boldsymbol{V}\|$ is the airspeed.
 
-The frame, named $$\mathcal{F}_\mathrm{A} = \{ G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A} \}$$, has the axis $x_\mathrm{A}$ that points into the relative wind vector projected onto the plane of symmetry for the aircraft, $x_\mathrm{B} z_\mathrm{B}$. The axis $y_\mathrm{A}$ still points out the right wing and coincides with the body axis $y_\mathrm{B}$, and the axis $z_\mathrm{A}$ completes the right-hand system.
+The frame, named $$\mathcal{F}_\mathrm{A} = \{ G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A} \}$$, has the axis $x_\mathrm{A}$ that points into the relative wind vector projected onto the aircraft plane of symmetry $x_\mathrm{B} z_\mathrm{B}$. The axis $y_\mathrm{A}$ still points out the right wing and coincides with the body axis $y_\mathrm{B}$, and the axis $z_\mathrm{A}$ completes the right-hand system.
 
 {% include image.html
   url="/assets/img/ac_aero_axes.svg"
@@ -79,26 +79,41 @@ The frame, named $$\mathcal{F}_\mathrm{A} = \{ G, x_\mathrm{A}, y_\mathrm{A}, z_
 
 The two axes $x_\mathrm{A}$ and $z_\mathrm{A}$ belong, by definition, to the aircraft symmetry plane, but *they can rotate during flight* because the orientation of the relative wind velocity vector $\boldsymbol{V}$ might change with respect to the vehicle. The above figure shows how the aerodynamic frame is constructed. The angle between the two axes $x_\mathrm{A}$ and $x_\mathrm{B}$ is the aircraft angle of attack $\alpha_\mathrm{B}$. The angle formed by the instantaneous direction of $\boldsymbol{V}$ and its projection on the plane $x_\mathrm{B} z_\mathrm{B}$ is the sideslip angle $\beta$.
 
-This frame is called an 'aerodynamic' frame because the projection of the instantaneous aerodynamic resultant force $$\boldsymbol{F}_\mathrm{A}$$ onto the axes $x_\mathrm{A}$ and $z_\mathrm{A}$ defines the aerodynamic drag and lift. In particular, the drag $D$ is such that $-D$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $x_\mathrm{A}$; the lift $L$ is such that $-L$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $z_\mathrm{A}$. In presence of a nonzero sideslip angle $\beta$, a third nonzero component of $$\boldsymbol{F}_\mathrm{A}$$ arises along the lateral axis $y_\mathrm{B} \equiv y_\mathrm{A}$, i.e. the side force component named $Y_\mathrm{A}$.
+This frame, called stability frame in some manuals, is also named here 'aerodynamic frame' because the projection of the instantaneous aerodynamic resultant force $$\boldsymbol{F}_\mathrm{A}$$ onto the axis $z_\mathrm{A}$ defines the aerodynamic lift. In particular, the lift $L$ is such that $-L$ is the component of $$\boldsymbol{F}_\mathrm{A}$$ along $z_\mathrm{A}$, i.e. $Z_\mathrm{A}=-L$.
 
-To visualize the above observations, consider a typical maneuver studied in flight mechanics: the zero-sideslip (or 'corrected'), constant altitude turn at a steady airspeed. In this situation the wings are banked and so is the lift. In such a turn $$\mathcal{F}_\mathrm{A}$$ is banked and $x_\mathrm{A}$ is kept horizontal. In other words, for an aircraft the lift and drag are always defined in the symmetry plane.
+To visualize the above observation, consider a typical maneuver studied in flight mechanics: the zero-sideslip (or 'coordinated'), constant altitude turn at steady airspeed. In this situation the wings are banked and so is the lift. In such a turn $$\mathcal{F}_\mathrm{A}$$ is banked and $x_\mathrm{A}$ is kept horizontal. In other words, for an aircraft the lift is always defined in the symmetry plane.
+
+{% include image.html
+  url="/assets/img/three_d_forces_level_turn.svg"
+  width="90%"
+  description="Banked lift in a steady coordinated turn at constant altitude. The bank angle $\phi_\mathrm{W}$ is a rotation around the relative wind velocity vector. The motion is freezed in time when the velocity vector is aligned with the North. Coordinated turn means that $\beta=0$ and constant altitude means that $x_\mathrm{A}$ is kept horizontal."
+  %}
 
 *Remark* --- In dynamic stability studies what is referred to as 'stability frame' is something slightly different from the aerodynamic frame introduced above: The stability frame in aircraft flight dynamics and stability conventions is nothing but a particular kind of body-fixed frame, defined with respect to an initial symmetrical, steady, wings-level, constant altitude flight condition. This conditions gives the direction of $x_\mathrm{S}$ (which coincides with $x_\mathrm{A}$ at that particular flight attitude). Therefore, in dynamic stability studies the stability frame, unlike the aerodynamic frame, is fixed with the vehicle.
 
-### Wind Frame
+### Local vertical frame, or Local NED frame
 
-This frame is similar to the stability/aerodynamic frame, except that the X-axis points directly into the relative wind direction (velocity $$-\boldsymbol{V}=-\boldsymbol{v}_\mathrm{CM/E}$$ in calm air). The Z-axis is perpendicular to the X-axis, and remains within the aircraft body plane $x_\mathrm{B} z_\mathrm{B}$ (also called the reference plane). It turns out that the axis $z_\mathrm{W}$ coincides with the aerodynamic axis $z_\mathrm{A}$. The Y-axis completes a right hand coordinate system.
-
-When the sideslip angle $\beta$ is zero, the wind frame and the aerodynamic frame are coincident.
+The local vertical frame $$\boldsymbol{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}$$ is unrelated to the airplane's orientation but is only defined by its CG position in space. If $G_\mathrm{GT}$ is the CG projected on the ground ('ground tracked'), the coordinate plane $x_\mathrm{V} y_\mathrm{V}$ is parallel to a plane locally tangent in $G_\mathrm{GT}$ to the Earth surface (a sphere or an ellipse). The axis $x_\mathrm{V}$ points towards the geographic North, The axis $y_\mathrm{V}$ points towards the East. Finally, the axis $z_\mathrm{V}$ points downwards towards the center of the Earth. For this reason the frame $$\boldsymbol{F}_\mathrm{V}$$ is also called *local NED* frame (North-East-Down).
 
 {% include image.html
-  url="/assets/img/ac_wind_axes.svg"
+  url="/assets/img/ac_local_vertical_axes.svg"
   width="90%"
-  description="Standard frames of reference with the origin at the aircraft center of mass $G$. In this particular
-situation the air is calm and the velocity vector $\boldsymbol{v}_\mathrm{CM/E}$, of $G$ with respect to the Earth-fixed observer, is horizontal and pointing to North; hence it gives the direction of the relative wind. The standard three aerodynamic resultant force components $D$ (drag), $L$ (lift) and $Y_\mathrm{A}$ (side force) are also shown, with the angle of attack $\alpha_\mathrm{B}$ (referred to $x_\mathrm{B}$) and the angle of sideslip $\beta$. The aircraft weight is a vector of magnitude $W = mg$, directed downwards, parallel to $z_\mathrm{V}$ (the local vertical)."
+  description="Aircraft body frame and local vertical frame (NED frame). Two aircraft Euler angles are also shown: the heading angle $\psi$ (negative in the picture), and the elevation angle $\theta$. Roll angle not shown."
   %}
 
-In the figure below again the standard frames of reference are shown, for an aircraft in climbing flight in calm air. By definition, the two axes $z_\mathrm{A}$ and $z_\mathrm{W}$ are coincident and the wind frame $$\mathcal{F}_\mathrm{W}$$ can be superimposed to the aerodynamic frame $$\mathcal{F}_\mathrm{A}$$ when rotated around $z_\mathrm{W}$ of the angle $-\beta$. The components $-D$ and $Y_\mathrm{A}$ can also be seen as the component of the resultant aerodynamic force on the axes $x_\mathrm{W}$ and $y_\mathrm{W}$.
+The above figure shows an aircraft with the two frames $$\boldsymbol{F}_\mathrm{V}$$ and $$\boldsymbol{F}_\mathrm{B}$$. The Euler angles that define the body frame orientation with respect to the local NED frame are the *aircraft Euler angles*. For atmospheric flight vehicles the sequence of rotations used to define the Euler angles is '3-2-1'. This defines the *heading* angle $\psi$, the *elevation* angle $\theta$, and the *roll* angle $\phi$ with respect to an observer fixed with the Earth.
+
+### Wind Frame
+
+Besides the lift, the instantaneous aerodynamic resultant force vector $$\boldsymbol{F}_\mathrm{A}$$ has two more components in a frame of reference of which $z_\mathrm{A}$ is the third axis. This frame is called *wind frame* $$\mathcal{F}_\mathrm{W} = \{ G, x_\mathrm{W}, y_\mathrm{W}, z_\mathrm{W}\}$$.
+
+The wind frame is defined by taking the $x_\mathrm{W}$ axis along the relative wind with a positive verse in the direction of motion. This means that $x_\mathrm{W}$ is superimposed to the vector $$\boldsymbol{V}$$. The third axis of $$\mathcal{F}_\mathrm{W}$$ is taken along the lift line of action, i.e. $z_\mathrm{W} \equiv z_\mathrm{A}$. Finally, the second axis $y_\mathrm{W}$ is chosen in order to complete the right-handed triad. The wind frame has its third axis constantly in the airframe plane of symmetry (also called the 'reference plane'). All the three wind axes rotate with respect to the body axes because of the changing attitude of the aircraft with respect to the relative wind $$-\boldsymbol{V}$$.
+
+The component $X_\mathrm{W}$ of the force vector $$\boldsymbol{F}_\mathrm{A}$$ along the direction of $$\boldsymbol{V}$$ defines the aerodynamic drag: The drag $D$ is such that $X_\mathrm{W}=-D$. In presence of a nonzero sideslip angle $\beta$, a third nonzero component of $$\boldsymbol{F}_\mathrm{A}$$ arises along the lateral axis $y_\mathrm{W}$, i.e. the side force component $Y_\mathrm{W}$.
+
+When the sideslip angle $\beta$ is zero, the wind frame and the aerodynamic frame are coincident. Only in this circumstance $y_\mathrm{W}$, being coincident with $y_\mathrm{A}$ and $y_\mathrm{B}$, is normal to the reference plane $x_\mathrm{B} z_\mathrm{B}$.
+
+The figure below shows the standard frames of reference for an aircraft in climbing flight in calm air. The wind frame $$\mathcal{F}_\mathrm{W}$$ can be made superimposed to the aerodynamic frame $$\mathcal{F}_\mathrm{A}$$ when rotated around $z_\mathrm{W}$ of the angle $-\beta$.
 
 {% include image.html
   url="/assets/img/three_d_definitions.svg"
@@ -106,10 +121,10 @@ In the figure below again the standard frames of reference are shown, for an air
   description="Standard frames of reference and aircraft in climbing flight in calm air. The CG velocity vector $\boldsymbol{V}$ forms the flight path angle $\gamma$ with the horizontal plane. The standard three aerodynamic resultant force components $D$, $L$ and $Y_\mathrm{A}$ are also shown."
   %}
 
-Therefore, the wind frame $$\mathcal{F}_\mathrm{W}$$ can be superimposed to the body frame $$\mathcal{F}_\mathrm{B}$$ when rotated first around $z_\mathrm{W}$ of the angle $-\beta$ then around the axis $y_\mathrm{A}$ of the angle $\alpha_\mathrm{B}$:
+Consequently, the wind frame $$\mathcal{F}_\mathrm{W}$$ can be superimposed to the body frame $$\mathcal{F}_\mathrm{B}$$ when rotated first around $z_\mathrm{W}$ of the angle $-\beta$ then around the axis $y_\mathrm{A}$ of the angle $\alpha_\mathrm{B}$:
 
 $$
-\mathcal{F}_\mathrm{W} \stackrel{-\beta \, | \, z_\mathrm{W}}{ \longrightarrow } \mathcal{F}_\mathrm{A} \stackrel{\alpha_\mathrm{B} \, | \, y_\mathrm{A}}{ \longrightarrow } \mathcal{F}_\mathrm{B}
+\mathcal{F}_\mathrm{W} \stackrel{-\beta \, \curvearrowright \, z_\mathrm{W}}{ \longrightarrow } \mathcal{F}_\mathrm{A} \stackrel{\alpha_\mathrm{B} \, \curvearrowright \, y_\mathrm{A}}{ \longrightarrow } \mathcal{F}_\mathrm{B}
 \label{eq:FW:To:FB}
 $$
 
@@ -130,7 +145,7 @@ $$
     0 & 0 & 1
   \end{matrix}\right]
   \left\{\begin{matrix}
-    -D \\ Y_\mathrm{A} \\ -L
+    -D \\ Y_\mathrm{W} \\ -L
   \end{matrix}\right\}
 \label{eq:DYL:To:XYZB}  
 $$
