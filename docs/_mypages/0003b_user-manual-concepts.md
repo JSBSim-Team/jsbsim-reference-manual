@@ -98,10 +98,16 @@ The local vertical frame $$\boldsymbol{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\ma
 {% include image.html
   url="/assets/img/ac_local_vertical_axes.svg"
   width="90%"
-  description="Aircraft body frame and local vertical frame (NED frame). Two aircraft Euler angles are also shown: the heading angle $\psi$ (negative in the picture), and the elevation angle $\theta$. Roll angle not shown."
+  description="Aircraft body frame and local vertical frame (NED frame). The aircraft Euler angles are also shown: the heading angle $\psi$ (negative in the picture), the elevation angle $\theta$, and the roll angle $\phi$."
   %}
 
 The above figure shows an aircraft with the two frames $$\boldsymbol{F}_\mathrm{V}$$ and $$\boldsymbol{F}_\mathrm{B}$$. The Euler angles that define the body frame orientation with respect to the local NED frame are the *aircraft Euler angles*. For atmospheric flight vehicles the sequence of rotations used to define the Euler angles is '3-2-1'. This defines the *heading* angle $\psi$, the *elevation* angle $\theta$, and the *roll* angle $\phi$ with respect to an observer fixed with the Earth.
+
+{% include image.html
+  url="/assets/img/ac_euler_gimbal.svg"
+  width="60%"
+  description="Euler angle sequence for an aircraft. The frame $\boldsymbol{F}_\mathrm{E} = \{ O_\mathrm{E}, x_\mathrm{E}, y_\mathrm{E}, z_\mathrm{E}\}$ is an Earth-fixed NED coordinate system, with origin the $O_\mathrm{E}$ somewhere on the ground (or at see level) and the plane $x_\mathrm{E} y_\mathrm{E}$ tangent to the Earth surface. If the ground track point $G_\mathrm{GT}$ is not too far from $O_\mathrm{E}$, the Earth frame $\boldsymbol{F}_\mathrm{E}$ axes are parallel to those of the local NED frame $\boldsymbol{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}$."
+  %}
 
 ### Wind Frame
 
