@@ -11,17 +11,21 @@ permalink: /mypages/concepts/
 
 While the JSBSim user does not need to know some of the finer details of the flight simulator operation, it can be helpful to understand basically how JSBSim works. Some of the most important concepts are described in this section.
 
-Frames of reference are used to describe the placement and location of various items in a vehicle model.
+- Frames of reference are used to describe the placement and location of various items in a vehicle model.
 
-There is flexibility in how the units of measure can be specified when defining a vehicle model – both English and metric units are supported.
+- There is flexibility in how the units of measure can be specified when defining a vehicle model – both English and metric units are supported.
 
-The use of “Properties” permits JSBSim to be a generic simulator, providing a way to interface the various systems with parameters (or variables). Properties are used throughout the configuration files that describe aircraft and engine characteristics.
+- The use of “Properties” permits JSBSim to be a generic simulator, providing a way to interface the various systems with parameters (or variables). Properties are used throughout the configuration files that describe aircraft and engine characteristics.
 
-Obviously, math plays a big part in modeling flight physics. JSBSim makes use of data tables, as flight dynamics characteristics are often stored in tables. Arbitrary algebraic functions can also be set up in JSBSim, allowing broad freedom for describing aerodynamic and flight control characteristics.
+- Obviously, math plays a big part in modeling flight physics. JSBSim makes use of data tables, as flight dynamics characteristics are often stored in tables. Arbitrary algebraic functions can also be set up in JSBSim, allowing broad freedom for describing aerodynamic and flight control characteristics.
+
+- Users have to have, at least a basic knowledge, of conventional forces and moments acting on an airplane in flight.
+
+- The understanding of flight controls and of how system modelling can be achieved in JSBSim are the keys for successful and effective simulations.
 
 ## Frames of Reference
 
-Before moving into a description of the configuration file syntax, one must understand some basic information about some of the frames of reference used in describing the location of objects on the aircraft.
+Before moving into a description of the configuration file syntax, one must understand some basic information about some of the frames of reference used (*i*) in describing the location of objects on the aircraft, (*ii*) in specifying conditions related to the position and orientation of the aircraft in space, or (*iii*) when assigning inputs for a given flight condition.
 
 ### Structural, or "Construction" Frame
 
@@ -49,6 +53,24 @@ Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBS
   url="/assets/img/ac_center_of_gravity.svg"
   width="90%"
   description="Center of gravity (CG) position, point $G$, determined in a construction frame."
+  %}
+
+{% include image.html
+  url="/assets/img/c172_ground_reaction.svg"
+  width="90%"
+  description="Definition of ground contact points in terms of construction frame locations."
+  %}
+
+{% include image.html
+  url="/assets/img/c172_sideview.svg"
+  width="70%"
+  description="Two key point locations $P_\mathrm{ARP}$ and $P_\mathrm{CG,EW}$ in the structural frame, respectively, he pole of aerodynamic moments and the Empty Weight CG of the airframe. The shape of the wing root profile and its chord are also sketched."
+  %}
+
+{% include image.html
+  url="/assets/img/c172_perspective_view_left.svg"
+  width="70%"
+  description="Besides point $P_\mathrm{CG,EW}$, are represented two more significant locations, $P_\mathrm{Pilot}$ and $P_\mathrm{Right\,Pass}$, where two additional masses are concentrated, respectively, of the pilot and of the right passenger."
   %}
 
 ### Body Frame
@@ -212,4 +234,35 @@ The two statements for wingspan are effectively equivalent.
 
 ## Forces and Moments
 
+{% include image.html
+  url="/assets/img/ac_ground_effect.svg"
+  width="100%"
+  description="Explanation of ground effect."
+  %}
+
 ## Flight Control and System Modelling
+
+{% include image.html
+  url="/assets/img/ac_aerosurface_deflections.svg"
+  width="80%"
+  description="Standard aircraft aerodynamic control surfaces."
+  %}
+
+{% include image.html
+  url="/assets/img/c172_fcs.svg"
+  width="100%"
+  description="The command to deflection logic for the elevator channel in the c172p model. The combination of yoke movement and pitch trim lever regulation is normalized and mapped to the interval $[−1, 1]$. The output of the channel is a real variable fcs/elevator-pos-rad representing an equivalent elevator deflection $\delta_\mathrm{e}^\star = \delta_\mathrm{e} + \delta_\mathrm{e,tab}^\star$. The angle $\delta_\mathrm{e,tab}^\star$ is an elevator deflection equivalent to the actual tab angle $\delta_\mathrm{e,tab}$. The $\delta_\mathrm{e}$ varies in the range $[\delta_\mathrm{e,min}, \delta_\mathrm{e,max}]$. The tail is represented with the moving surfaces deflected both in the equivalent condition (top), and in the actual condition (bottom)."
+  %}
+
+
+{% include image.html
+  url="/assets/img/ac_thrust_definitions.svg"
+  width="80%"
+  description="A twin engine propeller aircraft. Location in body frame of the engine thruster, of thrust application point, and thrust vector orientation."
+  %}
+
+{% include image.html
+  url="/assets/img/c172_thruster.svg"
+  width="80%"
+  description="Locations associated to the entities 'thruster' and 'tank' in the FDM of c172p."
+  %}

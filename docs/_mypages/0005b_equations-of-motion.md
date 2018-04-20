@@ -35,3 +35,15 @@ The notation used in this reference manual is the same that Stevens and Lewis us
   width="60%"
   description="Earth-Centered Earth-Fixed (ECEF) frame, geografic coordinates, Tangent (T) frame, and local Vertical (V) frame."
   %}
+
+{% include image.html
+  url="/assets/img/ac_pqr_omega.svg"
+  width="90%"
+  description="Aircraft angular velocity vector $\boldsymbol{\Omega}$ and angular speed componeents in body axes $(p,q,r)$."
+  %}
+
+{% include image.html
+  url="/assets/img/c172_ground_reaction_model.svg"
+  width="90%"
+  description="Ground reaction model. A situation of ground contact with $\mathrm{WOW} = 1$ for the right wheel of the main gear and $\mathrm{WOW} = 0$ for the nose wheel."
+  %}
