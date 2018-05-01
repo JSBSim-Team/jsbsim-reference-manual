@@ -96,4 +96,4 @@ Alternatively, the Python module can be installed manually by invoking the follo
   %}
 
 <p align="right">
-{% include search_page_put.html page_category='running-the-program' put_text='Next ▶' %}</p>
+{% include search_page_put.html page_category='building-using-visualstudio' put_text='Next ▶' %}</p>
