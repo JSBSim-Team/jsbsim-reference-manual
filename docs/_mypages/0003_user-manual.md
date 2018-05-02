@@ -7,7 +7,7 @@ permalink: /mypages/user-manual/
 
 # User manual
 
-This section that explains how to use JSBSim to make simulation runs, to create aircraft models, to write scripts, and how to perform various other tasks that do not involve changes to program code in JSBSim itself.
+This section explains how to use JSBSim to make simulation runs, to create aircraft models, to write scripts, and how to perform various other tasks that do not involve changes to program code in JSBSim itself.
 
 The JSBSim software comes with many examples of ready-to-use aircraft models. Once they become familiar with all the steps and settings needed to carry out simulations, users might want to look at these examples and learn more in detail the way that some specific models are implemented by more experienced JSBSim users.
 
