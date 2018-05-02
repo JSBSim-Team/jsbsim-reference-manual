@@ -7,7 +7,7 @@ permalink: /mypages/quickstart/
 
 # Quickstart
 
-To use JSBSim productively you might wanto to assume a *programmer's attitude*. This means you will have to download the sources yourself and compile them on your platform. With the right set of tools installed on your computer, this is a painless procedure after all.
+To use JSBSim productively you might want to assume a *programmer's attitude*. This means you will have to download the sources yourself and compile them on your platform. With the right set of tools installed on your computer, this is a painless procedure after all.
 
 For the impatients, there is an automatic remote build procedure that delivers up-to-date binaries of the library. These can be found on the following links on the [Jenkins](https://jenkins.io/) server:
 

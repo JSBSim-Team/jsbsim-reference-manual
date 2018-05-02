@@ -20,6 +20,7 @@ Use the **File → Open → Project/Solution …** menu option.
 
 {% include image.html
   url="/assets/img/vs2017_open_project_solution.png"
+  width="80%"
 %}
 
 Browse to the location of the JSBSim source and select the JSBSim.sln in the root of the source code tree, in this example:
@@ -32,6 +33,7 @@ The project files have been configured to store the compiler and linker’s inte
 
 {% include image.html
   url="/assets/img/vs2017_project_intermediate_output.png"
+  width="85%"
 %}
 
 So for example the intermediate files for JSBSim and Aeromatic will be stored in the following directories:
@@ -48,10 +50,11 @@ C:\source\JSBSim\Debug
 ```
 
 ## Building using VS 2017 CMake Support
-Use the **File → Open-CMake …** menu option.
+Use the **File → Open → CMake …** menu option.
 
 {% include image.html
   url="/assets/img/vs2017_open_cmake.png"
+  width="80%"
 %}
 
 Browse to the location of the JSBSim source and select the CMakeLists.txt in the root of the source code tree, in this example:
@@ -64,12 +67,14 @@ There are 4 build configurations in total, x86, x64 and Debug and Release versio
 
 {% include image.html
   url="/assets/img/vs2017_cmake_build_config.png"
+  width="80%"  
 %}
 
 Then use the **CMake** menu option to decide which components you would like to build.
 
 {% include image.html
   url="/assets/img/vs2017_cmake_build_targets.png"
+  width="80%"  
 %}
 
 By default Visual Studio configures CMake to build outside the source tree, defaulting to a build directory in the user’s home directory and using a GUID (Globally Unique ID) as part of the directory path. You will see the generated path displayed in the Output window of Visual Studio, for example:
@@ -82,16 +87,19 @@ If for example you don’t want to use your home directory for your CMake builds
 
 {% include image.html
   url="/assets/img/vs2017_cmake_json_file.png"
+  width="90%"
 %}
 
 Lastly Visual Studio also supports the execution of the JSBSim tests.
 
 {% include image.html
   url="/assets/img/vs2017_cmake_tests1.png"
+  width="70%"
 %}
 
 {% include image.html
   url="/assets/img/vs2017_cmake_tests2.png"
+  width="50%"
 %}
 
 
