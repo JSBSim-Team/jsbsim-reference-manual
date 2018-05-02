@@ -1,0 +1,4 @@
+Installed stuff:
+
+* https://pint.readthedocs.io/en/latest/
+  Pint: makes units easy

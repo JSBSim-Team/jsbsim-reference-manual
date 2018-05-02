@@ -1,0 +1,2 @@
+# 12-Oct-2017 agodemar
+slug = 14.59390 * kilogram

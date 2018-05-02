@@ -1,0 +1,34 @@
+<?xml version="1.0"?>                                       
+
+<!-- 
+This file sets up the aircraft 
+at 4000 feet above Sea Level,
+over Naples, 
+on a heading of 200 degrees
+with engine running 
+-->
+
+<initialize name="Inizialization for Tutorial 01">
+  
+  
+  <vt unit="KTS">         96.0  </vt>
+  <latitude unit="DEG">   40.0  </latitude>
+  <longitude unit="DEG">  14.2  </longitude>
+  <psi unit="DEG">       200.0  </psi>
+  <altitude unit="FT">  4000.0  </altitude>
+  <gamma unit="DEG">       0.0  </gamma>
+  
+  <!-- 
+  set number of engines running
+    -1 = all engines running
+     0 = no engines running 
+     1 = one engine running
+     ...
+     
+     NB Engine counters start from 0! 
+     0 is the index of the first engine
+   -->
+   
+  <running>                0   </running>                                 
+ 
+</initialize>

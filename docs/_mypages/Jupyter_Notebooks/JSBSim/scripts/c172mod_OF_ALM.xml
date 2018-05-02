@@ -1,0 +1,92 @@
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Script for C172x - OF_ADM11" xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd">
+
+  <use aircraft="c172x_unina_mod" initialize="init_OF_ALM_random" />
+  <run dt="0.0083333" end="500" start="0.0">
+
+
+    <property value="0">guidance/target-wp-latitude-rad-final</property>
+    <property value="0">guidance/target-wp-longitude-rad-final</property>
+
+
+    <event name="Trim">
+      <description>
+        Trim the aircraft in the initial conditions, with flaps out.
+      </description>
+      <condition> simulation/sim-time-sec ge 0 </condition>
+      <set name="fcs/flap-cmd-norm" value="1" />
+      <set name="simulation/do_simple_trim" value="1" />
+      <set name="ap/active-waypoint" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event continuous="true" name="Set glide reference">
+      <description>
+        Continuously reference a glide angle of -1 degree
+      </description>
+      <condition>
+        simulation/sim-time-sec ge 0
+      </condition>
+      <set name="ap/glide-angle-elev-setpoint" value="-1" />
+      <notify>
+      </notify>
+    </event>
+
+    <event name="Gliding autopilot">
+      <description>
+        Switch on the gliding autopilot
+      </description>
+      <condition>
+        simulation/sim-time-sec ge 0
+      </condition>
+      <set name="ap/gamma-pid-kp" value="0.2" />
+      <set name="ap/gamma-pid-ki" value="0.020" />
+      <set name="ap/gamma-pid-kd" value="0.0983" />
+      <set name="ap/glide-angle-elev-hold" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Heading autopilot to waypoint 1">
+      <description>
+        Switch on the heading autopilot, in waypoint mode
+        and set route to waypoint 1
+      </description>
+      <condition>
+        simulation/sim-time-sec ge 0
+        ap/active-waypoint eq 1
+      </condition>
+      <set name="ap/heading-pid-kp" value="1.50" />
+      <set name="ap/heading-pid-ki" value="0.00" />
+      <set name="ap/heading-pid-kd" value="5.00" />
+      <set name="guidance/target_wp_latitude_rad">
+        <function><p>guidance/target-wp-latitude-rad-final</p></function>
+      </set>
+      <set name="guidance/target_wp_longitude_rad">
+        <function><p>guidance/target-wp-longitude-rad-final</p></function>
+      </set>
+      <set name="ap/heading-setpoint-select" value="1" />
+      <set name="ap/heading-hold" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Terminate simulation">
+      <description>
+        When close enough to the last waypoint,
+        or position is too north, end simulation
+      </description>
+      <condition logic="OR">
+        guidance/wp-distance le 100
+        position/lat-gc-deg gt 53.167083
+      </condition>
+      <set name="simulation/terminate" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+  </run>
+</runscript>

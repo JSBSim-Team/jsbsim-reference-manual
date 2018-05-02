@@ -1,0 +1,39 @@
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Script for C172x - OFtest_1" xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd">
+
+  <use aircraft="c172x_unina" initialize="init_OFtest_1" />
+  <run dt="0.0083333" end="500" start="0.0">
+
+
+    <event continuos="true" name="Position control (manual)">
+      <description>
+      </description>
+      <condition> position/long-gc-deg ge 14.785454 </condition>
+      <set name="simulation/terminate" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+    <event name="Trim">
+      <description>
+        Trim the aircraft in the initial conditions.
+      </description>
+      <condition> simulation/sim-time-sec ge 0 </condition>
+      <set name="simulation/do_simple_trim" value="1" />
+      <set name="ap/heading-setpoint-select" value="0" />
+      <set name="ap/heading-setpoint"><function><p>attitude/psi-deg</p></function></set>
+      <set name="ap/heading-hold" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+    <event name="Heading Autopilot">
+      <description>
+      </description>
+      <condition> simulation/sim-time-sec ge 50 </condition>
+      <set name="ap/heading-setpoint" value="90" />
+      <notify>
+      </notify>
+    </event>
+
+  </run>
+</runscript>

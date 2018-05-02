@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" 
+	href="http://jsbsim.sourceforge.net/JSBSimScript.xsl"?>
+
+
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+		name="Script for C172x - Waypoint navigation test ">
+
+
+    <!--
+		C172x performing some maneuvers for testing
+        waypoint base navigation
+    -->
+
+    <use aircraft="c172x_unina" initialize="init_mantest_waypoint_auto_guidance" />
+    <run start="0.0" end="250" dt="0.0083333"> 
+
+
+        <!-- Trim in intial conditions -->
+
+        <event name="Trim">
+            <description>Trim the aircraft in the initial conditions</description>
+            <condition> simulation/sim-time-sec ge 0 </condition>
+            <set name="simulation/do_simple_trim" value="1" />
+            <set name="ap/theta-angle-setpoint"> <function><property>attitude/theta-deg</property></function></set>
+            <set name="ap/heading-setpoint"><function><property>attitude/psi-deg</property></function></set>
+            <set name="ap/active-waypoint"  value="0" />
+            <notify>
+                <property>velocities/vc-kts</property>
+                <property>velocities/vt-fps</property>
+                <property>attitude/phi-deg</property>
+                <property>attitude/theta-deg</property>
+                <property>attitude/psi-deg</property>
+                <property>ic/h-agl-ft</property>
+                <property>simulation/trim-completed</property>
+            </notify>
+        </event>
+
+
+        <event name="Heading hold">
+            <description></description>
+            <condition> simulation/sim-time-sec ge 0 </condition>
+            <set name="ap/heading-setpoint-select" value="0"/>
+            <set name="ap/heading-hold" value="1"/>
+            <set name="ap/theta-angle-hold"   value="1" />
+            <notify>
+                <property> position/lat-geod-deg </property>
+                <property> position/long-gc-deg </property>
+                <property> velocities/vtrue-kts </property>
+            </notify>
+        </event>
+
+
+        <event name="To Waypoint 1">
+            <description></description>
+            <condition> simulation/sim-time-sec ge 10 </condition>
+            <set name="guidance/target_wp_latitude_rad"  value="0.713241" />
+            <set name="guidance/target_wp_longitude_rad" value="0.248679" />
+            <set name="ap/heading-setpoint-select" value="1" />
+            <set name="ap/active-waypoint"  value="1" />
+            <notify>
+                <property> position/lat-geod-deg </property>
+                <property> position/long-gc-deg </property>
+                <property> velocities/vtrue-kts </property>
+            </notify>
+        </event>        
+
+
+        <event name="To Waypoint 2">
+            <description>
+                When the distance to the first waypoint is less than
+                10 feet, then set the second waypoint.
+            </description>
+            <condition>
+                guidance/wp-distance lt 10
+                ap/active-waypoint eq 1
+            </condition>
+            <set name="guidance/target_wp_latitude_rad"  value="0.713486"/>
+            <set name="guidance/target_wp_longitude_rad" value="0.249189"/>
+            <notify>
+                <property> position/lat-geod-deg </property>
+                <property> position/long-gc-deg  </property>
+                <property> velocities/ve-kts     </property>
+                <property> guidance/wp-distance  </property>
+            </notify>
+        </event>
+
+
+        <event name="Descent">
+            <description>
+                When the distance to the first waypoint is less than
+                10 feet, also start descending.
+            </description>
+            <condition>
+                guidance/wp-distance lt 10
+                ap/active-waypoint eq 1
+            </condition>
+            <delay> 10 </delay>
+            <set name="fcs/flap-pos-deg" value="30" />
+            <set name="fcs/throttle-cmd-norm" value="-0.55" type="delta" action="ramp" tc="5" />
+            <set name="ap/theta-angle-setpoint" value="+1.0" type="delta" action="ramp" tc="5" />
+            <set name="ap/active-waypoint" value="2"/>
+            <notify>
+                <property> position/lat-geod-deg </property>
+                <property> position/long-gc-deg  </property>
+                <property> velocities/ve-kts     </property>
+                <property> guidance/wp-distance  </property>
+            </notify>
+        </event>
+        
+        <event name="Landing">
+            <description>
+                When the distance to the second waypoint is less than
+                10 feet, just follow the landing field direction.
+            </description>
+            <condition>
+                guidance/wp-distance lt 100
+                ap/active-waypoint eq 2
+            </condition>
+            <set name="ap/heading-setpoint" value="60" />
+            <set name="ap/heading-setpoint-select" value="0" />
+            <set name="ap/active-waypoint" value="0"/>
+            <notify>
+                <property> position/lat-geod-deg </property>
+                <property> position/long-gc-deg  </property>
+                <property> velocities/ve-kts     </property>
+                <property> guidance/wp-distance  </property>
+            </notify>
+        </event>
+
+
+    </run>
+</runscript>

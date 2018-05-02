@@ -1,0 +1,13 @@
+<initialize name="EngineRunning">
+
+  <latitude unit="DEG">0</latitude>
+  <longitude unit="DEG">0</longitude>
+  <altitude unit="M">115</altitude>
+  <psi unit="DEG">0</psi>
+  <vt unit="KTS">100</vt>
+  <gamma unit="DEG">-1</gamma>
+  <phi unit="DEG">0</phi>
+  <running>0</running>
+
+
+</initialize>

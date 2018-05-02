@@ -1,0 +1,168 @@
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Script for C172x - Autoscripting test for Montecarlo simulations in Python" xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd">
+
+    <use aircraft="c172x_unina" initialize="init_MCSim_WindTest" />
+    <run dt="0.0083333" end="50" start="0.0"> 
+        
+        
+        <property value="0.713689373764">guidance/target-wp-latitude-rad-ONE</property>
+        <property value="0.249746093971">guidance/target-wp-longitude-rad-ONE</property>
+        <property value="0.713689373764">guidance/target-field-wp-latitude-rad</property>
+        <property value="0.249619520348">guidance/target-field-wp-longitude-rad</property>
+        <property value="270">guidance/landing-field-orientation-deg</property>
+        <property value="2000">guidance/wp-distance-ONE-FIELD-ft</property>
+        <property value="5000">ext/initial-distance-to-field-ft</property>
+        <property value="4900">ext/initial-distance-to-field-trigger-ft</property>
+        
+        <property>navigation/approach-time-sec</property>
+        
+        
+        <event continuous="true" name="Calculate local wind">
+            <description>
+            </description>
+            <condition> 
+                simulation/sim-time-sec ge 0
+            </condition>
+            <delay>0</delay>
+            <set name="atmosphere/wind-north-fps"><function><p>atmosphere/distribution-wind-north-fps</p></function></set>
+            <notify>
+            </notify>
+        </event>        
+        
+        <event name="Trim">
+            <description>
+                Trim the aircraft in the initial conditions
+                and initialize heading and pitch autopilots.
+            </description>
+            <condition> simulation/sim-time-sec ge 0 </condition>
+            <set name="simulation/do_simple_trim" value="1" />
+            <notify>
+            </notify>
+        </event>
+        
+       
+        <event name="Enter zone: to waypoint 1">
+            <description>
+                Once close enough to the landing field, start waypoint 
+                based navigation. Set coordinates for Waypoint 1, 
+                activate it and set the heading autopilot to Waypoint Mode.
+            </description>
+            <condition> 
+                <condition logic="AND">guidance/field-wp-distance le 4900</condition>
+            </condition>
+            <delay>0</delay>
+            <set name="guidance/target_wp_latitude_rad"><function><p>guidance/target-wp-latitude-rad-ONE</p></function></set>
+            <set name="guidance/target_wp_longitude_rad"><function><p>guidance/target-wp-longitude-rad-ONE</p></function></set>
+            <set name="ap/heading-setpoint-select" value="1" />
+            <set name="ap/heading-hold" value="1" />   
+            <set name="ap/active-waypoint" value="1" />
+            <notify>
+            </notify>
+        </event>        
+        
+        
+        <event continuous="true" name="Enter zone: start descent">
+            <description>
+                Once close enough to the landing field, start waypoint 
+                based navigation. Set coordinates for Waypoint 1, 
+                activate it and set the heading autopilot to Waypoint Mode.
+            </description>
+            <condition> 
+                <condition logic="AND">guidance/field-wp-distance le 4900</condition>
+            </condition>
+            <delay>0</delay>
+            <set name="ap/glide-angle-throt-setpoint"><function><p>navigation/glide-angle-to-field-wp-deg</p></function></set>
+            <set name="ap/glide-angle-elev-setpoint"><function><p>navigation/glide-angle-to-field-wp-deg</p></function></set>
+            <set name="ap/theta-angle-setpoint" value="0" />
+            <set name="ap/throttle-pid-kp" value="0.00000700" />
+            <set name="ap/throttle-pid-ki" value="0.00000125" />
+            <set name="ap/throttle-pid-kd" value="0.00000300" />
+            <set name="ap/gamma-pid-kp" value="0.0200" />
+            <set name="ap/gamma-pid-ki" value="0.0040" />
+            <set name="ap/gamma-pid-kd" value="0.0883" />
+            <set name="ap/theta-pid-kp" value="10.0" />
+            <set name="ap/theta-pid-ki" value="0.50" />
+            <set name="ap/theta-pid-kd" value="4.00" />
+            <set name="ap/glide-angle-throt-hold" value="1" />
+            <set name="ap/glide-angle-elev-hold" value="1" />
+            <set name="ap/theta-angle-hold" value="0" />
+            <notify>
+            </notify>
+        </event>        
+        
+        
+        <event name="Approaching WP1: set new route">
+            <description>
+                When the distance to the first waypoint is less than
+                200 feet, set route to the second waypoint and
+                update glide path.
+            </description>
+            <condition>
+                ap/active-waypoint eq 1
+                guidance/wp-distance lt 200
+            </condition>
+            <set name="guidance/target_wp_latitude_rad"><function><p>guidance/target-field-wp-latitude-rad</p></function></set>
+            <set name="guidance/target_wp_longitude_rad"><function><p>guidance/target-field-wp-longitude-rad</p></function></set>
+            <set name="ap/active-waypoint" value="2" />
+            <set name="ap/last-waypoint" value="1" />
+            <set name="navigation/approach-time-sec"><function><sum><v>1</v><p>simulation/sim-time-sec</p></sum></function></set>
+            <notify>
+            </notify>
+        </event>
+        
+        
+        <event name="Flaps">
+            <description>
+            </description>
+            <condition>
+                ap/active-waypoint eq 2
+                ap/last-waypoint eq 1
+                simulation/sim-time-sec gt navigation/approach-time-sec
+                attitude/phi-deg ge -1
+                attitude/phi-deg le 1
+            </condition>
+            <delay>2</delay>
+            <set name="fcs/flap-cmd-norm" value="1" />
+            <notify>
+            </notify>
+        </event>
+        
+        
+        <event name="Landing">
+            <description>
+                When the distance to the second waypoint is less than
+                100 feet, just follow the landing field direction.
+                Insert field orientation and set heading autopilot 
+                to Heading Mode again.
+            </description>
+            <condition>
+                guidance/field-wp-distance le 100
+            </condition>
+            <set name="ap/glide-angle-throt-hold" value="0" />
+            <set name="ap/glide-angle-elev-hold" value="0" />
+            <set name="ap/theta-angle-hold" value="0" />
+            <set name="ap/heading-setpoint"><function><p>guidance/landing-field-orientation-deg</p></function></set>
+            <set name="ap/heading-setpoint-select" value="0" />
+            <set name="ap/active-waypoint" value="0" />
+            <set name="ap/last-waypoint" value="2" />
+            <notify>
+            </notify>
+        </event>
+        
+        
+        <event name="Touch down">
+            <description>
+                After passing waypoint 2, terminate simulation
+            </description>
+            <condition>
+                guidance/field-wp-distance le 100
+                ap/active-waypoint eq 0
+                ap/last-waypoint eq 2
+            </condition>
+            <delay>2</delay>
+            <set name="simulation/terminate" value="1" />
+            <notify>
+            </notify>
+        </event>
+
+    </run>
+</runscript>

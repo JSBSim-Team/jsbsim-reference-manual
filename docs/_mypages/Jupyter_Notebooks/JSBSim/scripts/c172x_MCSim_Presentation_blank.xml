@@ -1,0 +1,170 @@
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  name="Script for C172x - Autoscripting test for Montecarlo simulations in Python"
+  xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd">
+
+  <use aircraft="c172x_unina" initialize="init_MCSim_Presentation" />
+  <run dt="0.0083333" end="300" start="0.0">
+
+
+    <property value="0">guidance/target-wp-latitude-rad-ONE</property>
+    <property value="0">guidance/target-wp-longitude-rad-ONE</property>
+    <property value="0">guidance/target-field-wp-latitude-rad</property>
+    <property value="0">guidance/target-field-wp-longitude-rad</property>
+    <property value="0">guidance/landing-field-orientation-deg</property>
+    <property value="0">guidance/wp-distance-ONE-FIELD-ft</property>
+    <property value="0">ext/initial-distance-to-field-ft</property>
+    <property value="0">ext/initial-distance-to-field-trigger-ft</property>
+
+    <property>navigation/approach-time-sec</property>
+
+
+    <event name="Trim">
+      <description>
+        Trim the aircraft in the initial conditions.
+      </description>
+      <condition> simulation/sim-time-sec ge 0 </condition>
+      <set name="fcs/flap-cmd-norm" value="1" />
+      <set name="simulation/do_simple_trim" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Enter zone: to waypoint 1">
+      <description>
+        Once close enough to the landing field, start waypoint
+        based navigation. Set coordinates for Waypoint 1,
+        activate it and set the heading autopilot to Waypoint Mode.
+      </description>
+      <condition>
+        <condition logic="AND">guidance/field-wp-distance le 0</condition>
+      </condition>
+      <delay>1</delay>
+      <set name="guidance/target_wp_latitude_rad">
+        <function><p>guidance/target-wp-latitude-rad-ONE</p></function>
+      </set>
+      <set name="guidance/target_wp_longitude_rad">
+        <function><p>guidance/target-wp-longitude-rad-ONE</p></function>
+      </set>
+      <set name="ap/heading-setpoint-select" value="1" />
+      <set name="ap/heading-hold" value="1" />
+      <set name="ap/active-waypoint" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event continuous="true" name="Enter zone: set glide reference">
+      <description>
+        Once close enough to the landing field, and for every frame on,
+        measure the glide angle to the field waypoint and set it as the reference
+        value for the elevator glide angle autopilot.
+      </description>
+      <condition>
+        guidance/field-wp-distance ge 50
+        <condition logic="AND">guidance/field-wp-distance le 0</condition>
+      </condition>
+      <delay>2</delay>
+      <set name="ap/glide-angle-elev-setpoint">
+        <function><p>navigation/glide-angle-to-field-wp-deg</p></function>
+      </set>
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Enter zone: start descent">
+      <description>
+        Once close enough to the landing field, switch elevator glide angle
+        autopilot on, together with airspeed autopilot for throttle.
+      </description>
+      <condition>
+        <condition logic="AND">guidance/field-wp-distance le 0</condition>
+      </condition>
+      <delay>2</delay>
+
+      <set name="ap/gamma-pid-kp" value="0.02" />
+      <set name="ap/gamma-pid-ki" value="0.020" />
+      <set name="ap/gamma-pid-kd" value="0.0783" />
+      <set name="ap/glide-angle-elev-hold" value="1" />
+
+      <set name="ap/airspeed-throt-setpoint" value="48" />
+      <set name="ap/V-throttle-pid-kp" value="0.000016" />
+      <set name="ap/V-throttle-pid-ki" value="0.0000000" />
+      <set name="ap/V-throttle-pid-kd" value="0.000325" />
+      <set name="ap/airspeed-throt-hold" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Approaching WP1: set new route">
+      <description>
+        When the distance to the first waypoint is less than
+        300 feet, set route to the second waypoint.
+      </description>
+      <condition>
+        ap/active-waypoint eq 1
+        guidance/wp-distance lt 300
+      </condition>
+      <set name="guidance/target_wp_latitude_rad">
+        <function><p>guidance/target-field-wp-latitude-rad</p></function>
+      </set>
+      <set name="guidance/target_wp_longitude_rad">
+        <function><p>guidance/target-field-wp-longitude-rad</p></function>
+      </set>
+      <set name="navigation/approach-time-sec">
+        <function><sum><v>1</v><p>simulation/sim-time-sec</p></sum></function>
+      </set>
+      <set name="ap/last-waypoint" value="1" />
+      <set name="ap/active-waypoint" value="2" />
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Landing: set heading reference">
+      <description>
+        When the distance to the field waypoint is less than
+        50 feet, just follow the landing field direction and prepare
+        to contrast ground effect.
+        Set field orientation as reference signal for the heading
+        autopilot and set heading autopilot to Heading Mode again.
+        Update speed setpoint for throttle.
+      </description>
+      <condition>
+        guidance/field-wp-distance le 50
+      </condition>
+      <set name="ap/heading-setpoint">
+        <function><p>guidance/landing-field-orientation-deg</p></function>
+      </set>
+      <set name="ap/heading-setpoint-select" value="0" />
+      <set name="ap/active-waypoint" value="0" />
+
+      <set name="ap/glide-angle-elev-setpoint">
+        <function><p>flight-path/gamma-deg</p></function>
+      </set>
+      <set name="ap/glide-angle-elev-hold" value="1" />
+
+      <set name="ap/airspeed-throt-setpoint" value="38" />
+      <set name="ap/airspeed-throt-hold" value="1" />
+
+      <notify>
+      </notify>
+    </event>
+
+
+    <event name="Terminate Sim">
+      <description>
+        When contact happens, terminate simulation
+      </description>
+      <condition>
+        gear/wow eq 1
+      </condition>
+      <set name="simulation/terminate" value="1" />
+      <notify>
+      </notify>
+    </event>
+
+  </run>
+</runscript>

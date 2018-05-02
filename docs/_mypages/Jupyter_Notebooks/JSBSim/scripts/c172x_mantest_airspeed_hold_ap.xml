@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" 
+	href="http://jsbsim.sourceforge.net/JSBSimScript.xsl"?>
+
+
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+		name="Script for C172x - Test for pitch hold autopilot">
+
+
+    <!--
+        C172x performing a turn and descent with autopilot to
+        keep the correct route and wings leveled. This script
+        is for testing the pitch holder autopilot during fast 
+        elevator maneuvers
+    -->
+
+    <use aircraft="c172x_unina" initialize="init_mantest_airspeed_hold_ap" />
+    <run start="0.0" end="50" dt="0.0083333"> 
+
+        
+        <event name="Trim">
+            <description> Trim the aircraft in the initial conditions </description>
+            <condition> simulation/sim-time-sec ge 0 </condition>
+            <set name="simulation/do_simple_trim" value="1" />
+            <set name="ap/heading-setpoint" value="90" />
+            <set name="ap/heading-hold" value="1" />
+            <set name="ap/theta-angle-setpoint" value="5" />
+            <set name="ap/theta-angle-hold" value="1" />
+            <notify>
+                <property>velocities/vc-kts</property>
+                <property>velocities/vt-fps</property>
+                <property>attitude/phi-deg</property>
+                <property>attitude/theta-deg</property>
+                <property>attitude/psi-deg</property>
+                <property>ic/h-agl-ft</property>
+                <property>simulation/trim-completed</property>
+            </notify>
+        </event>
+
+
+        <event name="1">
+            <description> Assign reference values to setpoints </description>
+            <condition> simulation/sim-time-sec ge 3 </condition>
+            
+            <set name="ap/V-throttle-pid-kp"   value="0.00009" />
+            <set name="ap/V-throttle-pid-ki"   value="0.0" />
+            <set name="ap/V-throttle-pid-kd"   value="0.0" />
+            <set name="ap/airspeed-throt-setpoint" value="45" />
+            
+            <set name="ap/airspeed-throt-hold"     value="1" />
+            
+            <!-- <set name="ap/theta-angle-setpoint">
+                <function>
+                    <property>attitude/theta-deg</property>
+                </function>
+            </set> -->
+            <notify>
+                <property>ap/heading-setpoint</property>
+                <property>ap/theta-angle-setpoint</property>
+            </notify>
+        </event>
+        
+    </run>
+</runscript>

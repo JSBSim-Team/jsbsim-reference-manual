@@ -1,0 +1,707 @@
+<?xml version="1.0"?>
+
+<system name="custom_useful_properties">
+
+<!--
+=================================
+ALTITUDE ABOVE GROUND LEVEL
+=================================
+-->
+
+<function name="position/h-agl-m">
+  <product>
+    <p> position/h-agl-km </p>
+    <v> 1000 </v>
+  </product>
+</function>
+
+
+<!--
+=================================
+ACCELERATIONS
+=================================
+-->
+
+  <!-- Gravitational acceleration in NED ref. frame -->
+  <function name="accelerations/g-x-ned-ft_sec2">
+      <v> 0 </v>
+  </function>
+
+  <function name="accelerations/g-y-ned-ft_sec2">
+      <v> 0 </v>
+  </function>
+
+  <function name="accelerations/g-z-ned-ft_sec2">
+      <p> accelerations/gravity-ft_sec2 </p>
+  </function>
+
+  <!-- Gravitational acceleration in BODY ref. frame -->
+  <!-- g_x = -g*sin(theta) -->
+  <function name="accelerations/g-x-body-ft_sec2">
+    <product>
+      <v>-1</v>
+      <p>accelerations/gravity-ft_sec2</p>
+      <sin><p>attitude/theta-rad</p></sin>
+    </product>
+  </function>
+
+  <!-- g_y = g*sin(phi)*cos(theta) -->
+  <function name="accelerations/g-y-body-ft_sec2">
+    <product>
+      <p>accelerations/gravity-ft_sec2</p>
+      <sin><p>attitude/phi-rad</p></sin>
+      <cos><p>attitude/theta-rad</p></cos>
+    </product>
+  </function>
+
+  <!-- g_z = g*cos(phi)*cos(theta) -->
+  <function name="accelerations/g-z-body-ft_sec2">
+    <product>
+      <p>accelerations/gravity-ft_sec2</p>
+      <cos><p>attitude/phi-rad</p></cos>
+      <cos><p>attitude/theta-rad</p></cos>
+    </product>
+  </function>
+
+
+<!--
+============================
+WAYPOINT UTILITIES
+============================
+-->
+
+  <property>guidance/target-wp-latitude-rad-ONE</property>
+  <property>guidance/target-wp-longitude-rad-ONE</property>
+  <property>guidance/landing-field-orientation-deg</property>
+  <property>guidance/wp-distance-ONE-FIELD-ft</property>
+  <property>ext/initial-distance-to-field-ft</property>
+  <property>ext/initial-distance-to-field-trigger-ft</property>
+
+
+<!--
+============================
+GLIDE ANGLE
+============================
+-->
+
+    <!-- Flight path angle in deg -->
+    <function name="flight-path/gamma-deg">
+        <product>
+            <property>flight-path/gamma-rad</property>
+            <v>57.295779</v>
+        </product>
+    </function>
+
+
+<!-- LANDING OBSTACLE -->
+
+    <!-- Glide angle to 50ft over ground location of the next waypoint -->
+    <function name="navigation/glide-angle-to-wp-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <v>50</v>
+                    </difference>
+                    <property>guidance/wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+    <!-- Glide angle to 50ft over ground location of the field waypoint -->
+    <function name="navigation/glide-angle-to-field-wp-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <v>50</v>
+                    </difference>
+                    <property>guidance/field-wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+
+<!-- FINAL WAYPOINT OF A SERIES -->
+
+<!-- Glide angle to 65m over ground location of the final waypoint -->
+<function name="navigation/glide-angle-to-final-wp-65m-deg">
+    <product>
+        <atan>
+            <quotient>
+                <difference>
+                    <property>position/h-agl-ft</property>
+                    <product>
+                      <v>65</v>
+                      <v>3.28084</v>
+                    </product>
+                </difference>
+                <property>guidance/final-wp-distance</property>
+            </quotient>
+        </atan>
+        <v>-57.295779</v>
+    </product>
+</function>
+
+
+<!-- OTHER ALTITUDES OVER WAYPOINTS -->
+
+    <!-- Glide angle to 65m over ground location of the next waypoint -->
+    <function name="navigation/glide-angle-to-wp-65m-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <product>
+                          <v>65</v>
+                          <v>3.28084</v>
+                        </product>
+                    </difference>
+                    <property>guidance/wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+
+    <!-- Glide angle to 80m over ground location of the next waypoint -->
+    <function name="navigation/glide-angle-to-wp-80m-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <product>
+                          <v>80</v>
+                          <v>3.28084</v>
+                        </product>
+                    </difference>
+                    <property>guidance/wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+    <!-- Glide angle to 100m over ground location of the next waypoint -->
+    <function name="navigation/glide-angle-to-wp-100m-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <product>
+                          <v>100</v>
+                          <v>3.28084</v>
+                        </product>
+                    </difference>
+                    <property>guidance/wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+    <!-- Glide angle to 120m over ground location of the next waypoint -->
+    <function name="navigation/glide-angle-to-wp-120m-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <product>
+                          <v>120</v>
+                          <v>3.28084</v>
+                        </product>
+                    </difference>
+                    <property>guidance/wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+    <!-- Glide angle to 140m over ground location of the next waypoint -->
+    <function name="navigation/glide-angle-to-wp-140m-deg">
+        <product>
+            <atan>
+                <quotient>
+                    <difference>
+                        <property>position/h-agl-ft</property>
+                        <product>
+                          <v>140</v>
+                          <v>3.28084</v>
+                        </product>
+                    </difference>
+                    <property>guidance/wp-distance</property>
+                </quotient>
+            </atan>
+            <v>-57.295779</v>
+        </product>
+    </function>
+
+
+
+<!--
+============================
+ELEVATOR DEFLECTION
+============================
+-->
+
+  <!-- Elevator effective position (no trim command) -->
+  <function name="fcs/elevator-effective-pos-deg">
+      <product>
+          <property>fcs/elevator-effective-pos-rad</property>
+          <v>57.295779</v>
+      </product>
+  </function>
+
+  <!-- Tab position (trim command) -->
+  <function name="fcs/tab-pos-deg">
+      <product>
+          <property>fcs/tab-pos-rad</property>
+          <v>57.295779</v>
+      </product>
+  </function>
+
+
+<!--
+============================
+ANGULAR VELOCITIES
+============================
+-->
+
+  <function name="velocities/p-deg_sec">
+      <product>
+          <property>velocities/p-rad_sec</property>
+          <v>57.295779</v>
+      </product>
+  </function>
+
+  <function name="velocities/q-deg_sec">
+      <product>
+          <property>velocities/q-rad_sec</property>
+          <v>57.295779</v>
+      </product>
+  </function>
+
+  <function name="velocities/r-deg_sec">
+      <product>
+          <property>velocities/r-rad_sec</property>
+          <v>57.295779</v>
+      </product>
+  </function>
+
+
+<!--
+============================
+VELOCITY
+============================
+-->
+
+<function name="velocities/vt-kts">
+    <product>
+        <property>velocities/vt-fps</property>
+        <v>0.592484</v>
+    </product>
+</function>
+
+<function name="velocities/vg-kts">
+    <product>
+        <property>velocities/vg-fps</property>
+        <v>0.592484</v>
+    </product>
+</function>
+
+
+<!--
+===================================================
+POSITION IN WP-CENTERED NED REF. FRAME
+===================================================
+-->
+
+
+    <!-- ECEF position of aircraft (with fixed Earth radius) -->
+    <function name="position/ecef-x-ac-ft">
+        <product>
+            <sum>
+                <v>20902231</v>
+                <p>position/h-sl-ft</p>
+            </sum>
+            <cos><p>position/lat-gc-rad</p></cos>
+            <cos><p>position/long-gc-rad</p></cos>
+        </product>
+    </function>
+
+    <function name="position/ecef-y-ac-ft">
+        <product>
+            <sum>
+                <v>20902231</v>
+                <p>position/h-sl-ft</p>
+            </sum>
+            <cos><p>position/lat-gc-rad</p></cos>
+            <sin><p>position/long-gc-rad</p></sin>
+        </product>
+    </function>
+
+    <function name="position/ecef-z-ac-ft">
+        <product>
+            <sum>
+                <v>20902231</v>
+                <p>position/h-sl-ft</p>
+            </sum>
+            <sin><p>position/lat-gc-rad</p></sin>
+        </product>
+    </function>
+
+
+    <!-- ECEF position of field waypoint -->
+    <function name="position/ecef-x-field-wp-ft">
+        <product>
+            <v>20902231</v>
+            <cos><p>guidance/target-field-wp-latitude-rad</p></cos>
+            <cos><p>guidance/target-field-wp-longitude-rad</p></cos>
+        </product>
+    </function>
+
+    <function name="position/ecef-y-field-wp-ft">
+        <product>
+            <v>20902231</v>
+            <cos><p>guidance/target-field-wp-latitude-rad</p></cos>
+            <sin><p>guidance/target-field-wp-longitude-rad</p></sin>
+        </product>
+    </function>
+
+    <function name="position/ecef-z-field-wp-ft">
+        <product>
+            <v>20902231</v>
+            <sin><p>guidance/target-field-wp-latitude-rad</p></sin>
+        </product>
+    </function>
+
+
+    <!-- AC relative position to field wp, in a ECEF reference frame -->
+    <function name="position/ecef-x-relto-field-wp">
+        <difference>
+            <p>position/ecef-x-ac-ft</p>
+            <p>position/ecef-x-field-wp-ft</p>
+        </difference>
+    </function>
+
+    <function name="position/ecef-y-relto-field-wp">
+        <difference>
+            <p>position/ecef-y-ac-ft</p>
+            <p>position/ecef-y-field-wp-ft</p>
+        </difference>
+    </function>
+
+    <function name="position/ecef-z-relto-field-wp">
+        <difference>
+            <p>position/ecef-z-ac-ft</p>
+            <p>position/ecef-z-field-wp-ft</p>
+        </difference>
+    </function>
+
+
+    <!-- AC relative position to field wp, in a fixed NED reference frame whose origin is the field wp -->
+    <function name="position/ned-x-relto-field-wp-ft">
+        <sum>
+            <product>
+                <v>-1</v>
+                <sin><p>guidance/target-field-wp-latitude-rad</p></sin>
+                <cos><p>guidance/target-field-wp-longitude-rad</p></cos>
+                <p>position/ecef-x-relto-field-wp</p>
+            </product>
+            <product>
+                <v>-1</v>
+                <sin><p>guidance/target-field-wp-latitude-rad</p></sin>
+                <sin><p>guidance/target-field-wp-longitude-rad</p></sin>
+                <p>position/ecef-y-relto-field-wp</p>
+            </product>
+            <product>
+                <v>+1</v>
+                <cos><p>guidance/target-field-wp-longitude-rad</p></cos>
+                <p>position/ecef-z-relto-field-wp</p>
+            </product>
+        </sum>
+    </function>
+
+    <function name="position/ned-y-relto-field-wp-ft">
+        <sum>
+            <product>
+                <v>-1</v>
+                <sin><p>guidance/target-field-wp-longitude-rad</p></sin>
+                <p>position/ecef-x-relto-field-wp</p>
+            </product>
+            <product>
+                <v>+1</v>
+                <cos><p>guidance/target-field-wp-longitude-rad</p></cos>
+                <p>position/ecef-y-relto-field-wp</p>
+            </product>
+        </sum>
+    </function>
+
+    <function name="position/ned-z-relto-field-wp-ft">
+        <sum>
+            <product>
+                <v>-1</v>
+                <cos><p>guidance/target-field-wp-latitude-rad</p></cos>
+                <cos><p>guidance/target-field-wp-longitude-rad</p></cos>
+                <p>position/ecef-x-relto-field-wp</p>
+            </product>
+            <product>
+                <v>-1</v>
+                <cos><p>guidance/target-field-wp-latitude-rad</p></cos>
+                <sin><p>guidance/target-field-wp-longitude-rad</p></sin>
+                <p>position/ecef-y-relto-field-wp</p>
+            </product>
+            <product>
+                <v>-1</v>
+                <sin><p>guidance/target-field-wp-latitude-rad</p></sin>
+                <p>position/ecef-z-relto-field-wp</p>
+            </product>
+        </sum>
+    </function>
+
+    <function name="position/ned-h-relto-field-wp-ft">
+        <product>
+            <v>-1</v>
+            <p>position/ned-z-relto-field-wp-ft</p>
+        </product>
+    </function>
+
+
+    <!-- Conversion to meters -->
+    <function name="position/ned-x-relto-field-wp-m">
+        <product>
+            <p>position/ned-x-relto-field-wp-ft</p>
+            <v>0.3048</v>
+        </product>
+    </function>
+
+    <function name="position/ned-y-relto-field-wp-m">
+        <product>
+            <p>position/ned-y-relto-field-wp-ft</p>
+            <v>0.3048</v>
+        </product>
+    </function>
+
+    <function name="position/ned-z-relto-field-wp-m">
+        <product>
+            <p>position/ned-z-relto-field-wp-ft</p>
+            <v>0.3048</v>
+        </product>
+    </function>
+
+    <function name="position/ned-h-relto-field-wp-m">
+        <product>
+            <p>position/ned-h-relto-field-wp-ft</p>
+            <v>0.3048</v>
+        </product>
+    </function>
+
+<!--
+===========================
+WIND DISTRIBUTION EXAMPLE
+===========================
+ -->
+
+<function name="atmosphere/distribution-wind-north-fps">
+    <table>
+        <independentVar lookup="row">    position/ned-y-relto-field-wp-ft </independentVar>
+        <independentVar lookup="column"> position/ned-x-relto-field-wp-ft </independentVar>
+        <independentVar lookup="table">  position/ned-h-relto-field-wp-ft </independentVar>
+        <tableData breakPoint="0">
+                -500    500
+            0.00    23.0    56.0
+            2500    33.0    3.0
+            5000    78.0    33.0
+        </tableData>
+        <tableData breakPoint="200">
+                -500    500
+            0.00    54.0    65.0
+            2500    53.0    52.0
+            5000    52.0    23.0
+        </tableData>
+        <tableData breakPoint="400">
+                -500    500
+            0.00    54.0    65.0
+            2500    53.0    52.0
+            5000    52.0    23.0
+        </tableData>
+    </table>
+</function>
+
+
+<!--
+===========================
+WIND COMPONENTS IN BODY RF
+===========================
+ -->
+
+<function name="atmosphere/wind-x-fps">
+    <sum>
+        <product>
+            <cos><p>attitude/theta-rad</p></cos>
+            <cos><p>attitude/psi-rad</p></cos>
+            <p>atmosphere/wind-north-fps</p>
+        </product>
+        <product>
+            <cos><p>attitude/theta-rad</p></cos>
+            <sin><p>attitude/psi-rad</p></sin>
+            <p>atmosphere/wind-east-fps</p>
+        </product>
+        <product>
+            <v>-1</v>
+            <sin><p>attitude/theta-rad</p></sin>
+            <p>atmosphere/wind-down-fps</p>
+        </product>
+    </sum>
+</function>
+
+<function name="atmosphere/wind-y-fps">
+    <sum>
+        <product>
+          <difference>
+            <product>
+              <sin><p>attitude/phi-rad</p></sin>
+              <sin><p>attitude/theta-rad</p></sin>
+              <cos><p>attitude/psi-rad</p></cos>
+            </product>
+            <product>
+              <cos><p>attitude/phi-rad</p></cos>
+              <sin><p>attitude/psi-rad</p></sin>
+            </product>
+          </difference>
+          <p>atmosphere/wind-north-fps</p>
+        </product>
+        <product>
+          <sum>
+            <product>
+              <sin><p>attitude/phi-rad</p></sin>
+              <sin><p>attitude/theta-rad</p></sin>
+              <sin><p>attitude/psi-rad</p></sin>
+            </product>
+            <product>
+              <cos><p>attitude/phi-rad</p></cos>
+              <cos><p>attitude/psi-rad</p></cos>
+            </product>
+          </sum>
+          <p>atmosphere/wind-east-fps</p>
+        </product>
+        <product>
+          <sin><p>attitude/phi-rad</p></sin>
+          <cos><p>attitude/theta-rad</p></cos>
+          <p>atmosphere/wind-down-fps</p>
+        </product>
+    </sum>
+</function>
+
+<function name="atmosphere/wind-z-fps">
+    <sum>
+        <product>
+          <sum>
+            <product>
+              <cos><p>attitude/phi-rad</p></cos>
+              <sin><p>attitude/theta-rad</p></sin>
+              <cos><p>attitude/psi-rad</p></cos>
+            </product>
+            <product>
+              <sin><p>attitude/phi-rad</p></sin>
+              <sin><p>attitude/psi-rad</p></sin>
+            </product>
+          </sum>
+          <p>atmosphere/wind-north-fps</p>
+        </product>
+        <product>
+          <difference>
+            <product>
+              <cos><p>attitude/phi-rad</p></cos>
+              <sin><p>attitude/theta-rad</p></sin>
+              <sin><p>attitude/psi-rad</p></sin>
+            </product>
+            <product>
+              <sin><p>attitude/phi-rad</p></sin>
+              <cos><p>attitude/psi-rad</p></cos>
+            </product>
+          </difference>
+          <p>atmosphere/wind-east-fps</p>
+        </product>
+        <product>
+          <cos><p>attitude/phi-rad</p></cos>
+          <cos><p>attitude/theta-rad</p></cos>
+          <p>atmosphere/wind-down-fps</p>
+        </product>
+    </sum>
+</function>
+
+
+<!-- Wind in NED, convert to kts -->
+<function name="atmosphere/wind-north-kts">
+  <product>
+    <p>atmosphere/wind-north-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+<function name="atmosphere/wind-east-kts">
+  <product>
+    <p>atmosphere/wind-east-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+<function name="atmosphere/wind-down-kts">
+  <product>
+    <p>atmosphere/wind-down-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+<function name="atmosphere/wind-mag-kts">
+  <product>
+    <p>atmosphere/wind-mag-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+<function name="atmosphere/psiw-deg">
+  <product>
+    <p>atmosphere/psiw-rad</p>
+    <v>57.2957795</v>
+  </product>
+</function>
+
+
+<!-- Wind in BODY, convert to kts -->
+<function name="atmosphere/wind-x-kts">
+  <product>
+    <p>atmosphere/wind-x-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+<function name="atmosphere/wind-y-kts">
+  <product>
+    <p>atmosphere/wind-y-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+<function name="atmosphere/wind-z-kts">
+  <product>
+    <p>atmosphere/wind-z-fps</p>
+    <v>0.592484</v>
+  </product>
+</function>
+
+
+</system>

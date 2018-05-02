@@ -555,7 +555,139 @@ The tabular functions `aero/function/kCDge and aero/function/kCLge`, representin
 
 ### Tables
 
-**TODO**
+One, two, or three dimensional lookup tables can be defined in JSBSim for use in aerodynamics and function definitions. For a single "vector" lookup table, the format is as follows:
+
+```xml
+<table name="property_name_0">
+   <independentVar lookup="row"> property_name_1 </independentVar>
+   <tableData>
+      key_1  value_1
+      key_2  value_2
+      ...    ...
+      key_n  value_n
+   </tableData>
+</table>
+```
+
+The `lookup="row"` attribute in the `<independentVar/>` element is optional in this case; it is assumed that the `independentVar` is a row variable. A real example is as shown here:
+
+```xml
+<table>
+   <independentVar lookup="row"> aero/alpha-rad </independentVar>
+   <tableData>
+      -1.57  1.500
+      -0.26  0.033
+       0.00  0.025
+       0.26  0.033
+       1.57  1.500
+   </tableData>
+</table>
+```
+
+The first column in the data table represents the lookup index (or *breakpoints*, or keys). In this case, the lookup index is `aero/alpha-rad` (angle of attack in radians). If `aero/alpha-rad` is $0.26$ radians, the value returned from the lookup table would be $0.033$.
+
+The definition for a 2D table, is as follows:
+
+```xml
+<table name="property_name_0">
+   <independentVar lookup="row">    property_name_1 </independentVar>
+   <independentVar lookup="column"> property_name_2 </independentVar>
+   <tableData>
+                  {col_1_key   col_2_key   ...  col_n_key }
+      {row_1_key} {col_1_data  col_2_data  ...  col_n_data}
+      {row_2_key} {...         ...         ...  ...       }
+      {   ...   } {...         ...         ...  ...       }
+      {row_n_key} {...         ...         ...  ...       }
+   </tableData>
+</table>
+```
+
+The data is in a gridded format. A real example is as shown below. Alpha in radians is the row lookup (alpha breakpoints are arranged in the first column) and flap position in degrees is split up in columns for deflections of 0, 10, 20, and 30 degrees):
+
+```xml
+<table>
+   <independentVar lookup="row">    aero/alpha-rad   </independentVar>
+   <independentVar lookup="column"> fcs/flap-pos-deg </independentVar>
+   <tableData>
+                 0.0          10.0        20.0       30.0
+     -0.0523599  8.96747e-05  0.00231942  0.0059252  0.00835082
+     -0.0349066  0.000313268  0.00567451  0.0108461  0.0140545
+     -0.0174533  0.00201318   0.0105059   0.0172432  0.0212346
+      0.0        0.0051894    0.0168137   0.0251167  0.0298909
+      0.0174533  0.00993967   0.0247521   0.0346492  0.0402205
+      0.0349066  0.0162201    0.0342207   0.0457119  0.0520802
+      0.0523599  0.0240308    0.0452195   0.0583047  0.0654701
+      0.0698132  0.0333717    0.0577485   0.0724278  0.0803902
+      0.0872664  0.0442427    0.0718077   0.088081   0.0968405
+  </tableData>
+</table>
+```
+
+The definition for a 3D table in a coefficient would be (for example):
+
+```xml
+<table name="property_name_0">
+   <independentVar lookup="row">    property_name_1 </independentVar>
+   <independentVar lookup="column"> property_name_2 </independentVar>
+   <independentVar lookup="table">  property_name_3 </independentVar>
+   <tableData  breakpoint="table_1_key">
+                  {col_1_key   col_2_key   ...  col_n_key }
+      {row_1_key} {col_1_data  col_2_data  ...  col_n_data}
+      {row_2_key} {...         ...         ...  ...       }
+      {   ...   } {...         ...         ...  ...       }
+      {row_n_key} {...         ...         ...  ...       }
+   </tableData>
+   <tableData  breakpoint="table_2_key">
+                  {col_1_key   col_2_key   ...  col_n_key }
+      {row_1_key} {col_1_data  col_2_data  ...  col_n_data}
+      {row_2_key} {...         ...         ...  ...       }
+      {   ...   } {...         ...         ...  ...       }
+      {row_n_key} {...         ...         ...  ...       }
+   </tableData>
+   ...
+   <tableData  breakpoint="table_n_key">
+                  {col_1_key   col_2_key   ...  col_n_key }
+      {row_1_key} {col_1_data  col_2_data  ...  col_n_data}
+      {row_2_key} {...         ...         ...  ...       }
+      {   ...   } {...         ...         ...  ...       }
+      {row_n_key} {...         ...         ...  ...       }
+   </tableData>   
+</table>
+```
+
+Note the breakpoint attribute in the tableData element, above. Here’s an example:
+
+```xml
+<table>
+   <independentVar lookup="row">    fcs/row-value    </independentVar>
+   <independentVar lookup="column"> fcs/column-value </independentVar>
+   <independentVar lookup="table">  fcs/table-value  </independentVar>
+   <tableData breakPoint="-1.0">
+           -1.0    1.0
+      0.0  1.0000  2.0000
+      1.0  3.0000  4.0000
+   </tableData>
+   <tableData breakPoint="0.0000">
+           0.0     10.0
+      2.0  1.0000  2.0000
+      3.0  3.0000  4.0000
+   </tableData>
+   <tableData breakPoint="1.0">
+            0.0     10.0    20.0
+       2.0  1.0000  2.0000  3.0000
+       3.0  4.0000  5.0000  6.0000
+      10.0  7.0000  8.0000  9.0000
+   </tableData>
+</table>
+```
+
+Note that table values are interpolated linearly, and no extrapolation is done at the table limits — the highest value a table will return is the highest value that is defined.
+
+---
+
+**TODO:** In JSBSim $n$-dimensional table with $n>3$ are also supported. Show how they can be formatted.
+
+---
 
 ## Forces and Moments
 
