@@ -1,7 +1,7 @@
 # MCSim.py
 #
-# Author: Carmine Varriale
-# Date:   October 2016
+# Author: Carmine Varriale, Agostino De Marco
+# Date:   May 2018
 #
 # A collection of Python classes for running random flight dynamics simulations with JSBSim and OpenFOAM
 # Classes include data handling, running simulatoins, postprocessing
@@ -31,15 +31,15 @@ class ScriptFile():
     def __init__(self, name):
         self.name       = name
         self.namext     = self.name + '.xml'
-        self.folderpath = '../JSBSim/scripts/'
+        self.folderpath = './JSBSim/scripts/'
         self.path       = self.folderpath + self.namext
 
         self.xmltree = et.parse(self.path)
         self.xmlroot = self.xmltree.getroot()          # XML Root element: <runscript>
 
         self.acname       = self.xmlroot.find('use').get('aircraft')
-        self.acfolderpath = '../JSBSim/aircraft/' + self.acname + '/'
-        self.acpath       = '../JSBSim/aircraft/' + self.acname + '/' + self.acname + '.xml'
+        self.acfolderpath = './JSBSim/aircraft/' + self.acname + '/'
+        self.acpath       = './JSBSim/aircraft/' + self.acname + '/' + self.acname + '.xml'
 
         icname = self.xmlroot.find('use').get('initialize')
         self.ic = InitFile(self.acname,icname)
@@ -53,7 +53,7 @@ class InitFile():
     def __init__(self,acname,name):
         self.name       = name
         self.namext     = self.name + '.xml'
-        self.folderpath = '../JSBSim/aircraft/' + acname + '/'
+        self.folderpath = './JSBSim/aircraft/' + acname + '/'
         self.path       = self.folderpath + self.namext
 
         self.xmltree = et.parse(self.path)
@@ -81,7 +81,7 @@ class AutopilotFile():
     def __init__(self, acname, name):
         self.name       = name
         self.namext     = self.name + '.xml'
-        self.folderpath = '../JSBSim/aircraft/' + acname + '/'
+        self.folderpath = './JSBSim/aircraft/' + acname + '/'
         self.path       = self.folderpath + self.namext
 
 
@@ -93,7 +93,7 @@ class ConfigFile():
     def __init__(self, name):
         self.name       = name
         self.namext     = self.name + '.xml'
-        self.folderpath = '../JSBSim/aircraft/' + name + '/'
+        self.folderpath = './JSBSim/aircraft/' + name + '/'
         self.path       = self.folderpath + self.namext
 
         self.xmltree = et.parse(self.path)
@@ -197,7 +197,7 @@ class SimFamily():
         idx_str = '_' + '{:04}'.format(i)
 
         # Define actual configuration file path
-        ac_config_folderpath = '../JSBSim/aircraft/' + self.script.acname + idx_str + '/'
+        ac_config_folderpath = './JSBSim/aircraft/' + self.script.acname + idx_str + '/'
         ac_config_path = ac_config_folderpath + self.script.acname + idx_str + '.xml'
         ap_path = ac_config_folderpath + self.ap.namext
 
@@ -241,10 +241,10 @@ class SimFamily():
 
         # Execute JSBSim with actual script
         if system == 'linux':
-            os.system('../JSBSim/JSBSim --root=../JSBSim/ ' +
+            os.system('./JSBSim/JSBSim --root=./JSBSim/ ' +
                             '--script=' + script.path + ' > ' + ac_config_folderpath + 'log' + idx_str + '.txt')
         elif system == 'windows':
-            os.system('..\JSBSim\JSBSim.exe --root=../JSBSim/ ' +
+            os.system('..\JSBSim\JSBSim.exe --root=./JSBSim/ ' +
                             '--script=' + script.path + ' > ' + ac_config_folderpath + 'log' + idx_str + '.txt')
         else:
             print('Only Linux and Windows supported')
@@ -274,13 +274,13 @@ class SimFamily():
 
         # Execute JSBSim for a/c catalog and move it to output directory
         if system == 'linux':
-            os.system('../JSBSim/JSBSim --root=../JSBSim/ ' +
-                              '--catalog=' + self.script.acname + ' > ../JSBSim/catalog_' + self.script.acname + '.txt')
+            os.system('./JSBSim/JSBSim --root=./JSBSim/ ' +
+                              '--catalog=' + self.script.acname + ' > ./JSBSim/catalog_' + self.script.acname + '.txt')
         elif system == 'windows':
-            os.system('..\JSBSim\JSBSim.exe --root=../JSBSim/ ' +
-                              '--catalog=' + self.script.acname + ' > ../JSBSim/catalog_' + self.script.acname + '.txt')
+            os.system('..\JSBSim\JSBSim.exe --root=./JSBSim/ ' +
+                              '--catalog=' + self.script.acname + ' > ./JSBSim/catalog_' + self.script.acname + '.txt')
 
-        dh.move_files_to_folder('*.txt', to_folder  = self.out.path, from_folder = '../JSBSim')
+        dh.move_files_to_folder('*.txt', to_folder  = self.out.path, from_folder = './JSBSim')
 
 
         # Create .csv file and write contents mc_stack
@@ -348,7 +348,7 @@ class WRSimFamily(SimFamily):
         idx_str = '_port{:}'.format(self.port) + '_' + '{:04}'.format(i) 
 
         # Define actual configuration file path
-        ac_config_folderpath = '../JSBSim/aircraft/' + self.script.acname + idx_str + '/'
+        ac_config_folderpath = './JSBSim/aircraft/' + self.script.acname + idx_str + '/'
         ac_config_path = ac_config_folderpath + self.script.acname + idx_str + '.xml'
         ap_path = ac_config_folderpath + self.ap.namext
 
@@ -393,19 +393,19 @@ class WRSimFamily(SimFamily):
     
     def launch_mc_sim(self, log='off', system='linux'):
         
-        cmd_linux = '../eclipse-workspace/jsbsim-code-mod-test/build_linux/src/JSBSim --root=../JSBSim/ '
-        cmd_windows = '..\eclipse-workspace\jsbsim-code-mod-test\build_linux\src\JSBSim.exe --root=../JSBSim/ '
+        cmd_linux = './JSBSim/JSBSim --root=./JSBSim/ '
+        cmd_windows = '.\JSBSim\JSBSim.exe --root=./JSBSim/ '
 
         # Create main output directory
         dh.mkdir_p(self.out.path)
 
         # Execute JSBSim for a/c catalog and move it to output directory
         if system == 'linux':
-            os.system(cmd_linux + '--catalog=' + self.script.acname + ' > ../JSBSim/catalog_' + self.script.acname + '.txt')
+            os.system(cmd_linux + '--catalog=' + self.script.acname + ' > ./JSBSim/catalog_' + self.script.acname + '.txt')
         elif system == 'windows':
-            os.system(cmd_windows + '--catalog=' + self.script.acname + ' > ../JSBSim/catalog_' + self.script.acname + '.txt')
+            os.system(cmd_windows + '--catalog=' + self.script.acname + ' > ./JSBSim/catalog_' + self.script.acname + '.txt')
 
-        dh.move_files_to_folder('*.txt', to_folder  = self.out.path, from_folder = '../JSBSim')
+        dh.move_files_to_folder('*.txt', to_folder  = self.out.path, from_folder = './JSBSim')
 
         # Create .csv file and write contents of mc_stack
         dh.dict_to_csv_col(self.mc_stack, self.out.path + self.out.name + '_mc_stack.csv')
@@ -427,6 +427,7 @@ class WRSimFamily(SimFamily):
         start = time.time()
         thr = [ ]
         launch_cmd_linux = ""
+        launch_cmd_windows = ""
         
         for i in range(1, self.N+1):
             thr.append(
@@ -440,9 +441,10 @@ class WRSimFamily(SimFamily):
             # Create launch command for Linux terminal
             idx_str = '_port{:}'.format(self.port) + '_' + '{:04}'.format(i)
             script_path = 'scripts/' + self.script.name + idx_str + '.xml'
-            ac_config_folderpath = '../JSBSim/aircraft/' + self.script.acname + idx_str + '/'
+            ac_config_folderpath = './JSBSim/aircraft/' + self.script.acname + idx_str + '/'
             ac_config_path = ac_config_folderpath + self.script.acname + idx_str + '.xml'
             launch_cmd_linux += cmd_linux + '--script=' + script_path + ' > ' + ac_config_folderpath + 'log' + idx_str + '.txt & '
+            launch_cmd_windows += cmd_windows + '--script=' + script_path + ' > ' + ac_config_folderpath + 'log' + idx_str + '.txt & '
                 
         for t in thr: t.start()
         for t in thr: t.join()
@@ -453,17 +455,19 @@ class WRSimFamily(SimFamily):
         
         # Execute all JSBSim scripts at the same time
         if system == 'linux':
-            print("Running all instances in background...")
+            print("[Linux] Running all instances in background...")
             os.system(launch_cmd_linux + 'wait')
         elif system == 'windows':
-            print("Not ready yet")
+            print("[Windows] Running all instances (in background???)...")
+            print("[Windows] cmd: " + launch_cmd_windows)
+            os.system(launch_cmd_windows)
         
         # Move results to output folder
         print("Organizing files and folders...")
         for i in range(1,self.N+1):
             idx_str = '_' + '{:04}'.format(i)
             #script_path          = self.script.folderpath + self.script.name  + '_port{:}'.format(self.port) + idx_str + '.xml'
-            ac_config_folderpath = '../JSBSim/aircraft/' + self.script.acname + '_port{:}'.format(self.port) + idx_str + '/'
+            ac_config_folderpath = './JSBSim/aircraft/' + self.script.acname + '_port{:}'.format(self.port) + idx_str + '/'
             ac_config_path       =  ac_config_folderpath + self.script.acname + '_port{:}'.format(self.port) + idx_str + '.xml'
             #script_ic_path      = ac_config_folderpath + self.script.ic.name + idx_str + '.xml'
             out_folder           = OutFolder(self.out.name + '/' + self.out.name + idx_str)

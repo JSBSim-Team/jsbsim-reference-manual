@@ -1279,12 +1279,6 @@
 
 
 
-<output name="localhost" port="1025" rate="120" type="WR">
-  <property> position/lat-gc-deg </property>
-  <property> position/long-gc-deg </property>
-  <property> position/h-agl-m </property>
-</output>
-
 
 
 <output name="c172x_unina_mod_test_analysis.csv" rate="20" type="CSV">

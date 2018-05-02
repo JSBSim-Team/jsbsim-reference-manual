@@ -84,13 +84,14 @@ GLIDE ANGLE
 ============================
 -->
 
-    <!-- Flight path angle in deg -->
+    <!-- Flight path angle in deg
     <function name="flight-path/gamma-deg">
         <product>
             <property>flight-path/gamma-rad</property>
             <v>57.295779</v>
         </product>
     </function>
+    -->
 
 
 <!-- LANDING OBSTACLE -->
