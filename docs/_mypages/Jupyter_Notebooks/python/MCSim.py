@@ -69,7 +69,7 @@ class OutFolder():
 
     def __init__(self,name):
         self.name       = name
-        self.folderpath = '../output/'
+        self.folderpath = './output/'
         self.path       = self.folderpath + self.name + '/'
 
 

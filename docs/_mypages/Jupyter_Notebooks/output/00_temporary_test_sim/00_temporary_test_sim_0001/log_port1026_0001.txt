@@ -1609,7 +1609,6 @@ Event 4 (Terminate simulation):
       - wind-x-kts
       - wind-y-kts
       - wind-z-kts
-      - Ny
       - Nz
     Properties logged:
       - aileron-cmd-norm
@@ -1773,7 +1772,6 @@ Event 4 (Terminate simulation):
       - udot-ft_sec2
       - vdot-ft_sec2
       - wdot-ft_sec2
-      - Ny
       - Nz
       - n-pilot-x-norm
       - n-pilot-y-norm
@@ -1903,8 +1901,8 @@ Set glide reference to final waypoint  (Event 1) executed at time: 0.008333
 
 Heading autopilot to waypoint 1 (Event 3) executed at time: 0.008333
 
-Start: Wednesday May 02 2018 18:42:02 (HH:MM:SS)
+Start: Thursday May 03 2018 15:33:26 (HH:MM:SS)
 
 Gliding autopilot (Event 2) executed at time: 10.008293
 
-End: Wednesday May 02 2018 18:42:04 (HH:MM:SS)
+End: Thursday May 03 2018 15:33:28 (HH:MM:SS)

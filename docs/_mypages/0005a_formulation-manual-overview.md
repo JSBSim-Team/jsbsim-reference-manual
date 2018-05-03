@@ -39,7 +39,7 @@ $$
 \label{eq:EoM:ODE:Euler:Integration}
 $$
 
-in which $\boldsymbol{x}(t_k)$ is the value of the state vector computed at discrete times $t_k = k \Delta t$, with $k = 0,1,2, ldots$, starting from an assigned initial condition $\boldsymbol{x}(t_0) = \boldsymbol{x}_0)$. The integration time step, $\Delta t$, must be made small enough that, for every $\Delta t$ interval, $\boldsymbol{u}$  can be approximated by a constant value $\boldsymbol{u}(t_k)$, and $\dot{\boldsymbol{x}} \Delta t$  provides a good approximation to the increment in the state vector. This numerical integration allows the state vector to be stepped forward, in time increments of $\Delta t$, to obtain a *time-history simulation*.
+in which $\boldsymbol{x}(t_k)$ is the value of the state vector computed at discrete times $t_k = k \Delta t$, with $k = 0,1,2, \ldots$, starting from an assigned initial condition $\boldsymbol{x}(t_0) = \boldsymbol{x}_0$. The integration time step, $\Delta t$, must be made small enough that, for every $\Delta t$ interval, $\boldsymbol{u}$  can be approximated by a constant value $\boldsymbol{u}(t_k)$, and $\dot{\boldsymbol{x}} \Delta t$  provides a good approximation to the increment in the state vector. This numerical integration allows the state vector to be stepped forward, in time increments of $\Delta t$, to obtain a *time-history simulation*.
 
 ---
 
