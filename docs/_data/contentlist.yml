@@ -45,6 +45,10 @@ toc:
     subfolderitems:
       - page: Overview
         url: /mypages/formulation-manual-overview/
+      - page: Earth Modelling
+        url: /mypages/formulation-manual-earth-modelling/
+      - page: Quaternions
+        url: /mypages/formulation-manual-earth-quaternions/
       - page: Equations of motion
         url: /mypages/formulation-manual-equations-of-motion/
 
