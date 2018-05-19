@@ -45,7 +45,7 @@ NOTE: There can be no spaces around the = sign when an option is followed by a f
 You can run JSBSim by supplying the name of a script:
 
 ```
-<JSBSim-root-dir>$ JSBSim scripts/c1723.xml
+<JSBSim-root-dir>$ JSBSim --script=scripts/c1723.xml
 ```
 
 **To be completed**
