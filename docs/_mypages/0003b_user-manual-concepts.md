@@ -27,6 +27,8 @@ While the JSBSim user does not need to know some of the finer details of the fli
 
 Before moving into a description of the configuration file syntax, one must understand some basic information about some of the frames of reference used (*i*) in describing the location of objects on the aircraft, (*ii*) in specifying conditions related to the position and orientation of the aircraft in space, or (*iii*) when assigning inputs for a given flight condition.
 
+Learn more on [Wikipedia about axes conventions](https://en.wikipedia.org/wiki/Axes_conventions).
+
 ### Structural, or "Construction" Frame
 
 This frame is a common manufacturer's frame of reference and is used to define points on the aircraft such as the center of gravity, the locations of all the wheels, the pilot eye-point, point masses, thrusters, and so on. Items in the JSBSim aircraft configuration file are located using this frame.
@@ -129,7 +131,7 @@ The axes of the Earth-Centered, Earth-Fixed (ECEF) frame of reference, labeled $
 
 ### North-Oriented Tangent Frames
 
-**TBD**
+A *tangent-plane* coordinate system can be defined when a matemathical representation of Earth's surface is assumed (a *spheroid* or an approximating sphere). A plane tangent to a point of interest on the surface $O_\mathrm{E}$ is taken as a reference. A geographic system called *North-Oriented Tangent Frame* $$\mathcal{F}_\mathrm{E} = \{ O_\mathrm{E}, x_\mathrm{E}, y_\mathrm{E}, z_\mathrm{E}\}$$ has its origin fixed at the point of interest $O_\mathrm{E}$ and its plane $x_\mathrm{E} y_\mathrm{E}$ coincident with the tangent plane. The axis $x_\mathrm{E}$ points towards the geographic North, the axis $y_\mathrm{E}$ points towards the East. Finally, the axis $z_\mathrm{E}$ points downwards towards the center of the Earth. For this reason the frame $$\mathcal{F}_\mathrm{E}$$ is also called *tangent NED* frame (North-East-Down).
 
 {% include image.html
   url="/assets/img/earth_frames.svg"
@@ -139,7 +141,7 @@ The axes of the Earth-Centered, Earth-Fixed (ECEF) frame of reference, labeled $
 
 ### Local-Vertical Local-Level Frame, or Local NED Frame
 
-The local vertical frame $$\mathcal{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}$$ is unrelated to the airplane's orientation in space but is only defined by its CG position with respect to some convenient Earth-fixed observer. If $G_\mathrm{GT}$ is the CG projected on the ground ('ground tracked'), the coordinate plane $x_\mathrm{V} y_\mathrm{V}$ is parallel to a plane locally tangent in $G_\mathrm{GT}$ to the Earth surface (a sphere or an ellipse). The axis $x_\mathrm{V}$ points towards the geographic North, The axis $y_\mathrm{V}$ points towards the East. Finally, the axis $z_\mathrm{V}$ points downwards towards the center of the Earth. For this reason the frame $$\mathcal{F}_\mathrm{V}$$ is also called *local NED* frame (North-East-Down).
+The local vertical frame $$\mathcal{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}$$ is unrelated to the airplane's orientation in space but is only defined by its CG position with respect to some convenient Earth-fixed observer. If $G_\mathrm{GT}$ is the CG projected on the ground ('ground tracked'), the coordinate plane $x_\mathrm{V} y_\mathrm{V}$ is parallel to a plane locally tangent in $G_\mathrm{GT}$ to the Earth's surface --- i.e. the plane $x_\mathrm{E} y_\mathrm{E}$ with $O_\mathrm{E} \equiv G_\mathrm{GT}$. Then, the axis $x_\mathrm{V}$ points towards the geographic North, the axis $y_\mathrm{V}$ points towards the East. Finally, the axis $z_\mathrm{V}$ points downwards towards the center of the Earth. For this reason the frame $$\mathcal{F}_\mathrm{V}$$ is also called *local NED* (vehicle-carried) frame.
 
 {% include image.html
   url="/assets/img/ac_local_vertical_axes.svg"
