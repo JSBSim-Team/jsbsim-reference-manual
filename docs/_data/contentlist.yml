@@ -28,9 +28,24 @@ toc:
       - page: Overview
         url: /mypages/user-manual-overview/
       - page: Concepts
-        url: /mypages/concepts/
+        url: /mypages/user-manual-concepts/
+        subsubfolderitems:
+          - page: Simulation
+            url: /mypages/user-manual-simulation
+          - page: Frames of reference
+            url: /mypages/user-manual-frames-of-reference/
+          - page: Units
+            url: /mypages/user-manual-units/
+          - page: Properties
+            url: /mypages/user-manual-properties/
+          - page: Math
+            url: /mypages/user-manual-math/
+          - page: Forces and moments
+            url: /mypages/user-manual-forces-and-moments/
+          - page: Flight Control and System Modelling
+            url: /mypages/user-manual-flight-control-and-system-modelling/
       - page: Authoring configuration files
-        url: /mypages/authoring-configuration-files/
+        url: /mypages/user-manual-authoring-configuration-files/
 
   - title: Programmer Manual
     url: /mypages/programmer-manual/

@@ -2,7 +2,7 @@
   {% for item in site.data.contentlist.toc %}
     <h3>
       {% if item.url == page.url %}
-        {{ item.title }}
+        {{ item.title }} <font color="#c00000">&#9756;</font>
       {% else %}
         <a href="{{ site.url }}{{ item.url }}">{{ item.title }}</a>
       {% endif %}
@@ -12,11 +12,37 @@
           {% for entry in item.subfolderitems %}
             <li>
               {% if entry.url == page.url %}
-                {{ entry.page }}
+                {{ entry.page }} <font color="#c00000">&#9756;</font>
+                {% if entry.subsubfolderitems[0] %}
+                  <!-- br/ -->
+                  <ul>
+                    {% for subentry in entry.subsubfolderitems %}
+                      <li><a href="{{ site.url }}{{ subentry.url }}">{{ subentry.page }}</a></li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
               {% else %}
-              <a href="{{ site.url }}{{ entry.url }}">
-                {{ entry.page }}
-              </a>
+                {% if entry.subsubfolderitems[0] %}
+                  {% if entry.url == page.url %}
+                    {{ entry.page }} <font color="#c00000">&#9756;</font>
+                  {% else %}
+                    <a href="{{ site.url }}{{ entry.url }}">{{ entry.page }}</a>
+                  {% endif %}
+                  <!-- br/ -->
+                  <ul>
+                    {% for subentry in entry.subsubfolderitems %}
+                      <li>
+                        {% if subentry.url == page.url %}
+                          {{ subentry.page }} <font color="#c00000">&#9756;</font>
+                        {% else %}
+                          <a href="{{ site.url }}{{ subentry.url }}">{{ subentry.page }}</a>
+                        {% endif %}
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% else %}
+                  <a href="{{ site.url }}{{ entry.url }}">{{ entry.page }}</a>
+                {% endif %}
               {% endif %}
             </li>
           {% endfor %}
@@ -36,5 +62,5 @@
         {% endif %}
       {% endfor %}
     {% endfor %}
-  <ul>
+  </ul>
 </p>
