@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Math
+title: User Manual - Math
 categories: [menu, content, user-manual, math]
 permalink: /mypages/user-manual-math/
 ---

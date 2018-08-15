@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Authoring configuration files
+title: User Manual - Authoring configuration files
 categories: [menu, content, user-manual, authoring-configuration-files]
 permalink: /mypages/user-manual-authoring-configuration-files/
 ---

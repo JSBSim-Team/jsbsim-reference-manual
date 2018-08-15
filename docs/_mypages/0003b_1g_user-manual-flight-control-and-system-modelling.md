@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Flight Control and System Modelling
+title: User Manual - Flight Control and System Modelling
 categories: [menu, content, user-manual, flight-control-and-system-modelling]
 permalink: /mypages/user-manual-flight-control-and-system-modelling/
 ---

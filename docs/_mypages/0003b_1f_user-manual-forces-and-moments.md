@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Forces and moments
+title: User Manual - Forces and moments
 categories: [menu, content, user-manual, forces-and-moments]
 permalink: /mypages/user-manual-forces-and-moments/
 ---

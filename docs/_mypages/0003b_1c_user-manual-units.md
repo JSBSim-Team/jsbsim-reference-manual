@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Units
+title: User Manual - Units
 categories: [menu, content, user-manual, units]
 permalink: /mypages/user-manual-units/
 ---

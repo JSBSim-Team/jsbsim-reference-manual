@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Concepts
+title: User Manual - Frames of reference
 categories: [menu, content, user-manual, frames-of-reference]
 permalink: /mypages/user-manual-frames-of-reference/
 ---

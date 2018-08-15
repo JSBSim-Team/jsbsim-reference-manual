@@ -1,6 +1,6 @@
 ---
 layout: default
-title: User manual
+title: User Manual
 categories: [menu, content, user-manual]
 permalink: /mypages/user-manual/
 ---

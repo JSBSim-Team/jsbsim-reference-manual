@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Programmer manual - Overview
+title: Programmer manual - Class hierarchy
 categories: [menu, content, programmer-manual, programmer-manual-class-hierarchy]
 permalink: /mypages/programmer-manual-class-hierarchy/
 ---

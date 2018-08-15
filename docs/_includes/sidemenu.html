@@ -1,4 +1,5 @@
-<p>
+<div>
+{% if site.data.contentlist.toc[0] %}
   {% for item in site.data.contentlist.toc %}
     <h3>
       {% if item.url == page.url %}
@@ -7,60 +8,32 @@
         <a href="{{ site.url }}{{ item.url }}">{{ item.title }}</a>
       {% endif %}
     </h3>
-      {% if item.subfolderitems[0] %}
+      {% if item.submenu[0] %}
         <ul>
-          {% for entry in item.subfolderitems %}
-            <li>
-              {% if entry.url == page.url %}
-                {{ entry.page }} <font color="#c00000">&#9756;</font>
-                {% if entry.subsubfolderitems[0] %}
-                  <!-- br/ -->
-                  <ul>
-                    {% for subentry in entry.subsubfolderitems %}
-                      <li><a href="{{ site.url }}{{ subentry.url }}">{{ subentry.page }}</a></li>
-                    {% endfor %}
-                  </ul>
+          {% for entry in item.submenu %}
+              <li>
+                {% if entry.url == page.url %}
+                  {{ entry.title }} <font color="#c00000">&#9756;</font>
+                {% else %}
+                  <a href="{{ entry.url }}">{{ entry.title }}</a>
                 {% endif %}
-              {% else %}
-                {% if entry.subsubfolderitems[0] %}
-                  {% if entry.url == page.url %}
-                    {{ entry.page }} <font color="#c00000">&#9756;</font>
-                  {% else %}
-                    <a href="{{ site.url }}{{ entry.url }}">{{ entry.page }}</a>
-                  {% endif %}
-                  <!-- br/ -->
+                {% if entry.subsubmenu[0] %}
                   <ul>
-                    {% for subentry in entry.subsubfolderitems %}
+                  {% for subentry in entry.subsubmenu %}
                       <li>
                         {% if subentry.url == page.url %}
-                          {{ subentry.page }} <font color="#c00000">&#9756;</font>
+                          {{ subentry.title }} <font color="#c00000">&#9756;</font>
                         {% else %}
-                          <a href="{{ site.url }}{{ subentry.url }}">{{ subentry.page }}</a>
+                          <a href="{{ site.url }}{{ subentry.url }}">{{ subentry.title }}</a>
                         {% endif %}
                       </li>
-                    {% endfor %}
+                  {% endfor %}
                   </ul>
-                {% else %}
-                  <a href="{{ site.url }}{{ entry.url }}">{{ entry.page }}</a>
                 {% endif %}
-              {% endif %}
-            </li>
+              </li>
           {% endfor %}
         </ul>
       {% endif %}
-  {% endfor %}
-<hr />
-  <h3>Jupyter notebooks</h3>
-  <ul>
-    {% for collection in site.collections %}
-      {% assign name = collection.label %}
-      {% for page in site[name] %}
-        {% if page.categories contains 'menu' and page.categories contains 'notebook'%}
-          <li>
-            <a href="{{ site.url }}{{ page.url }}">{{ page.title }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
     {% endfor %}
-  </ul>
-</p>
+{% endif %}
+</div>

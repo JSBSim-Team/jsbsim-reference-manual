@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Properties
+title: User Manual - Properties
 categories: [menu, content, user-manual, properties]
 permalink: /mypages/user-manual-properties/
 ---

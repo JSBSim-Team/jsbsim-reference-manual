@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Formulation manual - Equations of motion
+title: Formulation Manual - Equations of motion
 categories: [menu, content, formulation-manual, formulation-manual-equations-of-motion]
 permalink: /mypages/formulation-manual-equations-of-motion/
 ---

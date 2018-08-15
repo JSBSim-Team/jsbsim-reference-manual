@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Simulation
+title: User Manual - Simulation
 categories: [menu, content, user-manual, simulation]
 permalink: /mypages/user-manual-simulation/
 ---

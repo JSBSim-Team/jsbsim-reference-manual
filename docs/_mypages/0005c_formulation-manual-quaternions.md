@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Quaternions
+title: Formulation Manual - Quaternions
 categories: [menu, content, formulation-manual, formulation-manual-quaternions]
 permalink: /mypages/formulation-manual-earth-quaternions/
 ---

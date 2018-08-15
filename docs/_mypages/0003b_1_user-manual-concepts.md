@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Concepts
+title: User Manual - Concepts
 categories: [menu, content, user-manual, concepts]
 permalink: /mypages/user-manual-concepts/
 ---

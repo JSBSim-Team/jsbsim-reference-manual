@@ -10,61 +10,61 @@ toc:
 
   - title: Quickstart
     url: /mypages/quickstart/
-    subfolderitems:
-      - page: Getting the source
+    submenu:
+      - title: Getting the source
         url: /mypages/getting-the-source/
-      - page: Building the program
+      - title: Building the program
         url: /mypages/building-the-program/
-      - page: Building with Visual Studio
+      - title: Building with Visual Studio
         url: /mypages/building-using-visualstudio/
-      - page: Running the program
+      - title: Running the program
         url: /mypages/running-the-program/
-      - page: Getting support
+      - title: Getting support
         url: /mypages/getting-support/
 
   - title: User manual
     url: /mypages/user-manual/
-    subfolderitems:
-      - page: Overview
+    submenu:
+      - title: Overview
         url: /mypages/user-manual-overview/
-      - page: Concepts
+      - title: Concepts
         url: /mypages/user-manual-concepts/
-        subsubfolderitems:
-          - page: Simulation
-            url: /mypages/user-manual-simulation
-          - page: Frames of reference
+        subsubmenu:
+          - title: Simulation
+            url: /mypages/user-manual-simulation/
+          - title: Frames of reference
             url: /mypages/user-manual-frames-of-reference/
-          - page: Units
+          - title: Units
             url: /mypages/user-manual-units/
-          - page: Properties
+          - title: Properties
             url: /mypages/user-manual-properties/
-          - page: Math
+          - title: Math
             url: /mypages/user-manual-math/
-          - page: Forces and moments
+          - title: Forces and moments
             url: /mypages/user-manual-forces-and-moments/
-          - page: Flight Control and System Modelling
+          - title: Flight Control and System Modelling
             url: /mypages/user-manual-flight-control-and-system-modelling/
-      - page: Authoring configuration files
+      - title: Authoring configuration files
         url: /mypages/user-manual-authoring-configuration-files/
 
   - title: Programmer Manual
     url: /mypages/programmer-manual/
-    subfolderitems:
-      - page: Overview
+    submenu:
+      - title: Overview
         url: /mypages/programmer-manual-overview/
-      - page: Class hierarchy
-        url: /mypages/programmer-manual-class-hierarchy
+      - title: Class hierarchy
+        url: /mypages/programmer-manual-class-hierarchy/
 
   - title: Formulation Manual
     url: /mypages/formulation-manual/
-    subfolderitems:
-      - page: Overview
+    submenu:
+      - title: Overview
         url: /mypages/formulation-manual-overview/
-      - page: Earth Modelling
+      - title: Earth Modelling
         url: /mypages/formulation-manual-earth-modelling/
-      - page: Quaternions
+      - title: Quaternions
         url: /mypages/formulation-manual-earth-quaternions/
-      - page: Equations of motion
+      - title: Equations of motion
         url: /mypages/formulation-manual-equations-of-motion/
 
   - title: References
