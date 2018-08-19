@@ -2,7 +2,7 @@
 layout: default
 title: Quickstart - Building the program
 categories: [menu, content, quickstart, building-the-program]
-permalink: /mypages/building-the-program/
+permalink: /mypages/quickstart-building-the-program/
 ---
 
 # Building the program and the library
@@ -30,7 +30,7 @@ This will compile the various classes, and build the JSBSim application which wi
 ### Options passed to CMake
 CMake can use a number of parameters to tune the build of JSBSim. Different options are presented below. You can use them independently or any combination thereof depending on your needs.
 #### Passing parameters to the compiler
-If you want to set compiler options, you can pass flags to CMake to build a `Debug` version of JSBSim. JSBSim also uses C for some code, you can set options for both the C++ and the C compiler. 
+If you want to set compiler options, you can pass flags to CMake to build a `Debug` version of JSBSim. JSBSim also uses C for some code, you can set options for both the C++ and the C compiler.
 ```bash
 > cmake -DCMAKE_CXX_FLAGS_DEBUG="-g -Wall" -DCMAKE_C_FLAGS_DEBUG="-g -Wall" -DCMAKE_BUILD_TYPE=Debug ..
 > make

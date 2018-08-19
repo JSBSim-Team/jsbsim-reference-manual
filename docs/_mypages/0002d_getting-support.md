@@ -2,7 +2,7 @@
 layout: default
 title: Quickstart - Running the program
 categories: [menu, content, quickstart, getting-support]
-permalink: /mypages/getting-support/
+permalink: /mypages/quickstart-getting-support/
 ---
 
 # Getting support

@@ -12,15 +12,15 @@ toc:
     url: /mypages/quickstart/
     submenu:
       - title: Getting the source
-        url: /mypages/getting-the-source/
+        url: /mypages/quickstart-getting-the-source/
       - title: Building the program
-        url: /mypages/building-the-program/
+        url: /mypages/quickstart-building-the-program/
       - title: Building with Visual Studio
-        url: /mypages/building-using-visualstudio/
+        url: /mypages/quickstart-building-using-visualstudio/
       - title: Running the program
-        url: /mypages/running-the-program/
+        url: /mypages/quickstart-running-the-program/
       - title: Getting support
-        url: /mypages/getting-support/
+        url: /mypages/quickstart-getting-support/
 
   - title: User manual
     url: /mypages/user-manual/

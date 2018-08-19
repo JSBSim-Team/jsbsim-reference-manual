@@ -2,7 +2,7 @@
 layout: default
 title: Quickstart - Getting the source
 categories: [menu, content, quickstart, getting-the-source]
-permalink: /mypages/getting-the-source/
+permalink: /mypages/quickstart-getting-the-source/
 ---
 
 # Getting the source

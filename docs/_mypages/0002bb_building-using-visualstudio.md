@@ -2,7 +2,7 @@
 layout: default
 title: Quickstart -  Building using Visual Studio
 categories: [menu, content, quickstart, building-using-visualstudio]
-permalink: /mypages/building-using-visualstudio/
+permalink: /mypages/quickstart-building-using-visualstudio/
 ---
 
 # Building using Visual Studio
