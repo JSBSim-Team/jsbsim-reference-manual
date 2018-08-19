@@ -15,7 +15,7 @@
                 {% if entry.url == page.url %}
                   {{ entry.title }} <font color="#c00000">&#9756;</font>
                 {% else %}
-                  <a href="{{ entry.url }}">{{ entry.title }}</a>
+                  <a href="{{ site.url }}{{ entry.url }}">{{ entry.title }}</a>
                 {% endif %}
                 {% if entry.subsubmenu[0] %}
                   <ul>
