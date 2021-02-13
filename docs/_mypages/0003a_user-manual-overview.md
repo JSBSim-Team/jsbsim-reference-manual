@@ -72,6 +72,14 @@ In a joint research with the Italian University of Naples Federico II, researche
 For this research, a framework of software applications has been developed for generating and controlling a population of flight simulation scenarios in presence of assigned wind and turbulence fields. JSBSim was used in the framework as a flight dynamics model, with its autopilot systems adapted for simulating a realistic pilot behavior during navigation.
 The wind distribution in the turbine wakes were calculated with OpenFOAM, and provided as input for the dynamic model.
 
+### TFASA - Test Flying Academy of South Africa
+
+The Test Flying Academy of South Africa has been using JSBSim as the basis for a ground based Variable Stability System (VSS) simulator for test pilot training. The aerodynamic stability and control coefficients of a base aircraft model are modified to demonstrate their effect on flying tasks. Actuators are also modelled to show their potential effect on PIO given varying amounts of lag, delay and rate limits.
+
+Both fixed wing aircraft and rotary aircraft are simulated with programmable force-feedback inceptors in order to also demonstrate the effects of Flight Control Mechanical Characteristics (FCMC).
+
+JSBSim is integrated with Prepar3D to make use of Prepar3D's outside visuals which are rendered on either three large LCDs or connected to a triple projector setup rendering a 180 degree view.
+
 ---
 
 **TODO**
