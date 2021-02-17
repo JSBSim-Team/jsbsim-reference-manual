@@ -314,8 +314,153 @@ Note the breakpoint attribute in the tableData element, above. Here’s an examp
 
 Note that table values are interpolated linearly, and no extrapolation is done at the table limits — the highest value a table will return is the highest value that is defined.
 
+### Interpolate 1D
+
+Some lookup tables in simulation - particularly for aerodynamic data - can be four, five, six, or even more dimensional. 
+Interpolate1d returns the result from a 1-dimensional interpolation of the
+supplied values, with the value of the first immediate child element
+representing the lookup value into the table, and the following pairs of
+values representing the independent and dependent values. The first provided
+child element is expected to be a property. The interpolation does not
+extrapolate, but holds the highest value if the provided lookup value goes
+outside of the provided range. The format is as follows:
+
+```xml
+<interpolate1d>
+  {property, value, table, function}
+  {property, value, table, function} {property, value, table, function}
+  ...
+</interpolate1d>
+```
+
+Example: If mach is 0.4, the interpolation will return 0.375. If mach is 1.5, the interpolation will return 0.60.
+
+```xml
+<interpolate1d>
+  <p> velocities/mach </p>
+  <v> 0.00 </v>  <v> 0.25 </v>
+  <v> 0.80 </v>  <v> 0.50 </v>
+  <v> 0.90 </v>  <v> 0.60 </v>
+</interpolate1d>
+```
+
+The above example is very simplistic. A more involved example would use a
+function in any argument (except the first). That means that the breakpoint
+vector can be variable - which would probably not be common - but more
+importantly the values in the lookup vector (second column) could be
+function table elements of 1, 2, or 3 dimensions. The arguments could even
+be nested interpolate1d elements. For example:
+
+```xml
+<function name="whatever">
+  <interpolate1d>
+    <p> velocities/mach </p>
+    <v> 0.00 </v>  <table> ... table definition ... </table>
+    <v> 0.80 </v>  <table> ... table definition ... </table>
+    <v> 0.90 </v>  <table> ... table definition ... </table>
+  </interpolate1d>
+</function>
+```
+
+Carrying this further:
+
+```xml
+<function name="bigWhatever1">
+  <interpolate1d>
+    <p> aero/qbar-psf </p>
+    <v> 0 </v>  <interpolate1d>
+                  <p> velocities/mach </p>
+                  <v> 0.00 </v>  <table> ... table 1 definition ... </table>
+                  <v> 0.80 </v>  <table> ... table 2 definition ... </table>
+                  <v> 0.90 </v>  <table> ... table 3 definition ... </table>
+                </interpolate1d>
+    <v> 65 </v> <interpolate1d>
+                  <p> velocities/mach </p>
+                  <v> 0.00 </v>  <table> ... table 1 definition ... </table>
+                  <v> 0.80 </v>  <table> ... table 2 definition ... </table>
+                  <v> 0.90 </v>  <table> ... table 3 definition ... </table>
+                </interpolate1d>
+    <v> 90 </v> <interpolate1d>
+                  <p> velocities/mach </p>
+                  <v> 0.00 </v>  <table> ... table 1 definition ... </table>
+                  <v> 0.80 </v>  <table> ... table 2 definition ... </table>
+                  <v> 0.90 </v>  <table> ... table 3 definition ... </table>
+                </interpolate1d>
+  </interpolate1d>
+</function>
+```
+
+The above effectively gives a five dimensional lookup table. It would be big
+and messy, in practice, but there it is. :-)
+
+There is more, though. For very, very large aero databases there might be
+times when some aero coefficients do not need to be calculated. For
+instance, ground effects aero coefficients only need to be calculated close
+to the ground. Why waste CPU cycles when the ground effects do not
+contribute to the aero forces and moments? We can employ the `ifthen` element
+to bypass expensive computations. The `ifthen` element works as follows:
+
+If the value of the first immediate child element is 1, then the value of
+the second immediate child element is returned, otherwise the value of the
+third child element is returned.
+
+If the value of the first immediate child element is 1, then the value of
+the second immediate child element is returned, otherwise the value of the
+third child element is returned.
+
+```xml
+<ifthen>
+  {property, value, table, or other function element}
+  {property, value, table, or other function element}
+  {property, value, table, or other function element}
+</ifthen>
+```
+
+Example: if flight-mode is greater than 2, then a value of 0.00 is returned, otherwise the value of the property control/pitch-lag is returned.
+
+```xml
+<ifthen>
+  <gt> <p> executive/flight-mode </p> <v> 2 </v> </gt>
+  <v> 0.00 </v>
+  <p> control/pitch-lag </p>
+</ifthen>
+```
+
+In our case, we could write the 5-dimensional table lookup as follows, returning a zero unless the gear is down:
+
+```xml
+<function name="propertyname">
+  <ifthen>
+    <lt> <p> position/altitudeMSL </p> <v> 90 </v> </lt>
+    <interpolate1d>
+      <p> aero/qbar-psf </p>
+      <v> 0 </v>  <interpolate1d>
+                    <p> velocities/mach </p>
+                    <v> 0.00 </v>  <table> ... table 1 definition ... </table>
+                    <v> 0.80 </v>  <table> ... table 2 definition ... </table>
+                    <v> 0.90 </v>  <table> ... table 3 definition ... </table>
+                  </interpolate1d>
+      <v> 65 </v> <interpolate1d>
+                    <p> velocities/mach </p>
+                    <v> 0.00 </v>  <table> ... table 1 definition ... </table>
+                    <v> 0.80 </v>  <table> ... table 2 definition ... </table>
+                    <v> 0.90 </v>  <table> ... table 3 definition ... </table>
+                  </interpolate1d>
+      <v> 90 </v> <interpolate1d>
+                    <p> velocities/mach </p>
+                    <v> 0.00 </v>  <table> ... table 1 definition ... </table>
+                    <v> 0.80 </v>  <table> ... table 2 definition ... </table>
+                    <v> 0.90 </v>  <table> ... table 3 definition ... </table>
+                  </interpolate1d>
+    </interpolate1d>
+    <v> 0 </v>
+  </ifthen>
+</function>
+```
+
+The above example is non-sensical in a way, but the format is correct. 
+Performance-wise it is good because the tables do not get executed unless 
+absolutely needed in the lookup.
+
 ---
 
-**TODO:** In JSBSim $n$-dimensional table with $n>3$ are also supported. Show how they can be formatted.
-
----
