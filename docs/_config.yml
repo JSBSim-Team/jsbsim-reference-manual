@@ -5,7 +5,8 @@ mathjax: true
 title: JSBSim
 description: An open source, platform-independent, flight dynamics model in C++
 
-url: https://bcoconni.github.io/
+url: https://bcoconni.github.io
+baseurl: /jsbsim-reference-manual
 repository: JSBSim-Team/jsbsim-reference-manual
 # repository: https://github.com/JSBSim-Team/jsbsim-reference-manual
 # github: [metadata]
