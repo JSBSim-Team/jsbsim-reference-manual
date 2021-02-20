@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Flight Control and System Modelling
+title: Flight Control and System Modelling
+parent: Concepts
+grand_parent: User Manual
+nav_order: 700
 categories: [menu, content, user-manual, flight-control-and-system-modelling]
 permalink: /mypages/user-manual-flight-control-and-system-modelling/
 ---

@@ -1,14 +1,28 @@
-theme: jekyll-theme-cayman
+theme: just-the-docs
 markdown: kramdown
 mathjax: true
 
-title: JSBSim Reference Manual
+title: JSBSim
 description: An open source, platform-independent, flight dynamics model in C++
 
 url: https://JSBSim-Team.github.io/jsbsim-reference-manual
 repository: JSBSim-Team/jsbsim-reference-manual
 # repository: https://github.com/JSBSim-Team/jsbsim-reference-manual
 # github: [metadata]
+
+aux_links:
+  "JSBSim on GitHub":
+    - "//github.com/JSBSim-Team/jsbsim"
+
+gh_edit_link: true # show or hide edit this page link
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "https://github.com/JSBSim-Team/jsbsim-reference-manual" # the github URL for your repo
+gh_edit_branch: "master" # the branch that your docs is served from
+gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
+
+# Back to top link
+back_to_top: true
+back_to_top_text: "Back to top"
 
 # include: ['_mypages']
 defaults:
@@ -31,4 +45,7 @@ collections:
     permalink: /:collection/:path/
     output: true
 
-categories: [menu, info, content, notebook, references, nomenclature]
+just_the_docs:
+  collections:
+    mypages:
+      name: Documentation

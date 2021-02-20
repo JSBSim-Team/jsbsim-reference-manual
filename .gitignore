@@ -2,3 +2,5 @@ docs/_site/
 docs/.sass-cache/
 docs/.jekyll-metadata
 docs/_mypages/Jupyter_Notebooks/JSBSim/*.exe
+docs/vendor
+docs/.bundle

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Acknowledgements
+nav_order: 100
 categories: [menu, content, acknowledgements]
 permalink: /mypages/acknowledgements/
 ---

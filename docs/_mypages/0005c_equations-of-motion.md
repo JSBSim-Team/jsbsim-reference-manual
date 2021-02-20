@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Formulation Manual - Equations of motion
+title: Equations of motion
+parent: Formulation Manual
+nav_order: 400
 categories: [menu, content, formulation-manual, formulation-manual-equations-of-motion]
 permalink: /mypages/formulation-manual-equations-of-motion/
 ---

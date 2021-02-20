@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Formulation Manual - Earth Modelling
+title: Earth Modelling
+parent: Formulation Manual
+nav_order: 200
 categories: [menu, content, formulation-manual, formulation-manual-earth-modelling]
 permalink: /mypages/formulation-manual-earth-modelling/
 ---

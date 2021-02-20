@@ -1,6 +1,7 @@
 ---
 layout: default
 title: References
+nav_order: 700
 categories: [menu, references]
 permalink: /mypages/references/
 ---

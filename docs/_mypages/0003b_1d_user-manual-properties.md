@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Properties
+title: Properties
+parent: Concepts
+grand_parent: User Manual
+nav_order: 400
 categories: [menu, content, user-manual, properties]
 permalink: /mypages/user-manual-properties/
 ---

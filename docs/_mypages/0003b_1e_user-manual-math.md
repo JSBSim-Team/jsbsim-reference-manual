@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Math
+title: Math
+parent: Concepts
+grand_parent: User Manual
+nav_order: 500
 categories: [menu, content, user-manual, math]
 permalink: /mypages/user-manual-math/
 ---

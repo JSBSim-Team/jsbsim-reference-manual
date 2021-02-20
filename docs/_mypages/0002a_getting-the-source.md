@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Quickstart - Getting the source
+title: Getting the source
+parent: Quickstart
+nav_order: 100
 categories: [menu, content, quickstart, getting-the-source]
 permalink: /mypages/quickstart-getting-the-source/
 ---

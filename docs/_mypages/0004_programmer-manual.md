@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Programmer manual
+title: Programmer Manual
+nav_order: 500
+has_children: true
 categories: [menu, content, programmer-manual]
 permalink: /mypages/programmer-manual/
 ---

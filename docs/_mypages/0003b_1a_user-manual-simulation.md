@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Simulation
+title: Simulation
+parent: Concepts
+grand_parent: User Manual
+nav_order: 100
 categories: [menu, content, user-manual, simulation]
 permalink: /mypages/user-manual-simulation/
 ---

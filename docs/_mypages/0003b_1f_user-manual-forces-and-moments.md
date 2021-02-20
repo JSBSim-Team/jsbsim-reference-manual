@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Forces and moments
+title: Forces and moments
+parent: Concepts
+grand_parent: User Manual
+nav_order: 600
 categories: [menu, content, user-manual, forces-and-moments]
 permalink: /mypages/user-manual-forces-and-moments/
 ---
