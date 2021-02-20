@@ -2,7 +2,7 @@ remote_theme: pmarsceill/just-the-docs
 markdown: kramdown
 mathjax: true
 
-title: JSBSim
+title: JSBSim Manual
 description: An open source, platform-independent, flight dynamics model in C++
 
 url: https://JSBSim-Team.github.io
