@@ -29,6 +29,8 @@ git clone https://github.com/JSBSim-Team/jsbsim-reference-manual.git
 bundle config set --local path 'vendor/bundle'
 bundle install
 ```
+If you get an error `Could not find 'bundler'`, delete the file `Gemfile.lock` and retry.
+
 5. Build the site and make it available on a local server
 ```bash
 bundle exec jekyll serve
