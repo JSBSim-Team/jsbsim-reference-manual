@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Units
+title: Units
+parent: Concepts
+grand_parent: User Manual
+nav_order: 300
 categories: [menu, content, user-manual, units]
 permalink: /mypages/user-manual-units/
 ---

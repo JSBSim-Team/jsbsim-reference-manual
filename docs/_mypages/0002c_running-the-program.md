@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Quickstart - Running the program
+title: Running the program
+parent: Quickstart
+nav_order: 400
 categories: [menu, content, quickstart, running-the-program]
 permalink: /mypages/quickstart-running-the-program/
 ---

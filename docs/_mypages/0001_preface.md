@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Preface
+nav_order: 200
 categories: [menu, content, preface]
 permalink: /mypages/preface/
 ---

@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Quickstart - Building the program
+title: Building the program
+parent: Quickstart
+nav_order: 200
 categories: [menu, content, quickstart, building-the-program]
 permalink: /mypages/quickstart-building-the-program/
 ---

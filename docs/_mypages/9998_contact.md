@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Contact
+nav_order: 800
 categories: [menu, info]
 permalink: /mypages/contact/
 ---

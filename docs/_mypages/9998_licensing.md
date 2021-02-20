@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Licensing
+nav_order: 900
 categories: [menu, info, licensing]
 permalink: /mypages/licensing/
 ---

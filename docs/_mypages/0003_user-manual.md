@@ -1,6 +1,8 @@
 ---
 layout: default
 title: User Manual
+nav_order: 400
+has_children: true
 categories: [menu, content, user-manual]
 permalink: /mypages/user-manual/
 ---

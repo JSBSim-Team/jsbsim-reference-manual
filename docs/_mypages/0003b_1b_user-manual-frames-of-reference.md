@@ -1,6 +1,9 @@
 ---
 layout: default
-title: User Manual - Frames of reference
+title: Frames of reference
+parent: Concepts
+grand_parent: User Manual
+nav_order: 200
 categories: [menu, content, user-manual, frames-of-reference]
 permalink: /mypages/user-manual-frames-of-reference/
 ---

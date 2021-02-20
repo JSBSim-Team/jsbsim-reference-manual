@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Quickstart -  Building using Visual Studio
+title: Building using Visual Studio
+parent: Quickstart
+nav_order: 300
 categories: [menu, content, quickstart, building-using-visualstudio]
 permalink: /mypages/quickstart-building-using-visualstudio/
 ---

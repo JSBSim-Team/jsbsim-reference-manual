@@ -1,6 +1,8 @@
 ---
 layout: default
 title: Quickstart
+nav_order: 300
+has_children: true
 categories: [menu, content, quickstart]
 permalink: /mypages/quickstart/
 ---

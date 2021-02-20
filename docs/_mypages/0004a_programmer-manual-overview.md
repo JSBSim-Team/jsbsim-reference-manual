@@ -1,6 +1,8 @@
 ---
 layout: default
-title: Programmer manual - Overview
+title: Overview
+parent: Programmer Manual
+nav_order: 100
 categories: [menu, content, programmer-manual, programmer-manual-overview]
 permalink: /mypages/programmer-manual-overview/
 ---
