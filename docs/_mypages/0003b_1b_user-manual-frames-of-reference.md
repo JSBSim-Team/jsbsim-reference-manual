@@ -9,6 +9,13 @@ permalink: /mypages/user-manual-frames-of-reference/
 ---
 
 # Frames of Reference
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text_delta}
+
+1. TOC
+{:toc}
 
 Before moving into a description of the configuration file syntax, one must understand some basic information about some of the frames of reference used (*i*) in describing the location of objects on the aircraft, (*ii*) in specifying conditions related to the position and orientation of the aircraft in space, or (*iii*) when assigning inputs for a given flight condition.
 

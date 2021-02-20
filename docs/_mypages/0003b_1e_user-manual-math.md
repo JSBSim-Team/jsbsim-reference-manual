@@ -9,6 +9,13 @@ permalink: /mypages/user-manual-math/
 ---
 
 # Math
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text_delta}
+
+1. TOC
+{:toc}
 
 ## Functions
 

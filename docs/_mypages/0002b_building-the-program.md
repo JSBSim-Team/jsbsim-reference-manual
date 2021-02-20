@@ -8,6 +8,14 @@ permalink: /mypages/quickstart-building-the-program/
 ---
 
 # Building the program and the library
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text_delta}
+
+1. TOC
+{:toc}
+
 JSBSim can either be built with [CMake](https://cmake.org/) or [Microsoft Visual Studio](https://www.visualstudio.com/free-developer-offers/). If you are using a Mac OSX or a Linux platform, you must use CMake. If you are a Windows user you can use either one.
 
 JSBSim is coded in standard C++98/C99 and has no dependencies, so all you need is a C/C++ compiler installed on your platform.
@@ -59,18 +67,15 @@ From Visual Studio, you can open the project file `JSBSim.vcxproj` to open a pro
 
 **Note 2:** Since Visual Studio 2017, Microsoft has included CMake so you should be able to build JSBSim on VS2017 directly from the CMake file.
 
----
-
-# Testing JSBSim
+## Testing JSBSim
 JSBSim comes with a test suite to automatically check that the build is correct. This test suite is located in the `tests` directory and is coded in Python so you need the [Python module for JSBSim to be built](Building the Python module of JSBSim).
 
 The test suite can be run using `ctest` in the `build` directory. Tests can be run in parallel on several cores (4 in the example below) using the option `-j`
 ```bash
 > ctest -j4
 ```
----
 
-# Installing JSBSim
+## Installing JSBSim
 Once JSBSim is built and tested, you can install the C++ headers and library platform wide. For that, you can invoke GNU make from the `build` directory
 ```bash
 > make install
