@@ -14,13 +14,13 @@ JSBSim was conceived in 1996 as a lightweight, data-driven, non-linear, six-degr
 
 This online document is split up into several parts. This is because JSBSim can be viewed from several different perspectives: from that of a flight vehicle model developer, from that of an integrator who will incorporate JSBSim into a full flight simulation architecture with visuals, and from that of a software developer who wants to adapt or enhance JSBSim with additional capabilities.
 
-There is a *QuickStart* part, a Section Zero, that explains how to get started with JSBSim quickly.
+There is a [QuickStart]({{site.baseurl}}/{% link _mypages/0002_quickstart.md %}) part, a Section Zero, that explains how to get started with JSBSim quickly.
 
-The following by Section One is a *User's Manual*, that explains how to use JSBSim to make simulation runs, to create aircraft models, to write scripts, and how to perform various other tasks that do not involve changes to program code in JSBSim itself.
+The following by Section One is a [User's Manual]({{site.baseurl}}/{% link _mypages/0003_user-manual.md %}), that explains how to use JSBSim to make simulation runs, to create aircraft models, to write scripts, and how to perform various other tasks that do not involve changes to program code in JSBSim itself.
 
-Section Two is a *Programmer's Manual*, that explains the architecture of JSBSim — how the code is organized and how it works.
+Section Two is a [Programmer's Manual]({{site.baseurl}}/{% link _mypages/0004_programmer-manual.md %}), that explains the architecture of JSBSim — how the code is organized and how it works.
 
-Section Three is the *Formulation Manual*, which contains a description of the math model and algorithms present in JSBSim.
+Section Three is the [Formulation Manual]({{site.baseurl}}/{% link _mypages/0005_formulation-manual.md %}), which contains a description of the math model and algorithms present in JSBSim.
 
 Section Four is a collection of some examples and case studies showing how JSBSim has been used.
 
