@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Units
-parent: Concepts
-grand_parent: User Manual
-nav_order: 300
-categories: [menu, content, user-manual, units]
-permalink: /mypages/user-manual-units/
+description: JSBSim's supported units of measurement.
 ---
 
 # Units

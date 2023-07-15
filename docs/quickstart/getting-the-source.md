@@ -1,10 +1,9 @@
 ---
-layout: default
 title: Getting the source
-parent: Quickstart
-nav_order: 100
-categories: [menu, content, quickstart, getting-the-source]
-permalink: /mypages/quickstart-getting-the-source/
+description: Retrieving the JSBSim source code.
+tags:
+  - quickstart
+  - building
 ---
 
 # Getting the source
@@ -49,6 +48,9 @@ or (SSH mode)
 
 ---
 
-![Placeholder image](/assets/img/ac_airspeeds_recap.svg)
-  
-*So, you want to simulate the flight of this aircraft?*
+<figure markdown>
+  ![Placeholder image](/assets/img/ac_airspeeds_recap.svg){: .center width="80%" }
+  <figcaption>
+	So, you want to simulate the flight of this aircraft?
+  </figcaption>
+</figure>

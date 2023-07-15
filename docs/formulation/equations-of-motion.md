@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Equations of motion
-parent: Formulation Manual
-nav_order: 400
-categories: [menu, content, formulation-manual, formulation-manual-equations-of-motion]
-permalink: /mypages/formulation-manual-equations-of-motion/
+description: How JSBSim formulates the equations of motion.
 ---
 
 # Equations of motion
@@ -42,15 +38,15 @@ The notation used in this reference manual is the same that Stevens and Lewis us
 
 <figure markdown>
   ![Angular velocity vector](/assets/img/ac_pqr_omega.svg){: .center width="90%" }
-  <figcaption markdown>
+  <p markdown="span">
     Aircraft angular velocity vector $\boldsymbol{\Omega}$ and angular speed componeents in body axes $(p,q,r)$.
-  </figcaption>
+  </p>
 </figure>
 
 <figure markdown>
   ![Ground reaction model](/assets/img/c172_ground_reaction_model.svg){: .center width="90%" }
-  <figcaption markdown>
+  <p markdown="span">
     Ground reaction model. A situation of ground contact with $\mathrm{WOW} = 1$ for the right wheel of the main gear and $\mathrm{WOW} = 0$ for the nose wheel.
-  </figcaption>
+  </p>
 </figure>
 

@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Programmer Manual
-nav_order: 500
-has_children: true
-categories: [menu, content, programmer-manual]
-permalink: /mypages/programmer-manual/
+description: JSBSim Programmer Manual home page.
 ---
 
 # Programmer manual

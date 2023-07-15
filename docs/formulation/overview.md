@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Overview
-parent: Formulation Manual
-nav_order: 100
-categories: [menu, content, formulation-manual, formulation-manual-overview]
-permalink: /mypages/formulation-manual-overview/
+description: Overview of JSBSim's formulation process.
 ---
 
 # Overview

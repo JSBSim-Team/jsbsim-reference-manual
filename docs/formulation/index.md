@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Formulation Manual
-nav_order: 600
-has_children: true
-categories: [menu, content, formulation-manual]
-permalink: /mypages/formulation-manual/
+description: JSBSim Formulation Manual home page.
 ---
 
 # Formulation manual

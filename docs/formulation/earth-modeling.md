@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Earth modeling
-parent: Formulation Manual
-nav_order: 200
-categories: [menu, content, formulation-manual, formulation-manual-earth-modelling]
-permalink: /mypages/formulation-manual-earth-modelling/
+description: How JSBSim models planet Earth.
 ---
 
 # Earth Modelling

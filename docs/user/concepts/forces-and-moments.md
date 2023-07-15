@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Forces and moments
-parent: Concepts
-grand_parent: User Manual
-nav_order: 600
-categories: [menu, content, user-manual, forces-and-moments]
-permalink: /mypages/user-manual-forces-and-moments/
+description: Forces and moments in JSBSim.
 ---
 
 # Forces and Moments
@@ -76,16 +71,16 @@ In this case, a description in words of what the above does is as follows: the v
 
 All of the functions in an `<axis/>` section are summed and applied to the aircraft in the appropriate manner. There is some flexibility in this format, though. Functions that are specified outside of any `<axis/>` section are created and calculated, but they do not specifically contribute to any force or moment total by themselves. However, they can be referenced by other functions that are in an `<axis/>` section. This technique allows calculations that might be applied to several individual functions to be performed once and used several times. The technique can be taken even further, with actual aerodynamic coefficients being calculated outside of an `<axis/>` definition, with the coefficients subsequently being multiplied within function definitions by the various factors (properties) that turn them into forces and moments inside an `<axis/>` definition.
 
-As an example, let'’'s examine the instantaneous lift force $L(t)$. It is expressed with the following build-up formula:
+As an example, let’s examine the instantaneous lift force $L(t)$. It is expressed with the following build-up formula:
 
 $$
 L = L_\mathrm{basic} \big(\alpha_\mathrm{B},\phi_\mathrm{hyst}\big) + \Delta L \big(\delta_\mathrm{flap}\big) + \Delta L \big(\delta_\mathrm{e}\big) + \Delta L \big(\dot{\alpha}_\mathrm{B}\big) + \Delta L \big( q \big)
 \label{eq:Build:Up:Formula:Lift}
 $$
 
-where $\alpha_\mathrm{B}$, $\delta_\mathrm{flap}$, $\delta_\mathrm{e}$, $$\dot{\alpha}_\mathrm{B}$$ and $q$ are the well-known aircraft state variables. The non-dimensional scalar $\phi_\mathrm{hyst}$ is usually equal to 0 and becomes 1 at high angles of attack (near stall situations, when aerodynamic hysteresis effects are modeled).
+where $\alpha_\mathrm{B}$, $\delta_\mathrm{flap}$, $\delta_\mathrm{e}$, $\dot{\alpha}_\mathrm{B}$ and $q$ are the well-known aircraft state variables. The non-dimensional scalar $\phi_\mathrm{hyst}$ is usually equal to 0 and becomes 1 at high angles of attack (near stall situations, when aerodynamic hysteresis effects are modeled).
 
-The term $$L_\mathrm{basic} \big(\alpha_\mathrm{B},\phi_\mathrm{hyst}\big)$$ in (\ref{eq:Build:Up:Formula:Lift}) is called the “basic” contribution to the build-up and is dependent on the angle of attack. We know that increasing the angle of attack increases lift — up to a point. Lift force is traditionally defined as the product of filght dynamic pressure (“qbar”, $$\bar{q}$$, or $$\bar{q}_\infty$$ for aerodynamicists), wing area ($S_\mathrm{W}$ or simply $S$), and lift coefficient ($C_L$). In this case, the lift coefficient is determined via a lookup table, using $\alpha_\mathrm{B}$ and $\phi_\mathrm{hyst}$ as an index into the table:
+The term $L_\mathrm{basic} \big(\alpha_\mathrm{B},\phi_\mathrm{hyst}\big)$ in ($\ref{eq:Build:Up:Formula:Lift}$) is called the “basic” contribution to the build-up and is dependent on the angle of attack. We know that increasing the angle of attack increases lift — up to a point. Lift force is traditionally defined as the product of filght dynamic pressure (“qbar”, $\bar{q}$, or $\bar{q}_\infty$ for aerodynamicists), wing area ($S_\mathrm{W}$ or simply $S$), and lift coefficient ($C_L$). In this case, the lift coefficient is determined via a lookup table, using $\alpha_\mathrm{B}$ and $\phi_\mathrm{hyst}$ as an index into the table:
 
 ```xml
 <function name="aero/force/lift_from_alpha">
@@ -131,21 +126,25 @@ $$
 
 is plotted below as a function of $\alpha_\mathrm{B}$ and $\phi_\mathrm{hyst}$.
 
-{% include image.html
-  url="/assets/img/c172_CL_basic.png"
-  width="70%"
-  description="The plotted function of two variables $C_{L,\mathrm{basic}}\big(\alpha_\mathrm{B},\phi_\mathrm{hyst}\big)$ corresponding to the tabular function named 'aero/coefficient/CLwbh' in the aerodynamic model of c172p."
-  %}
+<figure markdown>
+  ![CL Basic](/assets/img/c172_CL_basic.png){: .center width="70%" }
+  <p markdown="span">
+	The plotted function of two variables $C_{L,\mathrm{basic}}\big(\alpha_\mathrm{B},\phi_\mathrm{hyst}\big)$ corresponding to the tabular function named 'aero/coefficient/CLwbh' in the aerodynamic model of c172p.
+  </p>
+</figure>
 
-TBD
+!!! note "TODO"
+
+    Complete subsection.
 
 ---
 
-{% include image.html
-  url="/assets/img/c172_CD_basic.png"
-  width="70%"
-  description="The plotted function of two variables $C_{D,\mathrm{basic}}\big(\alpha_\mathrm{B},\delta_\mathrm{flap}\big)$ corresponding to the tabular function named 'aero/coefficient/CDwbh' in the aerodynamic model of c172p."
-  %}
+<figure markdown>
+  ![CL Basic](/assets/img/c172_CD_basic.png){: .center width="70%" }
+  <p markdown="span">
+	The plotted function of two variables $C_{D,\mathrm{basic}}\big(\alpha_\mathrm{B},\delta_\mathrm{flap}\big)$ corresponding to the tabular function named 'aero/coefficient/CDwbh' in the aerodynamic model of c172p.
+  </p>
+</figure>
 
 !!! note "TODO"
 

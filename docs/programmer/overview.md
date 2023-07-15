@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Overview
-parent: Programmer Manual
-nav_order: 100
-categories: [menu, content, programmer-manual, programmer-manual-overview]
-permalink: /mypages/programmer-manual-overview/
+description: JSBSim source code overview.
 ---
 
 # Overview

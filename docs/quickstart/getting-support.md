@@ -1,10 +1,9 @@
 ---
-layout: default
 title: Getting support
-parent: Quickstart
-nav_order: 500
-categories: [menu, content, quickstart, getting-support]
-permalink: /mypages/quickstart-getting-support/
+description: Getting help with JSBSim.
+tags:
+  - quickstart
+  - support
 ---
 
 # Getting support

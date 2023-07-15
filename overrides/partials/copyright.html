@@ -1,0 +1,20 @@
+<!-- Copyright and theme information -->
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">
+      {% if config.extra.maintainer and config.extra.maintainer_url %}	
+        Maintained by <a href="{{ config.extra.maintainer_url }}">{{ config.extra.maintainer }}</a> —
+      {% endif %}
+	  {{ config.copyright }}
+    </div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+  {% endif %}
+</div>

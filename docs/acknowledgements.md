@@ -1,3 +1,10 @@
+---
+title: Acknowledgements
+description: Thanks to JSBSim contributors, developers, & users.
+tags:
+  - about
+---
+
 # Acknowledgements
 
 This software is the result of work done by many people over the years.

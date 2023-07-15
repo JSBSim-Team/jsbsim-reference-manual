@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Flight Control and System Modelling
-parent: Concepts
-grand_parent: User Manual
-nav_order: 700
-categories: [menu, content, user-manual, flight-control-and-system-modelling]
-permalink: /mypages/user-manual-flight-control-and-system-modelling/
+description: Modeling flight controls and systems with JSBSim.
 ---
 
 # Flight Control and System Modelling
@@ -33,11 +28,12 @@ It has to be underlined, once again, that the number and types of control inputs
 
 ## Conventions
 
-{% include image.html
-  url="/assets/img/ac_aerosurface_deflections.svg"
-  width="80%"
-  description="Standard aircraft aerodynamic control surfaces."
-  %}
+<figure markdown>
+  ![Aerosurface deflections](/assets/img/ac_aerosurface_deflections.svg){: .center width="80%" }
+  <figcaption>
+    Standard aircraft aerodynamic control surfaces.
+  </figcaption>
+</figure>
 
 ## Overview on Aerodynamic Modelling
 
@@ -48,22 +44,25 @@ C_m = C_{m0} + C_{m\alpha} \, \alpha_\mathrm{B} + C_{m\delta_\mathrm{e}} \delta_
 \label{eq:Cm}
 \end{equation}
 
-{% include image.html
-  url="/assets/img/c172_fcs.svg"
-  width="100%"
-  description="The command to deflection logic for the elevator channel in the c172p model. The combination of yoke movement and pitch trim lever regulation is normalized and mapped to the interval $[−1, 1]$. The output of the channel is a real variable fcs/elevator-pos-rad representing an equivalent elevator deflection $\delta_\mathrm{e}^\star = \delta_\mathrm{e} + \delta_\mathrm{e,tab}^\star$. The angle $\delta_\mathrm{e,tab}^\star$ is an elevator deflection equivalent to the actual tab angle $\delta_\mathrm{e,tab}$. The $\delta_\mathrm{e}$ varies in the range $[\delta_\mathrm{e,min}, \delta_\mathrm{e,max}]$. The tail is represented with the moving surfaces deflected both in the equivalent condition (top), and in the actual condition (bottom)."
-  %}
+<figure markdown>
+  ![Alpha and beta](/assets/img/c172_fcs.svg){: .center width="100%" }
+  <p markdown="span">
+	The command to deflection logic for the elevator channel in the c172p model. The combination of yoke movement and pitch trim lever regulation is normalized and mapped to the interval $[−1, 1]$. The output of the channel is a real variable fcs/elevator-pos-rad representing an equivalent elevator deflection $\delta_\mathrm{e}^\star = \delta_\mathrm{e} + \delta_\mathrm{e,tab}^\star$. The angle $\delta_\mathrm{e,tab}^\star$ is an elevator deflection equivalent to the actual tab angle $\delta_\mathrm{e,tab}$. The $\delta_\mathrm{e}$ varies in the range $[\delta_\mathrm{e,min}, \delta_\mathrm{e,max}]$. The tail is represented with the moving surfaces deflected both in the equivalent condition (top), and in the actual condition (bottom).
+  </p>
+</figure>
 
 ## Overview on Propulsion Modelling
 
-{% include image.html
-  url="/assets/img/ac_thrust_definitions.svg"
-  width="80%"
-  description="A twin engine propeller aircraft. Location in body frame of the engine thruster, of thrust application point, and thrust vector orientation."
-  %}
+<figure markdown>
+  ![Thrust thruster](/assets/img/ac_thrust_definitions.svg){: .center width="80%" }
+  <figcaption>
+	A twin engine propeller aircraft. Location in body frame of the engine thruster, of thrust application point, and thrust vector orientation.
+  </figcaption>
+</figure>
 
-{% include image.html
-  url="/assets/img/c172_thruster.svg"
-  width="80%"
-  description="Locations associated to the entities 'thruster' and 'tank' in the FDM of c172p."
-  %}
+<figure markdown>
+  ![Thruster locations](/assets/img/c172_thruster.svg){: .center width="80%" }
+  <figcaption>
+	Locations associated to the entities 'thruster' and 'tank' in the FDM of c172p.
+  </figcaption>
+</figure>

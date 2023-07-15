@@ -1,9 +1,10 @@
 ---
-layout: default
 title: Preface
-nav_order: 200
-categories: [menu, content, preface]
-permalink: /mypages/preface/
+description: JSBSim Reference Manual preface.
+tags:
+  - menu
+  - about
+  - preface
 ---
 
 # Preface

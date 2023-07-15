@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Class hierarchy
-parent: Programmer Manual
-nav_order: 200
-categories: [menu, content, programmer-manual, programmer-manual-class-hierarchy]
-permalink: /mypages/programmer-manual-class-hierarchy/
+description: JSBSim's API class hierarchy.
 ---
 
 # Class Hierarchy

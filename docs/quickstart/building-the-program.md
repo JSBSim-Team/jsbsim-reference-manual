@@ -1,10 +1,9 @@
 ---
-layout: default
 title: Building the program
-parent: Quickstart
-nav_order: 200
-categories: [menu, content, quickstart, building-the-program]
-permalink: /mypages/quickstart-building-the-program/
+description: How to build JSBSim.
+tag:
+  - quickstart
+  - building
 ---
 
 # Building the program and the library
@@ -100,7 +99,9 @@ Alternatively, the Python module can be installed manually by invoking the follo
 ```
 ---
 
-![Placeholder image](/assets/img/ac_airspeeds_recap.svg)
-
-*So, you want to simulate the flight of this aircraft?*
-
+<figure markdown>
+  ![Placeholder image](/assets/img/ac_airspeeds_recap.svg){: .center width="80%" }
+  <figcaption>
+	So, you want to simulate the flight of this aircraft?
+  </figcaption>
+</figure>

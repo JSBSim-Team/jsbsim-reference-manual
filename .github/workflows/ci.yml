@@ -2,7 +2,7 @@ name: ci
 on:
   push:
     branches:
-      - cppimmo-mkdocs
+      - master
 permissions:
   contents: write
 jobs:

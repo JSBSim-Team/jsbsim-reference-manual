@@ -1,10 +1,6 @@
 ---
-layout: default
 title: Overview
-parent: User Manual
-nav_order: 100
-categories: [menu, content, user-manual, user-manual-overview]
-permalink: /mypages/user-manual-overview/
+description: JSBSim User Manual overview.
 ---
 
 # Overview

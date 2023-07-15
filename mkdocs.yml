@@ -51,7 +51,7 @@ theme:
   name: material
   logo: assets/img/logo_jsbsim_globe.svg
   favicon: assets/favicon.ico
-  #custom_dir: overrides
+  custom_dir: overrides
   features:
     - navigation.indexes
     - navigation.footer
@@ -67,6 +67,9 @@ extra:
       link: https://github.com/JSBSim-Team/jsbsim
       name: JSBSim-Team on GitHub
   generator: true
+  # Specify who is maintaining the manual
+  maintainer: JSBSim-Team
+  maintainer_url: https://github.com/JSBSim-Team
 # Enabled Markdown extensions
 markdown_extensions:
   - admonition
@@ -96,3 +99,5 @@ plugins:
       enable_creation_date: false
       enabled: !ENV [CI, false]
       type: date
+  - tags:
+      enabled: !ENV [CI, false]

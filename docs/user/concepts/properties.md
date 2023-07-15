@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Properties
-parent: Concepts
-grand_parent: User Manual
-nav_order: 400
-categories: [menu, content, user-manual, properties]
-permalink: /mypages/user-manual-properties/
+description: JSBSim's property manager system.
 ---
 
 # Properties

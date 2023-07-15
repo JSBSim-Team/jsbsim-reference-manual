@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Math
-parent: Concepts
-grand_parent: User Manual
-nav_order: 500
-categories: [menu, content, user-manual, math]
-permalink: /mypages/user-manual-math/
+description: Applying math concepts in JSBSim.
 ---
 
 # Math
@@ -65,9 +60,9 @@ An operation is defined in the configuration file as in the following example:
 
 In the example above, the sum element contains three other items. What gets evaluated is written algebraically as:
 
-\\[
+$$
 3.14159 + \mathtt{qbar} + \big( 0.125 \cdot \mathtt{wingarea} \big)
-\\]
+$$
 
 A full function definition, such as is used in the aerodynamics section of a configuration file includes the function element, and other elements. It should be noted that there can be only one non-optional (non-documentation) element — that is, one operation element — in the top-level function definition. The <function> element cannot have more than one immediate child operation, `property`, `table`, or `value` element. Almost always, the first operation within the function element will be a product or sum. For example:
 
@@ -119,11 +114,12 @@ Finally, within a function definition, there are some shorthand aliases that can
 
 An example of tabular functions used in aerodynamic modeling is given by ground-effect factors affecting lift and drag. An explanation of the ground effect is given in the figure below.
 
-{% include image.html
-  url="/assets/img/ac_ground_effect.svg"
-  width="100%"
-  description="Explanation of ground effect."
-  %}
+<figure markdown>
+  ![Ground effect](/assets/img/ac_ground_effect.svg){: .center width="100%" }
+  <figcaption>
+    Explanation of ground effect.
+  </figcaption>
+</figure>
 
 To see how the ground effect can be modelled in JSBSim one can look at the Cessna 172 Skyhawk model. This is implemented in the file: `<JSBSim-root-dir>/aircraft/c172p/c172p.xml`. In the `<aerodynamics/>` block of this XML file two non-dimensional factors are modeled, $K_{C_D,\mathrm{ge}}$ and $K_{C_L,\mathrm{ge}}$, which are functions of the non-dimensional height above the ground and are to be thought of as multipliers of lift and drag, respectively. These factors are defined as follows:
 
@@ -181,11 +177,12 @@ To see how the ground effect can be modelled in JSBSim one can look at the Cessn
 
 The tabular functions `aero/function/kCDge and aero/function/kCLge`, representing the factors $K_{C_D,\mathrm{ge}}$ and $K_{C_L,\mathrm{ge}}$, are plotted in the figure below against the non-dimensional ground altitude $h/(b/2)$. The ground-effect is seen when the aircraft altitude above the ground is less than the wing semi-span $b/2$. For higher altitudes each of these two factors assume value 1.
 
-{% include image.html
-  url="/assets/img/c172_ground_effect_CL_CD.png"
-  width="70%"
-  description="Plotted functions of non-dimensional ground altitude $h/(b/2)$, defining the properties named 'aero/function/kCLge' and 'aero/function/kCDge' in the aerodynamic model of c172p."
-  %}
+<figure markdown>
+  ![Ground effect CL CD](/assets/img/c172_ground_effect_CL_CD.png){: .center width="70%" }
+  <p markdown="span">
+    Plotted functions of non-dimensional ground altitude $h/(b/2)$, defining the properties named 'aero/function/kCLge' and 'aero/function/kCDge' in the aerodynamic model of c172p.
+  </p>
+</figure>
 
 ## Tables
 

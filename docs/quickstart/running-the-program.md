@@ -1,10 +1,8 @@
 ---
-layout: default
 title: Running the program
-parent: Quickstart
-nav_order: 400
-categories: [menu, content, quickstart, running-the-program]
-permalink: /mypages/quickstart-running-the-program/
+description: Running the JSBSim application.
+tags:
+  - quickstart
 ---
 
 # Running the program
@@ -50,11 +48,15 @@ You can run JSBSim by supplying the name of a script:
 <JSBSim-root-dir>$ JSBSim --script=scripts/c1723.xml
 ```
 
-**To be completed**
+!!! note "TODO"
+
+    Complete page contents.
 
 ---
 
-![Placeholder image](/assets/img/ac_euler_gimbal.svg)
-
-*So, you want to simulate the flight of this aircraft?*
-
+<figure markdown>
+  ![Placeholder image](/assets/img/ac_euler_gimbal.svg){: .center width="80%" }
+  <figcaption>
+	So, you want to simulate the flight of this aircraft?
+  </figcaption>
+</figure>

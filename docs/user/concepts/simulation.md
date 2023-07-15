@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Simulation
-parent: Concepts
-grand_parent: User Manual
-nav_order: 100
-categories: [menu, content, user-manual, simulation]
-permalink: /mypages/user-manual-simulation/
+description: How JSBSim simulates flight.
 ---
 
 # Simulation

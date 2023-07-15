@@ -1,9 +1,9 @@
 ---
-layout: default
 title: Contact
-nav_order: 800
-categories: [menu, info]
-permalink: /mypages/contact/
+description: Author's contact information.
+tags:
+  - menu
+  - contact
 ---
 
 **Agostino De Marco**, PhD

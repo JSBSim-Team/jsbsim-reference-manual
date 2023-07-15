@@ -1,11 +1,6 @@
 ---
-layout: default
 title: Frames of reference
-parent: Concepts
-grand_parent: User Manual
-nav_order: 200
-categories: [menu, content, user-manual, frames-of-reference]
-permalink: /mypages/user-manual-frames-of-reference/
+description: Frames of reference in JSBSim.
 ---
 
 # Frames of Reference
