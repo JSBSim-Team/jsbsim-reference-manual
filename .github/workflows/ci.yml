@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - master
+env:
+  # CI used to indicate that manual is being deployed; not built locally
+  CI: true
 permissions:
   contents: write
 jobs:
