@@ -115,7 +115,7 @@ Finally, within a function definition, there are some shorthand aliases that can
 An example of tabular functions used in aerodynamic modeling is given by ground-effect factors affecting lift and drag. An explanation of the ground effect is given in the figure below.
 
 <figure markdown>
-  ![Ground effect](/assets/img/ac_ground_effect.svg){: .center width="100%" }
+  ![Ground effect](../../assets/img/ac_ground_effect.svg){: .center width="100%" }
   <figcaption>
     Explanation of ground effect.
   </figcaption>
@@ -178,7 +178,7 @@ To see how the ground effect can be modelled in JSBSim one can look at the Cessn
 The tabular functions `aero/function/kCDge and aero/function/kCLge`, representing the factors $K_{C_D,\mathrm{ge}}$ and $K_{C_L,\mathrm{ge}}$, are plotted in the figure below against the non-dimensional ground altitude $h/(b/2)$. The ground-effect is seen when the aircraft altitude above the ground is less than the wing semi-span $b/2$. For higher altitudes each of these two factors assume value 1.
 
 <figure markdown>
-  ![Ground effect CL CD](/assets/img/c172_ground_effect_CL_CD.png){: .center width="70%" }
+  ![Ground effect CL CD](../../assets/img/c172_ground_effect_CL_CD.png){: .center width="70%" }
   <p markdown="span">
     Plotted functions of non-dimensional ground altitude $h/(b/2)$, defining the properties named 'aero/function/kCLge' and 'aero/function/kCDge' in the aerodynamic model of c172p.
   </p>

@@ -16,7 +16,7 @@ This frame is a common manufacturer's frame of reference and is used to define p
 In the structural frame the X-axis runs along the fuselage length and points towards the tail, the Y-axis points from the fuselage out towards the right wing, and of course the Z-axis then is positive upwards. Typically, the origin $O_\mathrm{C}$ for this frame is near the front of the aircraft (at the tip of the nose, at the firewall for a single engine airplane, or at some distance in front of the nose). This frame is often named \(\mathcal{F}_\mathrm{C} = \{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}\).
 
 <figure markdown>
-  ![Construction axes](/assets/img/ac_construction_axes.svg){: .center width="90%" }
+  ![Construction axes](../../assets/img/ac_construction_axes.svg){: .center width="90%" }
   <p markdown="span">
     Aircraft structural (or construction) frame of reference with origin $O_\mathrm{C}$. Besides the structural frame axes $x_\mathrm{C}$, $y_\mathrm{C}$, and $z_\mathrm{C}$, the standard body frame axes $x_\mathrm{B}$, $y_\mathrm{B}$, and $z_\mathrm{B}$ are also shown with their origin at the center of mass $G$. The pilot's eye-point is located at $P_\mathrm{EP}$.
   </p>
@@ -25,7 +25,7 @@ In the structural frame the X-axis runs along the fuselage length and points tow
 The X-axis is typically coincident with the fuselage centerline and often is coincident with the thrust axis (for instance, in single engine propeller aircraft it passes through the propeller hub). Positions along the $x_\mathrm{C}$ axis are referred to as stations. Positions along the $z_\mathrm{C}$ axis are referred to as waterline positions. Positions along the $y_\mathrm{C}$ axis are referred to as buttline positions.
 
 <figure markdown>
-  ![Construction axes](/assets/img/c172x_blender.png){: .center width="70%" }
+  ![Construction axes](../../assets/img/c172x_blender.png){: .center width="70%" }
   <p markdown="span">
     A screenshot taken from the 3D modeling software Blender. The scene shows a model of Cessna 172 with its structural frame $\mathcal{F}_\mathrm{C} = \{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}$. The origin $O_\mathrm{C}$ in this case is located inside the cockpit, near the dashboard.
   </p>
@@ -34,28 +34,28 @@ The X-axis is typically coincident with the fuselage centerline and often is coi
 Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBSim internally only uses the *relative distances* between the CG and the various objects --- not the absolute locations themselves.
 
 <figure markdown>
-  ![Center of gravity](/assets/img/ac_center_of_gravity.svg){: .center width="90%" }
+  ![Center of gravity](../../assets/img/ac_center_of_gravity.svg){: .center width="90%" }
   <p markdown="span">
     Center of gravity (CG) position, point $G$, determined in a construction frame.
   </p>
 </figure>
 
 <figure markdown>
-  ![Ground reaction](/assets/img/c172_ground_reaction.svg){: .center width="90%" }
+  ![Ground reaction](../../assets/img/c172_ground_reaction.svg){: .center width="90%" }
   <p markdown="span">
     Definition of ground contact points in terms of construction frame locations.
   </p>
 </figure>
 
 <figure markdown>
-  ![Key locations](/assets/img/c172_sideview.svg){: .center width="70%" }
+  ![Key locations](../../assets/img/c172_sideview.svg){: .center width="70%" }
   <p markdown="span">
     Two key point locations $P_\mathrm{ARP}$ and $P_\mathrm{CG,EW}$ in the structural frame, respectively, he pole of aerodynamic moments and the Empty Weight CG of the airframe. The shape of the wing root profile and its chord are also sketched.
   </p>
 </figure>
 
 <figure markdown>
-  ![Key locations](/assets/img/c172_perspective_view_left.svg){: .center width="70%" }
+  ![Key locations](../../assets/img/c172_perspective_view_left.svg){: .center width="70%" }
   <p markdown="span">
     Besides point $P_\mathrm{CG,EW}$, are represented two more significant locations, $P_\mathrm{Pilot}$ and $P_\mathrm{Right\,Pass}$, where two additional masses are concentrated, respectively, of the pilot and of the right passenger.
   </p>
@@ -68,7 +68,7 @@ In JSBSim, the body frame is similar to the structural frame, but rotated 180 de
 The frame of body axes is often called $\mathcal{F}_\mathrm{B} = \{G, x_\mathrm{B}, y_\mathrm{B}, z_\mathrm{B}\}$. The $x_\mathrm{B}$ axis is called the *roll axis* and points forward, the $y_\mathrm{B}$ axis is called *pitch axis* and points toward the right wing, the $z_\mathrm{B}$ axis is called *yaw axis* and points towards the fuselage belly.
 
 <figure markdown>
-  ![Body axes](/assets/img/ac_body_axes.svg){: .center width="90%" }
+  ![Body axes](../../assets/img/ac_body_axes.svg){: .center width="90%" }
   <p markdown="span">
     Standard aircraft body axis frame, with origin at the center of gravity $G$.
   </p>
@@ -83,7 +83,7 @@ This frame is defined according to the instantaneous orientation of the relative
 The frame, named $\mathcal{F}_\mathrm{A} = \{ G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A} \}$, has the axis $x_\mathrm{A}$ that points into the relative wind vector projected onto the aircraft plane of symmetry $x_\mathrm{B} z_\mathrm{B}$. The axis $y_\mathrm{A}$ still points out the right wing and coincides with the body axis $y_\mathrm{B}$, and the axis $z_\mathrm{A}$ completes the right-hand system.
 
 <figure markdown>
-  ![Alpha and beta](/assets/img/ac_aero_axes.svg){: .center width="90%" }
+  ![Alpha and beta](../../assets/img/ac_aero_axes.svg){: .center width="90%" }
   <p markdown="span">
     Aerodynamic frame, defining the aerodynamic angles $\alpha_\mathrm{B}$ and $\beta$.
   </p>
@@ -96,7 +96,7 @@ This frame, called stability frame in some manuals, is also named here 'aerodyna
 To visualize the above observation, consider a typical maneuver studied in flight mechanics: the zero-sideslip (or 'coordinated'), constant altitude turn at steady airspeed. In this situation the wings are banked and so is the lift. In such a turn $\mathcal{F}_\mathrm{A}$ is banked and $x_\mathrm{A}$ is kept horizontal. In general terms, the lift as a vector is always defined in the aircraft symmetry plane.
 
 <figure markdown>
-  ![Level turns](/assets/img/three_d_forces_level_turn.svg){: .center width="90%" }
+  ![Level turns](../../assets/img/three_d_forces_level_turn.svg){: .center width="90%" }
   <p markdown="span">
 	Banked lift in a steady coordinated turn at constant altitude. The bank angle $\phi_\mathrm{W}$ is a rotation around the relative wind velocity vector. The motion is freezed in time when the velocity vector is aligned with the North. Coordinated turn means that $\beta=0$ and constant altitude means that $x_\mathrm{A}$ is kept horizontal.
   </p>
@@ -111,7 +111,7 @@ In JSBSim the notion of stability frame $\mathcal{F}_\mathrm{S} = \{ G, x_\mathr
 The Earth-Centered Inertial frame (or simply 'inertial frame') $\mathcal{F}_\mathrm{ECI} = \{ O_\mathrm{ECI}, x_\mathrm{ECI}, y_\mathrm{ECI}, z_\mathrm{ECI} \}$ is fixed with its origin at the center of the Earth. Its cartesian axes remain fixed relative to the stars, and provide a reference frame for which the aircraft (or spacecraft) equations of motion are most simply expressed. The positive $z_\mathrm{ECI}$ axis passes through the Earth's geographic North Pole. The $x_\mathrm{ECI}$ and $y_\mathrm{ECI}$ axes lie in the equatorial plane. The axis $x_\mathrm{ECI}$ is always parallel to a line from the Sun's center of mass to Earth's position in orbit at the vernal equinox. The ECI system is shown in the next figure.
 
 <figure markdown>
-  ![Inertial frame](/assets/img/inertial_frame.svg){: .center width="60%" }
+  ![Inertial frame](../../assets/img/inertial_frame.svg){: .center width="60%" }
   <p markdown="span">
 	Earth-Centered Inertial (ECI) frame and Earth-Centered Earth-Fixed (ECEF) frame.
   </p>
@@ -124,7 +124,7 @@ The axes of the Earth-Centered, Earth-Fixed (ECEF) frame of reference, labeled $
 A *tangent-plane* coordinate system can be defined when a matemathical representation of Earth's surface is assumed (a *spheroid* or an approximating sphere). A plane tangent to a point of interest on the surface $O_\mathrm{E}$ is taken as a reference. A geographic system called *North-Oriented Tangent Frame* $\mathcal{F}_\mathrm{E} = \{ O_\mathrm{E}, x_\mathrm{E}, y_\mathrm{E}, z_\mathrm{E}\}$ has its origin fixed at the point of interest $O_\mathrm{E}$ and its plane $x_\mathrm{E} y_\mathrm{E}$ coincident with the tangent plane. The axis $x_\mathrm{E}$ points towards the geographic North, the axis $y_\mathrm{E}$ points towards the East. Finally, the axis $z_\mathrm{E}$ points downwards towards the center of the Earth. For this reason the frame $\mathcal{F}_\mathrm{E}$ is also called *tangent NED* frame (North-East-Down).
 
 <figure markdown>
-  ![ECI and ECEF frames](/assets/img/earth_frames.svg){: .center width="60%" }
+  ![ECI and ECEF frames](../../assets/img/earth_frames.svg){: .center width="60%" }
   <p markdown="span">
 	Earth-Centered Earth-Fixed (ECEF) frame, geografic coordinates, Tangent (T) frame, and local Vertical (V) frame.
   </p>
@@ -135,7 +135,7 @@ A *tangent-plane* coordinate system can be defined when a matemathical represent
 The local vertical frame $\mathcal{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}$ is unrelated to the airplane's orientation in space but is only defined by its CG position with respect to some convenient Earth-fixed observer. If $G_\mathrm{GT}$ is the CG projected on the ground ('ground tracked'), the coordinate plane $x_\mathrm{V} y_\mathrm{V}$ is parallel to a plane locally tangent in $G_\mathrm{GT}$ to the Earth's surface --- i.e. the plane $x_\mathrm{E} y_\mathrm{E}$ with $O_\mathrm{E} \equiv G_\mathrm{GT}$. Then, the axis $x_\mathrm{V}$ points towards the geographic North, the axis $y_\mathrm{V}$ points towards the East. Finally, the axis $z_\mathrm{V}$ points downwards towards the center of the Earth. For this reason the frame $\mathcal{F}_\mathrm{V}$ is also called *local NED* (vehicle-carried) frame.
 
 <figure markdown>
-  ![Local vertical axes](/assets/img/ac_local_vertical_axes.svg){: .center width="90%" }
+  ![Local vertical axes](../../assets/img/ac_local_vertical_axes.svg){: .center width="90%" }
   <p markdown="span">
 	Aircraft body frame and local vertical frame (NED frame). The aircraft Euler angles are also shown: the heading angle $\psi$ (negative in the picture), the elevation angle $\theta$, and the roll angle $\phi$.
   </p>
@@ -146,7 +146,7 @@ The NED convention ensures that the aircraft weight is a force with components $
 The above figure shows an aircraft with the two frames $\mathcal{F}_\mathrm{V}$ and $\mathcal{F}_\mathrm{B}$. The Euler angles that define the body frame orientation with respect to the local NED frame are the *aircraft Euler angles*. For atmospheric flight vehicles the sequence of rotations used to define the Euler angles is '3-2-1'. This defines the *heading* angle $\psi$, the *elevation* angle $\theta$, and the *roll* angle $\phi$ with respect to an observer fixed with the Earth.
 
 <figure markdown>
-  ![Euler gimbal](/assets/img/ac_euler_gimbal.svg){: .center width="60%" }
+  ![Euler gimbal](../../assets/img/ac_euler_gimbal.svg){: .center width="60%" }
   <p markdown="span">
 	Euler angle sequence for an aircraft. The frame $\mathcal{F}_\mathrm{E} = \{ O_\mathrm{E}, x_\mathrm{E}, y_\mathrm{E}, z_\mathrm{E}\}$ is an Earth-fixed NED coordinate system, with origin the $O_\mathrm{E}$ somewhere on the ground (or at see level) and the plane $x_\mathrm{E} y_\mathrm{E}$ tangent to the Earth surface. If the ground track point $G_\mathrm{GT}$ is not too far from $O_\mathrm{E}$, the Earth frame $\mathcal{F}_\mathrm{E}$ axes are parallel to those of the local NED frame $\mathcal{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}$.
   </p>
@@ -165,7 +165,7 @@ When the sideslip angle $\beta$ is zero, the wind frame and the aerodynamic fram
 The figure below shows the standard frames of reference for an aircraft in climbing flight in calm air. The wind frame $\mathcal{F}_\mathrm{W}$ can be made superimposed to the aerodynamic frame $\mathcal{F}_\mathrm{A}$ when rotated around $z_\mathrm{W}$ of the angle $-\beta$.
 
 <figure markdown>
-  ![3D defs](/assets/img/three_d_definitions.svg){: .center width="90%" }
+  ![3D defs](../../assets/img/three_d_definitions.svg){: .center width="90%" }
   <p markdown="span">
 	Standard frames of reference and aircraft in climbing flight in calm air. The CG velocity vector $\boldsymbol{V}$ forms the flight path angle $\gamma$ with the horizontal plane. The standard three aerodynamic resultant force components $D$, $L$ and $Y_\mathrm{A}$ are also shown.
   </p>

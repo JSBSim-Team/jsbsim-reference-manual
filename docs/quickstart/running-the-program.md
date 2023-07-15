@@ -55,7 +55,7 @@ You can run JSBSim by supplying the name of a script:
 ---
 
 <figure markdown>
-  ![Placeholder image](/assets/img/ac_euler_gimbal.svg){: .center width="80%" }
+  ![Placeholder image](../assets/img/ac_euler_gimbal.svg){: .center width="80%" }
   <figcaption>
 	So, you want to simulate the flight of this aircraft?
   </figcaption>

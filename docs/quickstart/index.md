@@ -34,7 +34,7 @@ To check the current status of the latest builds one can go and visit the links:
 - [AppVeyor build for Windows](https://ci.appveyor.com/project/agodemar/jsbsim/branch/master) (no tests) [![Build status](https://ci.appveyor.com/api/projects/status/89wkiqja63kc6h2v/branch/master?svg=true)](https://ci.appveyor.com/project/agodemar/jsbsim/branch/master)
 
 <figure markdown>
-  ![Placeholder image](/assets/img/ac_sideview_climb_simplified.svg){: .center width="80%" }
+  ![Placeholder image](../assets/img/ac_sideview_climb_simplified.svg){: .center width="80%" }
   <figcaption>
 	So, you want to simulate the flight of this aircraft?
   </figcaption>

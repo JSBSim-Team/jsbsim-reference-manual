@@ -100,7 +100,7 @@ Alternatively, the Python module can be installed manually by invoking the follo
 ---
 
 <figure markdown>
-  ![Placeholder image](/assets/img/ac_airspeeds_recap.svg){: .center width="80%" }
+  ![Placeholder image](../assets/img/ac_airspeeds_recap.svg){: .center width="80%" }
   <figcaption>
 	So, you want to simulate the flight of this aircraft?
   </figcaption>

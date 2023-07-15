@@ -23,28 +23,28 @@ The notation used in this reference manual is the same that Stevens and Lewis us
 **To be completed**
 
 <figure markdown>
-  ![Inertial frame](/assets/img/inertial_frame.png){: .center width="60%" }
+  ![Inertial frame](../assets/img/inertial_frame.png){: .center width="60%" }
   <figcaption>
     Earth-Centered Inertial (ECI) frame and Earth-Centered Earth-Fixed (ECEF) frame.
   </figcaption>
 </figure>
 
 <figure markdown>
-  ![Earth frames](/assets/img/earth_frames.png){: .center width="60%" }
+  ![Earth frames](../assets/img/earth_frames.png){: .center width="60%" }
   <figcaption>
     Earth-Centered Earth-Fixed (ECEF) frame, geografic coordinates, Tangent (T) frame, and local Vertical (V) frame.
   </figcaption>
 </figure>
 
 <figure markdown>
-  ![Angular velocity vector](/assets/img/ac_pqr_omega.svg){: .center width="90%" }
+  ![Angular velocity vector](../assets/img/ac_pqr_omega.svg){: .center width="90%" }
   <p markdown="span">
     Aircraft angular velocity vector $\boldsymbol{\Omega}$ and angular speed componeents in body axes $(p,q,r)$.
   </p>
 </figure>
 
 <figure markdown>
-  ![Ground reaction model](/assets/img/c172_ground_reaction_model.svg){: .center width="90%" }
+  ![Ground reaction model](../assets/img/c172_ground_reaction_model.svg){: .center width="90%" }
   <p markdown="span">
     Ground reaction model. A situation of ground contact with $\mathrm{WOW} = 1$ for the right wheel of the main gear and $\mathrm{WOW} = 0$ for the nose wheel.
   </p>

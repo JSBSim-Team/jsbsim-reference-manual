@@ -127,7 +127,7 @@ $$
 is plotted below as a function of $\alpha_\mathrm{B}$ and $\phi_\mathrm{hyst}$.
 
 <figure markdown>
-  ![CL Basic](/assets/img/c172_CL_basic.png){: .center width="70%" }
+  ![CL Basic](../../assets/img/c172_CL_basic.png){: .center width="70%" }
   <p markdown="span">
 	The plotted function of two variables $C_{L,\mathrm{basic}}\big(\alpha_\mathrm{B},\phi_\mathrm{hyst}\big)$ corresponding to the tabular function named 'aero/coefficient/CLwbh' in the aerodynamic model of c172p.
   </p>
@@ -140,7 +140,7 @@ is plotted below as a function of $\alpha_\mathrm{B}$ and $\phi_\mathrm{hyst}$.
 ---
 
 <figure markdown>
-  ![CL Basic](/assets/img/c172_CD_basic.png){: .center width="70%" }
+  ![CL Basic](../../assets/img/c172_CD_basic.png){: .center width="70%" }
   <p markdown="span">
 	The plotted function of two variables $C_{D,\mathrm{basic}}\big(\alpha_\mathrm{B},\delta_\mathrm{flap}\big)$ corresponding to the tabular function named 'aero/coefficient/CDwbh' in the aerodynamic model of c172p.
   </p>
