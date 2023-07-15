@@ -51,6 +51,7 @@ MkDocs will then run a local web server at http://localhost:8000, rebuilding the
 You can also build the manual as a static site for offline use using the commands shown below:
 ```bash
 export OFFLINE=true # OR < set OFFLINE=true > on Windows
+export CI=false
 mkdocs build
 ```
 The built manual will be located in the *site/* directory. You will now be able to use the search feature offline.

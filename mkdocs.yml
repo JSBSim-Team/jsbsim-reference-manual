@@ -95,9 +95,10 @@ plugins:
   # enable this plugin.
   - offline:
      enabled: !ENV [OFFLINE, false]
+  # Disable the following for offline builds as well.
   - git-revision-date-localized:
       enable_creation_date: false
-      enabled: !ENV [CI, false]
+      enabled: !ENV [CI, true]
       type: date
   - tags:
-      enabled: !ENV [CI, false]
+      enabled: !ENV [CI, true]
