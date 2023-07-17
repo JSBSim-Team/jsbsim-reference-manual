@@ -1,0 +1,104 @@
+site_name: JSBSim Manual
+site_url: https://jsbsim-team.github.io/jsbsim-reference-manual
+site_description: Online JSBSim manual (User, and Programmer Manual)
+repo_url: https://github.com/JSBSim-Team/jsbsim-reference-manual
+repo_name: jsbsim-reference-manual
+
+# When adding pages to nav you can supply and index page as the first file of
+# a subsection.
+nav:
+  - 'index.md'
+  - Documentation:
+    - 'acknowledgements.md'
+    - 'preface.md'
+    - 'Quickstart':
+      - 'quickstart/index.md'
+      - 'quickstart/getting-the-source.md'
+      - 'quickstart/building-the-program.md'
+      - 'quickstart/building-using-visualstudio.md'
+      - 'quickstart/running-the-program.md'
+      - 'quickstart/getting-support.md'
+    - 'User Manual':
+      - 'user/index.md'
+      - 'user/overview.md'
+      - 'Concepts':
+        - 'user/concepts/simulation.md'
+        - 'user/concepts/frames-of-reference.md'
+        - 'user/concepts/units.md'
+        - 'user/concepts/properties.md'
+        - 'user/concepts/math.md'
+        - 'user/concepts/forces-and-moments.md'
+        - 'user/concepts/flight-control-and-systems-modeling.md'
+      - 'user/authoring-config-files.md'
+    - 'Programmer Manual':
+      - 'programmer/index.md'
+      - 'programmer/overview.md'
+      - 'programmer/class-hierarchy.md'
+    - 'Formulation Manual':
+      - 'formulation/index.md'
+      - 'formulation/overview.md'
+      - 'formulation/earth-modeling.md'
+      - 'formulation/quaternions.md'
+      - 'formulation/equations-of-motion.md'
+      - 'formulation/equations-of-motion-ii.md'
+    - 'references.md'
+    - 'contact.md'
+    - 'licensing.md'
+# Copyright notice
+copyright: (c) Jon S. Berndt, and Agostino De Marco, Università degli Studi di Napoli Federico II
+# Material theme customization
+theme:
+  name: material
+  logo: assets/img/logo_jsbsim_globe_no_text.png
+  favicon: assets/favicon.ico
+  custom_dir: overrides
+  features:
+    - navigation.indexes
+    - navigation.footer
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+    primary: blue
+    accent: deep purple
+# Extra configuration variables
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/JSBSim-Team/jsbsim
+      name: JSBSim-Team on GitHub
+  generator: true
+  # Specify who is maintaining the manual
+  maintainer: JSBSim-Team
+  maintainer_url: https://github.com/JSBSim-Team
+# Enabled Markdown extensions
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.superfences
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+extra_css:
+  - stylesheets/extra.css
+# Plugins and configuration
+plugins:
+  - search:
+      lang: en
+  # This Material for MkDocs plugin allows for building mkdocs offline and
+  # preserving the functionality of the site search feature.  Set the
+  # JSBSIM_REFDOC_OFFLINE environment variable on your system to 'true' to
+  # enable this plugin.
+  - offline:
+     enabled: !ENV [OFFLINE, false]
+  # Disable the following for offline builds as well.
+  - git-revision-date-localized:
+      enable_creation_date: false
+      enabled: !ENV [CI, true]
+      type: date
+  - tags:
+      enabled: !ENV [CI, true]

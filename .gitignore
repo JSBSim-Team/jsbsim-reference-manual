@@ -1,6 +1,5 @@
-docs/_site/
-docs/.sass-cache/
-docs/.jekyll-metadata
-docs/_mypages/Jupyter_Notebooks/JSBSim/*.exe
-docs/vendor
-docs/.bundle
+# Exclude mkdocs build output:
+site/
+# Exclude possible Python virtualenv:
+env/
+__pycache__

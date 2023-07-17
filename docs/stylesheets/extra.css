@@ -1,0 +1,9 @@
+/**
+ * Use this class to center images in Markdown with attr_list
+ * Example:
+ * ![JSBSim Logo](assets/img/logo_jsbsim_globe.svg){: .center width="65%" }
+ */
+.center {
+    display: block;
+    margin: 0 auto;
+}
