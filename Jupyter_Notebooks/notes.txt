@@ -1,0 +1,15 @@
+Installed stuff:
+
+* https://pint.readthedocs.io/en/latest/
+  Pint: makes units easy
+  https://anaconda.org/conda-forge/pint
+  > conda install -c conda-forge pint
+  
+
+* https://pypi.org/project/tailer/
+  Python tail is a simple implementation of GNU tail and head.
+  > pip install tailer
+  
+* https://pypi.org/project/utm/
+  Bidirectional UTM-WGS84 converter for python
+  > pip install utm

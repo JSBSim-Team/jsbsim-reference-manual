@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" 
+	href="http://jsbsim.sourceforge.net/JSBSimScript.xsl"?>
+
+
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+		name="Script for C172x - Descent with throttle autopilot ">
+
+
+    <!--
+		C172x performing a descent with glide angle hold both on 
+        throttle and elevator channels
+    -->
+
+    <use aircraft="c172x_unina" initialize="init_mantest_glide_hold_ap" />
+    <run start="0.0" end="140" dt="0.0083333"> 
+
+               
+        <event name="Trim">
+            <description>Trim the aircraft in the initial conditions</description>
+            <condition> 
+                simulation/sim-time-sec ge 0 
+            </condition>
+            <set name="simulation/do_simple_trim" value="1" />
+            <notify>
+                <property>velocities/vc-kts</property>
+                <property>velocities/vt-fps</property>
+                <property>attitude/phi-deg</property>
+                <property>attitude/theta-deg</property>
+                <property>attitude/psi-deg</property>
+                <property>ic/h-agl-ft</property>
+                <property>simulation/trim-completed</property>               
+            </notify>
+        </event>
+
+        
+        <event name="Activate other autopilots">
+            <condition>simulation/sim-time-sec ge 1</condition>
+            <set name="ap/theta-angle-setpoint" value="0" />
+            <set name="ap/heading-setpoint"><function><property>attitude/psi-deg</property></function></set>
+            <set name="ap/theta-angle-hold" value="1" />
+            <set name="ap/heading-hold" value="1" />
+        </event>
+        
+            
+        <event name="Glide angle autopilot">
+            <description>Pursue glide path, with autopilot</description>
+            <condition>simulation/sim-time-sec ge 5</condition>
+            <set name="ap/glide-angle-throt-setpoint" value="-5" />
+            <set name="ap/glide-angle-elev-setpoint" value="-5" />
+            
+            <set name="ap/throttle-pid-kp" value="0.00000700" />
+            <set name="ap/throttle-pid-ki" value="0.00000125" />
+            <set name="ap/throttle-pid-kd" value="0.00000300" />
+            <set name="ap/glide-angle-throt-hold" value="1" />
+            
+            <set name="ap/gamma-pid-kp" value="0.0200" />
+            <set name="ap/gamma-pid-ki" value="0.0040" />
+            <set name="ap/gamma-pid-kd" value="0.0783" />
+            <set name="ap/glide-angle-elev-hold" value="1" />
+            
+            <set name="ap/theta-angle-setpoint" value="0" />
+            <set name="ap/theta-angle-hold" value="1" />
+            <notify>
+            </notify>
+        </event>
+
+        
+    </run>
+</runscript>

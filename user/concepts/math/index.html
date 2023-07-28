@@ -1,0 +1,1580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Applying math concepts in JSBSim.">
+      
+      
+      
+        <link rel="canonical" href="https://jsbsim-team.github.io/jsbsim-reference-manual/user/concepts/math/">
+      
+      
+        <link rel="prev" href="../properties/">
+      
+      
+        <link rel="next" href="../forces-and-moments/">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Math - JSBSim Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#math" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JSBSim Manual" class="md-header__button md-logo" aria-label="JSBSim Manual" data-md-component="logo">
+      
+  <img src="../../../assets/img/logo_jsbsim_globe_no_text.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JSBSim Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Math
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JSBSim-Team/jsbsim-reference-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsbsim-reference-manual
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JSBSim Manual" class="md-nav__button md-logo" aria-label="JSBSim Manual" data-md-component="logo">
+      
+  <img src="../../../assets/img/logo_jsbsim_globe_no_text.png" alt="logo">
+
+    </a>
+    JSBSim Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JSBSim-Team/jsbsim-reference-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsbsim-reference-manual
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../preface/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../quickstart/">Quickstart</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Quickstart
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/getting-the-source/" class="md-nav__link">
+        Getting the source
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/building-the-program/" class="md-nav__link">
+        Building the program
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/building-using-visualstudio/" class="md-nav__link">
+        Building using Visual Studio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/running-the-program/" class="md-nav__link">
+        Running the program
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/getting-support/" class="md-nav__link">
+        Getting support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">User Manual</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          User Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+          Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simulation/" class="md-nav__link">
+        Simulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../frames-of-reference/" class="md-nav__link">
+        Frames of reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../units/" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../properties/" class="md-nav__link">
+        Properties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Math
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Math
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpolate-1d" class="md-nav__link">
+    Interpolate 1D
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forces-and-moments/" class="md-nav__link">
+        Forces and moments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flight-control-and-systems-modeling/" class="md-nav__link">
+        Flight Control and System Modelling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authoring-config-files/" class="md-nav__link">
+        Authoring configuration files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../programmer/">Programmer Manual</a>
+          
+            <label for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programmer Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programmer/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programmer/class-hierarchy/" class="md-nav__link">
+        Class hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../formulation/">Formulation Manual</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Formulation Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/earth-modeling/" class="md-nav__link">
+        Earth modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/quaternions/" class="md-nav__link">
+        Quaternions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/equations-of-motion/" class="md-nav__link">
+        Equations of motion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/equations-of-motion-ii/" class="md-nav__link">
+        Earth modeling II
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        References
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../licensing/" class="md-nav__link">
+        Licensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#interpolate-1d" class="md-nav__link">
+    Interpolate 1D
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+<h1 id="math">Math</h1>
+<h2 id="functions">Functions</h2>
+<p>The function specification in JSBSim is a powerful and versatile resource that allows algebraic functions to be defined in a JSBSim configuration file. The function syntax is similar in concept to MathML (Mathematical Markup Language, <a href="http://www.w3.org/Math/">http://www.w3.org/Math/</a>), but it is simpler and more terse.</p>
+<p>A function definition consists of an operation, a value, a table, or a property (which evaluates
+to a value). The currently supported operations are:</p>
+<ul>
+<li><code>sum</code> (takes n arguments)</li>
+<li><code>difference</code> (takes n arguments)</li>
+<li><code>product</code> (takes n arguments)</li>
+<li><code>quotient</code> (takes 2 arguments)</li>
+<li><code>pow</code> (takes 2 arguments)</li>
+<li><code>exp</code> (takes 2 arguments)</li>
+<li><code>abs</code> (takes n arguments)</li>
+<li><code>sin</code> (takes 1 arguments)</li>
+<li><code>cos</code> (takes 1 arguments)</li>
+<li><code>tan</code> (takes 1 arguments)</li>
+<li><code>asin</code> (takes 1 arguments)</li>
+<li><code>acos</code> (takes 1 arguments)</li>
+<li><code>atan</code> (takes 1 arguments)</li>
+<li><code>atan2</code> (takes 2 arguments)</li>
+<li><code>min</code> (takes n arguments)</li>
+<li><code>max</code> (takes n arguments)</li>
+<li><code>avg</code> (takes n arguments)</li>
+<li><code>fraction</code> (takes 1 argument)</li>
+<li><code>mod</code> (takes 2 arguments)</li>
+<li><code>lt</code> (less than, takes 2 args)</li>
+<li><code>le</code> (less equal, takes 2 args)</li>
+<li><code>gt</code> (greater than, takes 2 args)</li>
+<li><code>ge</code> (greater than, takes 2 args)</li>
+<li><code>eq</code> (equal, takes 2 args)</li>
+<li><code>nq</code> (not equal, takes 2 args)</li>
+<li><code>and</code> (takes n args)</li>
+<li><code>or</code> (takes n args)</li>
+<li><code>not</code> (takes 1 args)</li>
+<li><code>if-then</code> (takes 2-3 args)</li>
+<li><code>switch</code> (takes 2 or more args)</li>
+<li><code>random</code> (Gaussian random number, takes no arguments)</li>
+<li><code>integer</code> (takes one argument)</li>
+</ul>
+<p>An operation is defined in the configuration file as in the following example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;sum&gt;</span>
+<span class="w">   </span><span class="nt">&lt;value&gt;</span><span class="w"> </span>3.14159<span class="w"> </span><span class="nt">&lt;/value&gt;</span>
+<span class="w">   </span><span class="nt">&lt;property&gt;</span><span class="w"> </span>velocities/qbar<span class="w"> </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">   </span><span class="nt">&lt;product&gt;</span>
+<span class="w">      </span><span class="nt">&lt;value&gt;</span><span class="w"> </span>0.125<span class="w"> </span><span class="nt">&lt;/value&gt;</span>
+<span class="w">      </span><span class="nt">&lt;property&gt;</span><span class="w"> </span>metrics/wingarea<span class="w"> </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/product&gt;</span>
+<span class="nt">&lt;/sum&gt;</span>
+</code></pre></div>
+<p>In the example above, the sum element contains three other items. What gets evaluated is written algebraically as:</p>
+<div class="arithmatex">\[
+3.14159 + \mathtt{qbar} + \big( 0.125 \cdot \mathtt{wingarea} \big)
+\]</div>
+<p>A full function definition, such as is used in the aerodynamics section of a configuration file includes the function element, and other elements. It should be noted that there can be only one non-optional (non-documentation) element — that is, one operation element — in the top-level function definition. The <function> element cannot have more than one immediate child operation, <code>property</code>, <code>table</code>, or <code>value</code> element. Almost always, the first operation within the function element will be a product or sum. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;aero/moment/roll_moment_due_to_yaw_rate&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;description&gt;</span><span class="w"> </span>Roll<span class="w"> </span>moment<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>yaw<span class="w"> </span>rate<span class="w"> </span><span class="nt">&lt;/description&gt;</span>
+<span class="w">   </span><span class="nt">&lt;product&gt;</span>
+<span class="w">      </span><span class="nt">&lt;property&gt;</span><span class="w"> </span>aero/qbar-area<span class="w"> </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">      </span><span class="nt">&lt;property&gt;</span><span class="w"> </span>metrics/bw-ft<span class="w"> </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">      </span><span class="nt">&lt;property&gt;</span><span class="w"> </span>velocities/r-aero-rad_sec<span class="w"> </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">      </span><span class="nt">&lt;property&gt;</span><span class="w"> </span>aero/bi2vel<span class="w"> </span><span class="nt">&lt;/property&gt;</span>
+<span class="w">      </span><span class="nt">&lt;table&gt;</span>
+<span class="w">         </span><span class="nt">&lt;independentVar&gt;</span><span class="w"> </span>aero/alpha-rad<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">         </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">            </span>0.000<span class="w"> </span>0.08
+<span class="w">            </span>0.094<span class="w"> </span>0.19
+<span class="w">            </span>...<span class="w">   </span>...
+<span class="w">         </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/product&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+</code></pre></div>
+<p>The “lowest level” in a function definition is always a value or a property, which cannot itself contain another element. As shown, operations can contain values, properties, tables, or other operations.</p>
+<p>Some operations take only a single argument. That argument, however, can be an operation (such as sum) which can contain other items. The point to keep in mind is any such contained operation evaluates to a single value — which is just what the trigonometric functions require (except atan2 , which takes two arguments).</p>
+<p>Finally, within a function definition, there are some shorthand aliases that can be used for brevity in place of the standard element tags. Properties, values, and tables are normally referred to with the tags, <code>&lt;property&gt;</code>, <code>&lt;value&gt;</code>, and <code>&lt;table&gt;</code>. Within a function definition only, those elements can be referred to with the tags, <code>&lt;p&gt;</code>, <code>&lt;v&gt;</code>, and <code>&lt;t&gt;</code>. Thus, the previous example could be written to look like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;aero/moment/roll_moment_due_to_yaw_rate&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;description&gt;</span>Roll<span class="w"> </span>moment<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>yaw<span class="w"> </span>rate<span class="nt">&lt;/description&gt;</span>
+<span class="w">   </span><span class="nt">&lt;product&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>aero/qbar-area<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>metrics/bw-ft<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>aero/bi2vel<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/r-aero-rad_sec<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;t&gt;</span>
+<span class="w">         </span><span class="nt">&lt;independentVar&gt;</span><span class="w"> </span>aero/alpha-rad<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">         </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">            </span>0.000<span class="w"> </span>0.08
+<span class="w">            </span>0.094<span class="w"> </span>0.19
+<span class="w">            </span>...<span class="w">   </span>...
+<span class="w">         </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/t&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/product&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+</code></pre></div>
+<p>An example of tabular functions used in aerodynamic modeling is given by ground-effect factors affecting lift and drag. An explanation of the ground effect is given in the figure below.</p>
+<figure>
+<p><img alt="Ground effect" class="center" src="../../../assets/img/ac_ground_effect.svg" width="100%" />
+  </p>
+<figcaption>
+    Explanation of ground effect.
+  </figcaption>
+</figure>
+<p>To see how the ground effect can be modelled in JSBSim one can look at the Cessna 172 Skyhawk model. This is implemented in the file: <code>&lt;JSBSim-root-dir&gt;/aircraft/c172p/c172p.xml</code>. In the <code>&lt;aerodynamics/&gt;</code> block of this XML file two non-dimensional factors are modeled, <span class="arithmatex">\(K_{C_D,\mathrm{ge}}\)</span> and <span class="arithmatex">\(K_{C_L,\mathrm{ge}}\)</span>, which are functions of the non-dimensional height above the ground and are to be thought of as multipliers of lift and drag, respectively. These factors are defined as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;aero/function/kCDge&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;description&gt;</span>Change<span class="w"> </span>in<span class="w"> </span>drag<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>ground<span class="w"> </span>effect<span class="nt">&lt;/description&gt;</span>
+<span class="w">   </span><span class="nt">&lt;product&gt;</span>
+<span class="w">      </span><span class="nt">&lt;value&gt;</span>1.0<span class="nt">&lt;/value&gt;</span>
+<span class="w">      </span><span class="nt">&lt;table&gt;</span>
+<span class="w">         </span><span class="nt">&lt;independentVar&gt;</span><span class="w"> </span>aero/h_b-mac-ft<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">         </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">            </span>0.0000<span class="w"> </span>0.4800
+<span class="w">            </span>0.1000<span class="w"> </span>0.5150
+<span class="w">            </span>0.1500<span class="w"> </span>0.6290
+<span class="w">            </span>0.2000<span class="w"> </span>0.7090
+<span class="w">            </span>0.3000<span class="w"> </span>0.8150
+<span class="w">            </span>0.4000<span class="w"> </span>0.8820
+<span class="w">            </span>0.5000<span class="w"> </span>0.9280
+<span class="w">            </span>0.6000<span class="w"> </span>0.9620
+<span class="w">            </span>0.7000<span class="w"> </span>0.9880
+<span class="w">            </span>0.8000<span class="w"> </span>1.0000
+<span class="w">            </span>0.9000<span class="w"> </span>1.0000
+<span class="w">            </span>1.0000<span class="w"> </span>1.0000
+<span class="w">            </span>1.1000<span class="w"> </span>1.0000
+<span class="w">         </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/product&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+
+<span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;aero/function/kCLge&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;description&gt;</span>Change<span class="w"> </span>in<span class="w"> </span>lift<span class="w"> </span>due<span class="w"> </span>to<span class="w"> </span>ground<span class="w"> </span>effect<span class="nt">&lt;/description&gt;</span>
+<span class="w">   </span><span class="nt">&lt;product&gt;</span>
+<span class="w">      </span><span class="nt">&lt;value&gt;</span>1.0<span class="nt">&lt;/value&gt;</span>
+<span class="w">      </span><span class="nt">&lt;table&gt;</span>
+<span class="w">         </span><span class="nt">&lt;independentVar&gt;</span><span class="w"> </span>aero/h_b-mac-ft<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">         </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">            </span>0.0000<span class="w"> </span>1.2030
+<span class="w">            </span>0.1000<span class="w"> </span>1.1270
+<span class="w">            </span>0.1500<span class="w"> </span>1.0900
+<span class="w">            </span>0.2000<span class="w"> </span>1.0730
+<span class="w">            </span>0.3000<span class="w"> </span>1.0460
+<span class="w">            </span>0.4000<span class="w"> </span>1.0550
+<span class="w">            </span>0.5000<span class="w"> </span>1.0190
+<span class="w">            </span>0.6000<span class="w"> </span>1.0130
+<span class="w">            </span>0.7000<span class="w"> </span>1.0080
+<span class="w">            </span>0.8000<span class="w"> </span>1.0060
+<span class="w">            </span>0.9000<span class="w"> </span>1.0030
+<span class="w">            </span>1.0000<span class="w"> </span>1.0020
+<span class="w">            </span>1.1000<span class="w"> </span>1.0000
+<span class="w">         </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">      </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/product&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+</code></pre></div>
+<p>The tabular functions <code>aero/function/kCDge and aero/function/kCLge</code>, representing the factors <span class="arithmatex">\(K_{C_D,\mathrm{ge}}\)</span> and <span class="arithmatex">\(K_{C_L,\mathrm{ge}}\)</span>, are plotted in the figure below against the non-dimensional ground altitude <span class="arithmatex">\(h/(b/2)\)</span>. The ground-effect is seen when the aircraft altitude above the ground is less than the wing semi-span <span class="arithmatex">\(b/2\)</span>. For higher altitudes each of these two factors assume value 1.</p>
+<figure>
+<p><img alt="Ground effect CL CD" class="center" src="../../../assets/img/c172_ground_effect_CL_CD.png" width="70%" />
+  </p>
+<p>
+    Plotted functions of non-dimensional ground altitude <span class="arithmatex">\(h/(b/2)\)</span>, defining the properties named 'aero/function/kCLge' and 'aero/function/kCDge' in the aerodynamic model of c172p.
+  </p>
+</figure>
+<h2 id="tables">Tables</h2>
+<p>One, two, or three dimensional lookup tables can be defined in JSBSim for use in aerodynamics and function definitions. For a single "vector" lookup table, the format is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;property_name_0&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span><span class="w"> </span>property_name_1<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">      </span>key_1<span class="w">  </span>value_1
+<span class="w">      </span>key_2<span class="w">  </span>value_2
+<span class="w">      </span>...<span class="w">    </span>...
+<span class="w">      </span>key_n<span class="w">  </span>value_n
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div>
+<p>The <code>lookup="row"</code> attribute in the <code>&lt;independentVar/&gt;</code> element is optional in this case; it is assumed that the <code>independentVar</code> is a row variable. A real example is as shown here:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span><span class="w"> </span>aero/alpha-rad<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">      </span>-1.57<span class="w">  </span>1.500
+<span class="w">      </span>-0.26<span class="w">  </span>0.033
+<span class="w">       </span>0.00<span class="w">  </span>0.025
+<span class="w">       </span>0.26<span class="w">  </span>0.033
+<span class="w">       </span>1.57<span class="w">  </span>1.500
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div>
+<p>The first column in the data table represents the lookup index (or <em>breakpoints</em>, or keys). In this case, the lookup index is <code>aero/alpha-rad</code> (angle of attack in radians). If <code>aero/alpha-rad</code> is <span class="arithmatex">\(0.26\)</span> radians, the value returned from the lookup table would be <span class="arithmatex">\(0.033\)</span>.</p>
+<p>The definition for a 2D table, is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;property_name_0&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span><span class="w">    </span>property_name_1<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;column&quot;</span><span class="nt">&gt;</span><span class="w"> </span>property_name_2<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">                  </span>{col_1_key<span class="w">   </span>col_2_key<span class="w">   </span>...<span class="w">  </span>col_n_key<span class="w"> </span>}
+<span class="w">      </span>{row_1_key}<span class="w"> </span>{col_1_data<span class="w">  </span>col_2_data<span class="w">  </span>...<span class="w">  </span>col_n_data}
+<span class="w">      </span>{row_2_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{<span class="w">   </span>...<span class="w">   </span>}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{row_n_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div>
+<p>The data is in a gridded format. A real example is as shown below. Alpha in radians is the row lookup (alpha breakpoints are arranged in the first column) and flap position in degrees is split up in columns for deflections of 0, 10, 20, and 30 degrees):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span><span class="w">    </span>aero/alpha-rad<span class="w">   </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;column&quot;</span><span class="nt">&gt;</span><span class="w"> </span>fcs/flap-pos-deg<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData&gt;</span>
+<span class="w">                 </span>0.0<span class="w">          </span>10.0<span class="w">        </span>20.0<span class="w">       </span>30.0
+<span class="w">     </span>-0.0523599<span class="w">  </span>8.96747e-05<span class="w">  </span>0.00231942<span class="w">  </span>0.0059252<span class="w">  </span>0.00835082
+<span class="w">     </span>-0.0349066<span class="w">  </span>0.000313268<span class="w">  </span>0.00567451<span class="w">  </span>0.0108461<span class="w">  </span>0.0140545
+<span class="w">     </span>-0.0174533<span class="w">  </span>0.00201318<span class="w">   </span>0.0105059<span class="w">   </span>0.0172432<span class="w">  </span>0.0212346
+<span class="w">      </span>0.0<span class="w">        </span>0.0051894<span class="w">    </span>0.0168137<span class="w">   </span>0.0251167<span class="w">  </span>0.0298909
+<span class="w">      </span>0.0174533<span class="w">  </span>0.00993967<span class="w">   </span>0.0247521<span class="w">   </span>0.0346492<span class="w">  </span>0.0402205
+<span class="w">      </span>0.0349066<span class="w">  </span>0.0162201<span class="w">    </span>0.0342207<span class="w">   </span>0.0457119<span class="w">  </span>0.0520802
+<span class="w">      </span>0.0523599<span class="w">  </span>0.0240308<span class="w">    </span>0.0452195<span class="w">   </span>0.0583047<span class="w">  </span>0.0654701
+<span class="w">      </span>0.0698132<span class="w">  </span>0.0333717<span class="w">    </span>0.0577485<span class="w">   </span>0.0724278<span class="w">  </span>0.0803902
+<span class="w">      </span>0.0872664<span class="w">  </span>0.0442427<span class="w">    </span>0.0718077<span class="w">   </span>0.088081<span class="w">   </span>0.0968405
+<span class="w">  </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div>
+<p>The definition for a 3D table in a coefficient would be (for example):</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;property_name_0&quot;</span><span class="nt">&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span><span class="w">    </span>property_name_1<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;column&quot;</span><span class="nt">&gt;</span><span class="w"> </span>property_name_2<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span><span class="w">  </span>property_name_3<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData</span><span class="w">  </span><span class="na">breakpoint=</span><span class="s">&quot;table_1_key&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span>{col_1_key<span class="w">   </span>col_2_key<span class="w">   </span>...<span class="w">  </span>col_n_key<span class="w"> </span>}
+<span class="w">      </span>{row_1_key}<span class="w"> </span>{col_1_data<span class="w">  </span>col_2_data<span class="w">  </span>...<span class="w">  </span>col_n_data}
+<span class="w">      </span>{row_2_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{<span class="w">   </span>...<span class="w">   </span>}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{row_n_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData</span><span class="w">  </span><span class="na">breakpoint=</span><span class="s">&quot;table_2_key&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span>{col_1_key<span class="w">   </span>col_2_key<span class="w">   </span>...<span class="w">  </span>col_n_key<span class="w"> </span>}
+<span class="w">      </span>{row_1_key}<span class="w"> </span>{col_1_data<span class="w">  </span>col_2_data<span class="w">  </span>...<span class="w">  </span>col_n_data}
+<span class="w">      </span>{row_2_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{<span class="w">   </span>...<span class="w">   </span>}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{row_n_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">   </span>...
+<span class="w">   </span><span class="nt">&lt;tableData</span><span class="w">  </span><span class="na">breakpoint=</span><span class="s">&quot;table_n_key&quot;</span><span class="nt">&gt;</span>
+<span class="w">                  </span>{col_1_key<span class="w">   </span>col_2_key<span class="w">   </span>...<span class="w">  </span>col_n_key<span class="w"> </span>}
+<span class="w">      </span>{row_1_key}<span class="w"> </span>{col_1_data<span class="w">  </span>col_2_data<span class="w">  </span>...<span class="w">  </span>col_n_data}
+<span class="w">      </span>{row_2_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{<span class="w">   </span>...<span class="w">   </span>}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">      </span>{row_n_key}<span class="w"> </span>{...<span class="w">         </span>...<span class="w">         </span>...<span class="w">  </span>...<span class="w">       </span>}
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span><span class="w">   </span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div>
+<p>Note the breakpoint attribute in the tableData element, above. Here’s an example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;table&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;row&quot;</span><span class="nt">&gt;</span><span class="w">    </span>fcs/row-value<span class="w">    </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;column&quot;</span><span class="nt">&gt;</span><span class="w"> </span>fcs/column-value<span class="w"> </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;independentVar</span><span class="w"> </span><span class="na">lookup=</span><span class="s">&quot;table&quot;</span><span class="nt">&gt;</span><span class="w">  </span>fcs/table-value<span class="w">  </span><span class="nt">&lt;/independentVar&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData</span><span class="w"> </span><span class="na">breakPoint=</span><span class="s">&quot;-1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">           </span>-1.0<span class="w">    </span>1.0
+<span class="w">      </span>0.0<span class="w">  </span>1.0000<span class="w">  </span>2.0000
+<span class="w">      </span>1.0<span class="w">  </span>3.0000<span class="w">  </span>4.0000
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData</span><span class="w"> </span><span class="na">breakPoint=</span><span class="s">&quot;0.0000&quot;</span><span class="nt">&gt;</span>
+<span class="w">           </span>0.0<span class="w">     </span>10.0
+<span class="w">      </span>2.0<span class="w">  </span>1.0000<span class="w">  </span>2.0000
+<span class="w">      </span>3.0<span class="w">  </span>3.0000<span class="w">  </span>4.0000
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="w">   </span><span class="nt">&lt;tableData</span><span class="w"> </span><span class="na">breakPoint=</span><span class="s">&quot;1.0&quot;</span><span class="nt">&gt;</span>
+<span class="w">            </span>0.0<span class="w">     </span>10.0<span class="w">    </span>20.0
+<span class="w">       </span>2.0<span class="w">  </span>1.0000<span class="w">  </span>2.0000<span class="w">  </span>3.0000
+<span class="w">       </span>3.0<span class="w">  </span>4.0000<span class="w">  </span>5.0000<span class="w">  </span>6.0000
+<span class="w">      </span>10.0<span class="w">  </span>7.0000<span class="w">  </span>8.0000<span class="w">  </span>9.0000
+<span class="w">   </span><span class="nt">&lt;/tableData&gt;</span>
+<span class="nt">&lt;/table&gt;</span>
+</code></pre></div>
+<p>Note that table values are interpolated linearly, and no extrapolation is done at the table limits — the highest value a table will return is the highest value that is defined.</p>
+<h3 id="interpolate-1d">Interpolate 1D</h3>
+<p>Some lookup tables in simulation - particularly for aerodynamic data - can be four, five, six, or even more dimensional. 
+Interpolate1d returns the result from a 1-dimensional interpolation of the
+supplied values, with the value of the first immediate child element
+representing the lookup value into the table, and the following pairs of
+values representing the independent and dependent values. The first provided
+child element is expected to be a property. The interpolation does not
+extrapolate, but holds the highest value if the provided lookup value goes
+outside of the provided range. The format is as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">  </span>{property,<span class="w"> </span>value,<span class="w"> </span>table,<span class="w"> </span>function}
+<span class="w">  </span>{property,<span class="w"> </span>value,<span class="w"> </span>table,<span class="w"> </span>function}<span class="w"> </span>{property,<span class="w"> </span>value,<span class="w"> </span>table,<span class="w"> </span>function}
+<span class="w">  </span>...
+<span class="nt">&lt;/interpolate1d&gt;</span>
+</code></pre></div>
+<p>Example: If mach is 0.4, the interpolation will return 0.375. If mach is 1.5, the interpolation will return 0.60.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.25<span class="w"> </span><span class="nt">&lt;/v&gt;</span>
+<span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.50<span class="w"> </span><span class="nt">&lt;/v&gt;</span>
+<span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.60<span class="w"> </span><span class="nt">&lt;/v&gt;</span>
+<span class="nt">&lt;/interpolate1d&gt;</span>
+</code></pre></div>
+<p>The above example is very simplistic. A more involved example would use a
+function in any argument (except the first). That means that the breakpoint
+vector can be variable - which would probably not be common - but more
+importantly the values in the lookup vector (second column) could be
+function table elements of 1, 2, or 3 dimensions. The arguments could even
+be nested interpolate1d elements. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;whatever&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">    </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+</code></pre></div>
+<p>Carrying this further:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;bigWhatever1&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">    </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>aero/qbar-psf<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>1<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>2<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>3<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>65<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w"> </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>1<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>2<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>3<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w"> </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>1<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>2<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>3<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+</code></pre></div>
+<p>The above effectively gives a five dimensional lookup table. It would be big
+and messy, in practice, but there it is. :-)</p>
+<p>There is more, though. For very, very large aero databases there might be
+times when some aero coefficients do not need to be calculated. For
+instance, ground effects aero coefficients only need to be calculated close
+to the ground. Why waste CPU cycles when the ground effects do not
+contribute to the aero forces and moments? We can employ the <code>ifthen</code> element
+to bypass expensive computations. The <code>ifthen</code> element works as follows:</p>
+<p>If the value of the first immediate child element is 1, then the value of
+the second immediate child element is returned, otherwise the value of the
+third child element is returned.</p>
+<p>If the value of the first immediate child element is 1, then the value of
+the second immediate child element is returned, otherwise the value of the
+third child element is returned.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;ifthen&gt;</span>
+<span class="w">  </span>{property,<span class="w"> </span>value,<span class="w"> </span>table,<span class="w"> </span>or<span class="w"> </span>other<span class="w"> </span>function<span class="w"> </span>element}
+<span class="w">  </span>{property,<span class="w"> </span>value,<span class="w"> </span>table,<span class="w"> </span>or<span class="w"> </span>other<span class="w"> </span>function<span class="w"> </span>element}
+<span class="w">  </span>{property,<span class="w"> </span>value,<span class="w"> </span>table,<span class="w"> </span>or<span class="w"> </span>other<span class="w"> </span>function<span class="w"> </span>element}
+<span class="nt">&lt;/ifthen&gt;</span>
+</code></pre></div>
+<p>Example: if flight-mode is greater than 2, then a value of 0.00 is returned, otherwise the value of the property control/pitch-lag is returned.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;ifthen&gt;</span>
+<span class="w">  </span><span class="nt">&lt;gt&gt;</span><span class="w"> </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>executive/flight-mode<span class="w"> </span><span class="nt">&lt;/p&gt;</span><span class="w"> </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>2<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w"> </span><span class="nt">&lt;/gt&gt;</span>
+<span class="w">  </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span>
+<span class="w">  </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>control/pitch-lag<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/ifthen&gt;</span>
+</code></pre></div>
+<p>In our case, we could write the 5-dimensional table lookup as follows, returning a zero unless the gear is down:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;function</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;propertyname&quot;</span><span class="nt">&gt;</span>
+<span class="w">  </span><span class="nt">&lt;ifthen&gt;</span>
+<span class="w">    </span><span class="nt">&lt;lt&gt;</span><span class="w"> </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>position/altitudeMSL<span class="w"> </span><span class="nt">&lt;/p&gt;</span><span class="w"> </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w"> </span><span class="nt">&lt;/lt&gt;</span>
+<span class="w">    </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">      </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>aero/qbar-psf<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">      </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>1<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>2<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>3<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">      </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>65<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w"> </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>1<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>2<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>3<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">      </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w"> </span><span class="nt">&lt;interpolate1d&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;p&gt;</span><span class="w"> </span>velocities/mach<span class="w"> </span><span class="nt">&lt;/p&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.00<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>1<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.80<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>2<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0.90<span class="w"> </span><span class="nt">&lt;/v&gt;</span><span class="w">  </span><span class="nt">&lt;table&gt;</span><span class="w"> </span>...<span class="w"> </span>table<span class="w"> </span>3<span class="w"> </span>definition<span class="w"> </span>...<span class="w"> </span><span class="nt">&lt;/table&gt;</span>
+<span class="w">                  </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/interpolate1d&gt;</span>
+<span class="w">    </span><span class="nt">&lt;v&gt;</span><span class="w"> </span>0<span class="w"> </span><span class="nt">&lt;/v&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/ifthen&gt;</span>
+<span class="nt">&lt;/function&gt;</span>
+</code></pre></div>
+<p>The above example is non-sensical in a way, but the format is correct. 
+Performance-wise it is good because the tables do not get executed unless 
+absolutely needed in the lookup.</p>
+<hr />
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 28, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../properties/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Properties" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Properties
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../forces-and-moments/" class="md-footer__link md-footer__link--next" aria-label="Next: Forces and moments" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Forces and moments
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      	
+        Maintained by <a href="https://github.com/JSBSim-Team">JSBSim-Team</a> —
+      
+	  (c) Jon S. Berndt, and Agostino De Marco, Università degli Studi di Napoli Federico II
+    </div>
+  
+  
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" target="_blank" rel="noopener" title="JSBSim-Team on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../../javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>

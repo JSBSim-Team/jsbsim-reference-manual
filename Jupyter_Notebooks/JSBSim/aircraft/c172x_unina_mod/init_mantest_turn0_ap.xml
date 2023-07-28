@@ -1,0 +1,22 @@
+<?xml version="1.0"?>                                       
+
+<!-- 
+Set the aircraft initial condition
+at 4000 feet above sea level, 
+over Naples, 
+on a heading of 90 degrees,
+on a horizontal flightpath,
+with engine running .
+-->
+
+<initialize name="EngineRunning">
+   
+  <vt unit="KTS">        100.0  </vt>
+  <latitude unit="DEG">   40.0  </latitude>
+  <longitude unit="DEG">  14.2  </longitude>
+  <psi unit="DEG">        90.0  </psi>
+  <altitude unit="FT">  4000.0  </altitude>
+  <gamma unit="DEG">       0.0  </gamma>
+  <running>                0    </running>                                 
+ 
+</initialize>

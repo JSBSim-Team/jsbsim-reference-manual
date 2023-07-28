@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl"
+	href="http://jsbsim.sourceforge.net/JSBSimScript.xsl"?>
+
+
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+		name="Script for C172x - Turn with autopilot ">
+
+
+    <!--
+		C172x performing a turn with autopilot as a pilot-simulator
+    -->
+
+    <use aircraft="c172x_unina" initialize="init_mantest_turn0_ap" />
+    <run start="0.0" end="80" dt="0.0083333"> 
+
+        <property value="1">simulation/notify-time-trigger</property>
+
+        <!--
+		For "do_simple_trim" (Classic trim):
+		0: Longitudinal
+		1: Full
+		2: Ground
+		3: Pullup
+		4: Custom
+		5: Turn
+		6: None
+		-->
+
+        <event name="Trim">
+            <description>Trim the aircraft in the initial conditions</description>
+            <condition>
+                simulation/sim-time-sec ge 0
+            </condition>
+            <set name="simulation/do_simple_trim" value="1" />
+            <notify>
+                <property>velocities/vc-kts</property>
+                <property>velocities/vt-fps</property>
+                <property>attitude/phi-deg</property>
+                <property>attitude/theta-deg</property>
+                <property>attitude/psi-deg</property>
+                <property>ic/h-agl-ft</property>
+                <property>simulation/trim-completed</property>
+                <property>simulation/notify-time-trigger</property>
+            </notify>
+        </event>
+
+
+
+        <!-- Turn with autopilot -->
+
+        <event name="Initialization 1">
+            <description>Assign reference values to setpoints</description>
+            <condition> simulation/trim-completed eq 1 </condition>
+            <set name="ap/heading-setpoint" value="90" />
+            <notify>
+                <property>ap/heading-setpoint</property>
+                <property>fcs/throttle-cmd-norm</property>
+            </notify>
+        </event>
+
+
+        <event name="Turn">
+            <description>Pursue heading and hold it, with autopilot</description>
+            <condition> simulation/sim-time-sec ge 1 </condition>
+            <set name="ap/heading-pid-kp" value="2.50" />
+            <set name="ap/heading-pid-ki" value="0.00" />
+            <set name="ap/heading-pid-kd" value="5.00" />
+            <set name="ap/heading-setpoint" value="+45" type="delta" action="ramp" tc="20" />
+            <set name="ap/heading-hold" value="1" />
+            <notify>
+            </notify>
+        </event>
+
+        <!--
+        <event name="Time Notify" persistent="true">
+            <description>Output message every second to see heading_setpoint time history</description>
+            <condition>
+                simulation/sim-time-sec ge simulation/notify-time-trigger
+            </condition>
+            <set name="simulation/notify-time-trigger" value="1" type="delta"/>
+            <notify>
+                <property>ap/heading-setpoint</property>
+            </notify>
+        <event>
+        -->
+
+
+    </run>
+</runscript>

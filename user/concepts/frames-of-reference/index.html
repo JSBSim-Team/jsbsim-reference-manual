@@ -1,0 +1,1391 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Frames of reference in JSBSim.">
+      
+      
+      
+        <link rel="canonical" href="https://jsbsim-team.github.io/jsbsim-reference-manual/user/concepts/frames-of-reference/">
+      
+      
+        <link rel="prev" href="../simulation/">
+      
+      
+        <link rel="next" href="../units/">
+      
+      <link rel="icon" href="../../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Frames of reference - JSBSim Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frames-of-reference" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="JSBSim Manual" class="md-header__button md-logo" aria-label="JSBSim Manual" data-md-component="logo">
+      
+  <img src="../../../assets/img/logo_jsbsim_globe_no_text.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JSBSim Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Frames of reference
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JSBSim-Team/jsbsim-reference-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsbsim-reference-manual
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="JSBSim Manual" class="md-nav__button md-logo" aria-label="JSBSim Manual" data-md-component="logo">
+      
+  <img src="../../../assets/img/logo_jsbsim_globe_no_text.png" alt="logo">
+
+    </a>
+    JSBSim Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JSBSim-Team/jsbsim-reference-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsbsim-reference-manual
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../preface/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../quickstart/">Quickstart</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Quickstart
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/getting-the-source/" class="md-nav__link">
+        Getting the source
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/building-the-program/" class="md-nav__link">
+        Building the program
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/building-using-visualstudio/" class="md-nav__link">
+        Building using Visual Studio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/running-the-program/" class="md-nav__link">
+        Running the program
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/getting-support/" class="md-nav__link">
+        Getting support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">User Manual</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          User Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+          Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../simulation/" class="md-nav__link">
+        Simulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Frames of reference
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Frames of reference
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structural-or-construction-frame" class="md-nav__link">
+    Structural, or "Construction" Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#body-frame" class="md-nav__link">
+    Body Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stability-or-aerodynamic-frame" class="md-nav__link">
+    Stability, or "Aerodynamic" Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earth-centered-inertial-frame-eci-and-earth-centered-earth-fixed-frame-ecef" class="md-nav__link">
+    Earth-Centered Inertial Frame (ECI) and Earth-Centered Earth-Fixed Frame (ECEF)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#north-oriented-tangent-frames" class="md-nav__link">
+    North-Oriented Tangent Frames
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-vertical-local-level-frame-or-local-ned-frame" class="md-nav__link">
+    Local-Vertical Local-Level Frame, or Local NED Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wind-frame" class="md-nav__link">
+    Wind Frame
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../units/" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../properties/" class="md-nav__link">
+        Properties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../math/" class="md-nav__link">
+        Math
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forces-and-moments/" class="md-nav__link">
+        Forces and moments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../flight-control-and-systems-modeling/" class="md-nav__link">
+        Flight Control and System Modelling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../authoring-config-files/" class="md-nav__link">
+        Authoring configuration files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../programmer/">Programmer Manual</a>
+          
+            <label for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programmer Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programmer/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../programmer/class-hierarchy/" class="md-nav__link">
+        Class hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../formulation/">Formulation Manual</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Formulation Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/earth-modeling/" class="md-nav__link">
+        Earth modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/quaternions/" class="md-nav__link">
+        Quaternions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/equations-of-motion/" class="md-nav__link">
+        Equations of motion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../formulation/equations-of-motion-ii/" class="md-nav__link">
+        Earth modeling II
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../references/" class="md-nav__link">
+        References
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../licensing/" class="md-nav__link">
+        Licensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#structural-or-construction-frame" class="md-nav__link">
+    Structural, or "Construction" Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#body-frame" class="md-nav__link">
+    Body Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stability-or-aerodynamic-frame" class="md-nav__link">
+    Stability, or "Aerodynamic" Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#earth-centered-inertial-frame-eci-and-earth-centered-earth-fixed-frame-ecef" class="md-nav__link">
+    Earth-Centered Inertial Frame (ECI) and Earth-Centered Earth-Fixed Frame (ECEF)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#north-oriented-tangent-frames" class="md-nav__link">
+    North-Oriented Tangent Frames
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-vertical-local-level-frame-or-local-ned-frame" class="md-nav__link">
+    Local-Vertical Local-Level Frame, or Local NED Frame
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wind-frame" class="md-nav__link">
+    Wind Frame
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+<h1 id="frames-of-reference">Frames of Reference</h1>
+<p>Before moving into a description of the configuration file syntax, one must understand some basic information about some of the frames of reference used (<em>i</em>) in describing the location of objects on the aircraft, (<em>ii</em>) in specifying conditions related to the position and orientation of the aircraft in space, or (<em>iii</em>) when assigning inputs for a given flight condition.</p>
+<p>Learn more on <a href="https://en.wikipedia.org/wiki/Axes_conventions">Wikipedia about axes conventions</a>.</p>
+<h2 id="structural-or-construction-frame">Structural, or "Construction" Frame</h2>
+<p>This frame is a common manufacturer's frame of reference and is used to define points on the aircraft such as the center of gravity, the locations of all the wheels, the pilot eye-point, point masses, thrusters, and so on. Items in the JSBSim aircraft configuration file are located using this frame.</p>
+<p>In the structural frame the X-axis runs along the fuselage length and points towards the tail, the Y-axis points from the fuselage out towards the right wing, and of course the Z-axis then is positive upwards. Typically, the origin <span class="arithmatex">\(O_\mathrm{C}\)</span> for this frame is near the front of the aircraft (at the tip of the nose, at the firewall for a single engine airplane, or at some distance in front of the nose). This frame is often named <span class="arithmatex">\(\mathcal{F}_\mathrm{C} = \{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}\)</span>.</p>
+<figure>
+<p><img alt="Construction axes" class="center" src="../../../assets/img/ac_construction_axes.svg" width="90%" />
+  </p>
+<p>
+    Aircraft structural (or construction) frame of reference with origin <span class="arithmatex">\(O_\mathrm{C}\)</span>. Besides the structural frame axes <span class="arithmatex">\(x_\mathrm{C}\)</span>, <span class="arithmatex">\(y_\mathrm{C}\)</span>, and <span class="arithmatex">\(z_\mathrm{C}\)</span>, the standard body frame axes <span class="arithmatex">\(x_\mathrm{B}\)</span>, <span class="arithmatex">\(y_\mathrm{B}\)</span>, and <span class="arithmatex">\(z_\mathrm{B}\)</span> are also shown with their origin at the center of mass <span class="arithmatex">\(G\)</span>. The pilot's eye-point is located at <span class="arithmatex">\(P_\mathrm{EP}\)</span>.
+  </p>
+</figure>
+<p>The X-axis is typically coincident with the fuselage centerline and often is coincident with the thrust axis (for instance, in single engine propeller aircraft it passes through the propeller hub). Positions along the <span class="arithmatex">\(x_\mathrm{C}\)</span> axis are referred to as stations. Positions along the <span class="arithmatex">\(z_\mathrm{C}\)</span> axis are referred to as waterline positions. Positions along the <span class="arithmatex">\(y_\mathrm{C}\)</span> axis are referred to as buttline positions.</p>
+<figure>
+<p><img alt="Construction axes" class="center" src="../../../assets/img/c172x_blender.png" width="70%" />
+  </p>
+<p>
+    A screenshot taken from the 3D modeling software Blender. The scene shows a model of Cessna 172 with its structural frame <span class="arithmatex">\(\mathcal{F}_\mathrm{C} = \{O_\mathrm{C}, x_\mathrm{C}, y_\mathrm{C}, z_\mathrm{C}\}\)</span>. The origin <span class="arithmatex">\(O_\mathrm{C}\)</span> in this case is located inside the cockpit, near the dashboard.
+  </p>
+</figure>
+<p>Note that the origin can be anywhere for a JSBSim-modeled aircraft, because JSBSim internally only uses the <em>relative distances</em> between the CG and the various objects --- not the absolute locations themselves.</p>
+<figure>
+<p><img alt="Center of gravity" class="center" src="../../../assets/img/ac_center_of_gravity.svg" width="90%" />
+  </p>
+<p>
+    Center of gravity (CG) position, point <span class="arithmatex">\(G\)</span>, determined in a construction frame.
+  </p>
+</figure>
+<figure>
+<p><img alt="Ground reaction" class="center" src="../../../assets/img/c172_ground_reaction.svg" width="90%" />
+  </p>
+<p>
+    Definition of ground contact points in terms of construction frame locations.
+  </p>
+</figure>
+<figure>
+<p><img alt="Key locations" class="center" src="../../../assets/img/c172_sideview.svg" width="70%" />
+  </p>
+<p>
+    Two key point locations <span class="arithmatex">\(P_\mathrm{ARP}\)</span> and <span class="arithmatex">\(P_\mathrm{CG,EW}\)</span> in the structural frame, respectively, he pole of aerodynamic moments and the Empty Weight CG of the airframe. The shape of the wing root profile and its chord are also sketched.
+  </p>
+</figure>
+<figure>
+<p><img alt="Key locations" class="center" src="../../../assets/img/c172_perspective_view_left.svg" width="70%" />
+  </p>
+<p>
+    Besides point <span class="arithmatex">\(P_\mathrm{CG,EW}\)</span>, are represented two more significant locations, <span class="arithmatex">\(P_\mathrm{Pilot}\)</span> and <span class="arithmatex">\(P_\mathrm{Right\,Pass}\)</span>, where two additional masses are concentrated, respectively, of the pilot and of the right passenger.
+  </p>
+</figure>
+<h2 id="body-frame">Body Frame</h2>
+<p>In JSBSim, the body frame is similar to the structural frame, but rotated 180 degrees about the <span class="arithmatex">\(y_\mathrm{C}\)</span>, with the origin coincident with the CG. Typycally, the body frame is defined by knowning the position of the airplane's center of mass <span class="arithmatex">\(G\)</span> and the direction of the longitudinal construction axis <span class="arithmatex">\(x_\mathrm{C}\)</span>. The axis <span class="arithmatex">\(x_\mathrm{B}\)</span> shall be chosen such that it originates from <span class="arithmatex">\(G\)</span>, it is parallel to <span class="arithmatex">\(x_\mathrm{C}\)</span>, and with a positive verse from <span class="arithmatex">\(G\)</span> towards the fuselage nose.</p>
+<p>The frame of body axes is often called <span class="arithmatex">\(\mathcal{F}_\mathrm{B} = \{G, x_\mathrm{B}, y_\mathrm{B}, z_\mathrm{B}\}\)</span>. The <span class="arithmatex">\(x_\mathrm{B}\)</span> axis is called the <em>roll axis</em> and points forward, the <span class="arithmatex">\(y_\mathrm{B}\)</span> axis is called <em>pitch axis</em> and points toward the right wing, the <span class="arithmatex">\(z_\mathrm{B}\)</span> axis is called <em>yaw axis</em> and points towards the fuselage belly.</p>
+<figure>
+<p><img alt="Body axes" class="center" src="../../../assets/img/ac_body_axes.svg" width="90%" />
+  </p>
+<p>
+    Standard aircraft body axis frame, with origin at the center of gravity <span class="arithmatex">\(G\)</span>.
+  </p>
+</figure>
+<p>In the body frame the aircraft forces and moments are summed and the resulting accelerations are integrated to get velocities.</p>
+<h2 id="stability-or-aerodynamic-frame">Stability, or "Aerodynamic" Frame</h2>
+<p>This frame is defined according to the instantaneous orientation of the relative wind vector with respect to the airframe. If, for simplicity, the air is still with respect to the Earth (no wind), and <span class="arithmatex">\(\boldsymbol{V}\)</span> is the aircraft center-of-mass velocity vector with respect to the Earth-fixed observer (also named <span class="arithmatex">\(\boldsymbol{V}_\mathrm{CM/E}\)</span> to emphasize the relative motion), then <span class="arithmatex">\(-\boldsymbol{V}\)</span> is the relative wind velocity and <span class="arithmatex">\(V = \|\boldsymbol{V}\|\)</span> is the airspeed.</p>
+<p>The frame, named <span class="arithmatex">\(\mathcal{F}_\mathrm{A} = \{ G, x_\mathrm{A}, y_\mathrm{A}, z_\mathrm{A} \}\)</span>, has the axis <span class="arithmatex">\(x_\mathrm{A}\)</span> that points into the relative wind vector projected onto the aircraft plane of symmetry <span class="arithmatex">\(x_\mathrm{B} z_\mathrm{B}\)</span>. The axis <span class="arithmatex">\(y_\mathrm{A}\)</span> still points out the right wing and coincides with the body axis <span class="arithmatex">\(y_\mathrm{B}\)</span>, and the axis <span class="arithmatex">\(z_\mathrm{A}\)</span> completes the right-hand system.</p>
+<figure>
+<p><img alt="Alpha and beta" class="center" src="../../../assets/img/ac_aero_axes.svg" width="90%" />
+  </p>
+<p>
+    Aerodynamic frame, defining the aerodynamic angles <span class="arithmatex">\(\alpha_\mathrm{B}\)</span> and <span class="arithmatex">\(\beta\)</span>.
+  </p>
+</figure>
+<p>The two axes <span class="arithmatex">\(x_\mathrm{A}\)</span> and <span class="arithmatex">\(z_\mathrm{A}\)</span> belong, by definition, to the aircraft symmetry plane, but <em>they can rotate during flight</em> because the orientation of the relative wind velocity vector <span class="arithmatex">\(\boldsymbol{V}\)</span> might change with respect to the vehicle. The above figure shows how the aerodynamic frame is constructed. The angle between the two axes <span class="arithmatex">\(x_\mathrm{A}\)</span> and <span class="arithmatex">\(x_\mathrm{B}\)</span> is the aircraft angle of attack <span class="arithmatex">\(\alpha_\mathrm{B}\)</span>. The angle formed by the instantaneous direction of <span class="arithmatex">\(\boldsymbol{V}\)</span> and its projection on the plane <span class="arithmatex">\(x_\mathrm{B} z_\mathrm{B}\)</span> is the sideslip angle <span class="arithmatex">\(\beta\)</span>.</p>
+<p>This frame, called stability frame in some manuals, is also named here 'aerodynamic frame' because the projection <span class="arithmatex">\(Z_\mathrm{A}\)</span> of the instantaneous aerodynamic resultant force <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> onto the axis <span class="arithmatex">\(z_\mathrm{A}\)</span> defines the aerodynamic lift. In particular, the lift <span class="arithmatex">\(L\)</span> is such that <span class="arithmatex">\(-L\)</span> is the component of <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> along <span class="arithmatex">\(z_\mathrm{A}\)</span>, i.e. <span class="arithmatex">\(Z_\mathrm{A}=-L\)</span>.</p>
+<p>To visualize the above observation, consider a typical maneuver studied in flight mechanics: the zero-sideslip (or 'coordinated'), constant altitude turn at steady airspeed. In this situation the wings are banked and so is the lift. In such a turn <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> is banked and <span class="arithmatex">\(x_\mathrm{A}\)</span> is kept horizontal. In general terms, the lift as a vector is always defined in the aircraft symmetry plane.</p>
+<figure>
+<p><img alt="Level turns" class="center" src="../../../assets/img/three_d_forces_level_turn.svg" width="90%" />
+  </p>
+<p>
+    Banked lift in a steady coordinated turn at constant altitude. The bank angle <span class="arithmatex">\(\phi_\mathrm{W}\)</span> is a rotation around the relative wind velocity vector. The motion is freezed in time when the velocity vector is aligned with the North. Coordinated turn means that <span class="arithmatex">\(\beta=0\)</span> and constant altitude means that <span class="arithmatex">\(x_\mathrm{A}\)</span> is kept horizontal.
+  </p>
+</figure>
+<p><em>Remark</em> --- In dynamic stability studies what is referred to as 'stability frame' is something slightly different from the aerodynamic frame introduced above: The stability frame in aircraft flight dynamics and stability conventions is nothing but a particular kind of body-fixed frame, defined with respect to an initial symmetrical, steady, wings-level, constant altitude flight condition. This conditions gives the direction of <span class="arithmatex">\(x_\mathrm{S}\)</span> (which coincides with <span class="arithmatex">\(x_\mathrm{A}\)</span> at that particular flight attitude). Therefore, in dynamic stability studies the stability frame, unlike the aerodynamic frame, is fixed with the vehicle.</p>
+<p>In JSBSim the notion of stability frame <span class="arithmatex">\(\mathcal{F}_\mathrm{S} = \{ G, x_\mathrm{S}, y_\mathrm{S}, z_\mathrm{S} \}\)</span> is used to mean the aerodynamic frame.</p>
+<h2 id="earth-centered-inertial-frame-eci-and-earth-centered-earth-fixed-frame-ecef">Earth-Centered Inertial Frame (ECI) and Earth-Centered Earth-Fixed Frame (ECEF)</h2>
+<p>The Earth-Centered Inertial frame (or simply 'inertial frame') <span class="arithmatex">\(\mathcal{F}_\mathrm{ECI} = \{ O_\mathrm{ECI}, x_\mathrm{ECI}, y_\mathrm{ECI}, z_\mathrm{ECI} \}\)</span> is fixed with its origin at the center of the Earth. Its cartesian axes remain fixed relative to the stars, and provide a reference frame for which the aircraft (or spacecraft) equations of motion are most simply expressed. The positive <span class="arithmatex">\(z_\mathrm{ECI}\)</span> axis passes through the Earth's geographic North Pole. The <span class="arithmatex">\(x_\mathrm{ECI}\)</span> and <span class="arithmatex">\(y_\mathrm{ECI}\)</span> axes lie in the equatorial plane. The axis <span class="arithmatex">\(x_\mathrm{ECI}\)</span> is always parallel to a line from the Sun's center of mass to Earth's position in orbit at the vernal equinox. The ECI system is shown in the next figure.</p>
+<figure>
+<p><img alt="Inertial frame" class="center" src="../../../assets/img/inertial_frame.svg" width="60%" />
+  </p>
+<p>
+    Earth-Centered Inertial (ECI) frame and Earth-Centered Earth-Fixed (ECEF) frame.
+  </p>
+</figure>
+<p>The axes of the Earth-Centered, Earth-Fixed (ECEF) frame of reference, labeled <span class="arithmatex">\(x_\mathrm{ECEF}\)</span>, <span class="arithmatex">\(y_\mathrm{ECEF}\)</span>, and <span class="arithmatex">\(z_\mathrm{ECEF}\)</span>, are also depicted in the above figure. The ECEF coordinate axes remain fixed with respect to the Earth. The origin <span class="arithmatex">\(O_\mathrm{ECEF}\)</span> of this cartesian system, like the inertial frame, is located at the mass center of the earth. The <span class="arithmatex">\(z_\mathrm{ECEF}\)</span> axis also lies along the Earth's spin axis and coincides with <span class="arithmatex">\(z_\mathrm{ECI}\)</span>. The <span class="arithmatex">\(x_\mathrm{ECEF}\)</span> and <span class="arithmatex">\(y_\mathrm{ECEF}\)</span> axes both lie in the equatorial plane, with the positive <span class="arithmatex">\(x_\mathrm{ECEF}\)</span> axis passing through the prime meridian (Greenwich Meridian). The ECEF frame rotates counter-clockwise about the Inertial frames <span class="arithmatex">\(z_\mathrm{ECI}\)</span> axis with angular velocity <span class="arithmatex">\(\omega_\mathrm{E}\)</span>. The Earth angular rate <span class="arithmatex">\(\omega_\mathrm{E}\)</span> is approximately equal to <span class="arithmatex">\(2\pi/24\)</span> radians/hour.</p>
+<h2 id="north-oriented-tangent-frames">North-Oriented Tangent Frames</h2>
+<p>A <em>tangent-plane</em> coordinate system can be defined when a matemathical representation of Earth's surface is assumed (a <em>spheroid</em> or an approximating sphere). A plane tangent to a point of interest on the surface <span class="arithmatex">\(O_\mathrm{E}\)</span> is taken as a reference. A geographic system called <em>North-Oriented Tangent Frame</em> <span class="arithmatex">\(\mathcal{F}_\mathrm{E} = \{ O_\mathrm{E}, x_\mathrm{E}, y_\mathrm{E}, z_\mathrm{E}\}\)</span> has its origin fixed at the point of interest <span class="arithmatex">\(O_\mathrm{E}\)</span> and its plane <span class="arithmatex">\(x_\mathrm{E} y_\mathrm{E}\)</span> coincident with the tangent plane. The axis <span class="arithmatex">\(x_\mathrm{E}\)</span> points towards the geographic North, the axis <span class="arithmatex">\(y_\mathrm{E}\)</span> points towards the East. Finally, the axis <span class="arithmatex">\(z_\mathrm{E}\)</span> points downwards towards the center of the Earth. For this reason the frame <span class="arithmatex">\(\mathcal{F}_\mathrm{E}\)</span> is also called <em>tangent NED</em> frame (North-East-Down).</p>
+<figure>
+<p><img alt="ECI and ECEF frames" class="center" src="../../../assets/img/earth_frames.svg" width="60%" />
+  </p>
+<p>
+    Earth-Centered Earth-Fixed (ECEF) frame, geografic coordinates, Tangent (T) frame, and local Vertical (V) frame.
+  </p>
+</figure>
+<h2 id="local-vertical-local-level-frame-or-local-ned-frame">Local-Vertical Local-Level Frame, or Local NED Frame</h2>
+<p>The local vertical frame <span class="arithmatex">\(\mathcal{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}\)</span> is unrelated to the airplane's orientation in space but is only defined by its CG position with respect to some convenient Earth-fixed observer. If <span class="arithmatex">\(G_\mathrm{GT}\)</span> is the CG projected on the ground ('ground tracked'), the coordinate plane <span class="arithmatex">\(x_\mathrm{V} y_\mathrm{V}\)</span> is parallel to a plane locally tangent in <span class="arithmatex">\(G_\mathrm{GT}\)</span> to the Earth's surface --- i.e. the plane <span class="arithmatex">\(x_\mathrm{E} y_\mathrm{E}\)</span> with <span class="arithmatex">\(O_\mathrm{E} \equiv G_\mathrm{GT}\)</span>. Then, the axis <span class="arithmatex">\(x_\mathrm{V}\)</span> points towards the geographic North, the axis <span class="arithmatex">\(y_\mathrm{V}\)</span> points towards the East. Finally, the axis <span class="arithmatex">\(z_\mathrm{V}\)</span> points downwards towards the center of the Earth. For this reason the frame <span class="arithmatex">\(\mathcal{F}_\mathrm{V}\)</span> is also called <em>local NED</em> (vehicle-carried) frame.</p>
+<figure>
+<p><img alt="Local vertical axes" class="center" src="../../../assets/img/ac_local_vertical_axes.svg" width="90%" />
+  </p>
+<p>
+    Aircraft body frame and local vertical frame (NED frame). The aircraft Euler angles are also shown: the heading angle <span class="arithmatex">\(\psi\)</span> (negative in the picture), the elevation angle <span class="arithmatex">\(\theta\)</span>, and the roll angle <span class="arithmatex">\(\phi\)</span>.
+  </p>
+</figure>
+<p>The NED convention ensures that the aircraft weight is a force with components <span class="arithmatex">\((0,0,mg)\)</span> in the frame <span class="arithmatex">\(\mathcal{F}_\mathrm{V}\)</span>, where <span class="arithmatex">\(m\)</span> is the airplane's mass and <span class="arithmatex">\(g\)</span> is the gravitational acceleration.</p>
+<p>The above figure shows an aircraft with the two frames <span class="arithmatex">\(\mathcal{F}_\mathrm{V}\)</span> and <span class="arithmatex">\(\mathcal{F}_\mathrm{B}\)</span>. The Euler angles that define the body frame orientation with respect to the local NED frame are the <em>aircraft Euler angles</em>. For atmospheric flight vehicles the sequence of rotations used to define the Euler angles is '3-2-1'. This defines the <em>heading</em> angle <span class="arithmatex">\(\psi\)</span>, the <em>elevation</em> angle <span class="arithmatex">\(\theta\)</span>, and the <em>roll</em> angle <span class="arithmatex">\(\phi\)</span> with respect to an observer fixed with the Earth.</p>
+<figure>
+<p><img alt="Euler gimbal" class="center" src="../../../assets/img/ac_euler_gimbal.svg" width="60%" />
+  </p>
+<p>
+    Euler angle sequence for an aircraft. The frame <span class="arithmatex">\(\mathcal{F}_\mathrm{E} = \{ O_\mathrm{E}, x_\mathrm{E}, y_\mathrm{E}, z_\mathrm{E}\}\)</span> is an Earth-fixed NED coordinate system, with origin the <span class="arithmatex">\(O_\mathrm{E}\)</span> somewhere on the ground (or at see level) and the plane <span class="arithmatex">\(x_\mathrm{E} y_\mathrm{E}\)</span> tangent to the Earth surface. If the ground track point <span class="arithmatex">\(G_\mathrm{GT}\)</span> is not too far from <span class="arithmatex">\(O_\mathrm{E}\)</span>, the Earth frame <span class="arithmatex">\(\mathcal{F}_\mathrm{E}\)</span> axes are parallel to those of the local NED frame <span class="arithmatex">\(\mathcal{F}_\mathrm{V} = \{ G, x_\mathrm{V}, y_\mathrm{V}, z_\mathrm{V}\}\)</span>.
+  </p>
+</figure>
+<h2 id="wind-frame">Wind Frame</h2>
+<p>Besides the lift, the instantaneous aerodynamic resultant force vector <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> has two more components in a frame of reference of which <span class="arithmatex">\(z_\mathrm{A}\)</span> is the third axis. This frame is called <em>wind frame</em> <span class="arithmatex">\(\mathcal{F}_\mathrm{W} = \{ G, x_\mathrm{W}, y_\mathrm{W}, z_\mathrm{W}\}\)</span>.</p>
+<p>The wind frame is defined by taking the <span class="arithmatex">\(x_\mathrm{W}\)</span> axis along the relative wind with a positive verse in the direction of motion. This means that <span class="arithmatex">\(x_\mathrm{W}\)</span> is superimposed to the vector <span class="arithmatex">\(\boldsymbol{V}\)</span>. The third axis of <span class="arithmatex">\(\mathcal{F}_\mathrm{W}\)</span> is taken along the lift line of action, i.e. <span class="arithmatex">\(z_\mathrm{W} \equiv z_\mathrm{A}\)</span>. Finally, the second axis <span class="arithmatex">\(y_\mathrm{W}\)</span> is chosen in order to complete the right-handed triad. The wind frame has its third axis constantly in the airframe plane of symmetry (also called the 'reference plane'). All the three wind axes rotate with respect to the body axes because of the changing attitude of the aircraft with respect to the relative wind <span class="arithmatex">\(-\boldsymbol{V}\)</span>.</p>
+<p>The component <span class="arithmatex">\(X_\mathrm{W}\)</span> of the force vector <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> along the direction of <span class="arithmatex">\(\boldsymbol{V}\)</span> defines the aerodynamic drag: The drag <span class="arithmatex">\(D\)</span> is such that <span class="arithmatex">\(X_\mathrm{W}=-D\)</span>. In presence of a nonzero sideslip angle <span class="arithmatex">\(\beta\)</span>, a third nonzero component of <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> arises along the lateral axis <span class="arithmatex">\(y_\mathrm{W}\)</span>, i.e. the side force component <span class="arithmatex">\(Y_\mathrm{W}\)</span>.</p>
+<p>When the sideslip angle <span class="arithmatex">\(\beta\)</span> is zero, the wind frame and the aerodynamic frame are coincident. Only in this circumstance <span class="arithmatex">\(y_\mathrm{W}\)</span>, being coincident with <span class="arithmatex">\(y_\mathrm{A}\)</span> and <span class="arithmatex">\(y_\mathrm{B}\)</span>, is normal to the reference plane <span class="arithmatex">\(x_\mathrm{B} z_\mathrm{B}\)</span>.</p>
+<p>The figure below shows the standard frames of reference for an aircraft in climbing flight in calm air. The wind frame <span class="arithmatex">\(\mathcal{F}_\mathrm{W}\)</span> can be made superimposed to the aerodynamic frame <span class="arithmatex">\(\mathcal{F}_\mathrm{A}\)</span> when rotated around <span class="arithmatex">\(z_\mathrm{W}\)</span> of the angle <span class="arithmatex">\(-\beta\)</span>.</p>
+<figure>
+<p><img alt="3D defs" class="center" src="../../../assets/img/three_d_definitions.svg" width="90%" />
+  </p>
+<p>
+    Standard frames of reference and aircraft in climbing flight in calm air. The CG velocity vector <span class="arithmatex">\(\boldsymbol{V}\)</span> forms the flight path angle <span class="arithmatex">\(\gamma\)</span> with the horizontal plane. The standard three aerodynamic resultant force components <span class="arithmatex">\(D\)</span>, <span class="arithmatex">\(L\)</span> and <span class="arithmatex">\(Y_\mathrm{A}\)</span> are also shown.
+  </p>
+</figure>
+<p>Consequently, the wind frame <span class="arithmatex">\(\mathcal{F}_\mathrm{W}\)</span> can be superimposed to the body frame <span class="arithmatex">\(\mathcal{F}_\mathrm{B}\)</span> when rotated first around <span class="arithmatex">\(z_\mathrm{W}\)</span> of the angle <span class="arithmatex">\(-\beta\)</span> then around the axis <span class="arithmatex">\(y_\mathrm{A}\)</span> of the angle <span class="arithmatex">\(\alpha_\mathrm{B}\)</span>:</p>
+<div class="arithmatex">\[
+\mathcal{F}_\mathrm{W} \stackrel{-\beta \, \curvearrowright \, z_\mathrm{W}}{ \longrightarrow } \mathcal{F}_\mathrm{A} \stackrel{\alpha_\mathrm{B} \, \curvearrowright \, y_\mathrm{A}}{ \longrightarrow } \mathcal{F}_\mathrm{B}
+\label{eq:FW:To:FB}
+\]</div>
+<p>The components of the aerodynamic resultant force in body axes are then expressed as follows:</p>
+<div class="arithmatex">\[
+\left\{\begin{matrix}
+  X_\mathrm{B} \\ Y_\mathrm{B} \\ Z_\mathrm{B}
+\end{matrix}\right\} =
+\left[\begin{matrix}
+  \cos\alpha_\mathrm{B} &amp; 0 &amp; -\sin\alpha_\mathrm{B} \\
+  0 &amp; 1 &amp; 0 \\
+  \sin\alpha_\mathrm{B} &amp; 0 &amp; \cos\alpha_\mathrm{B}
+\end{matrix}\right]
+  \left[\begin{matrix}
+    \cos\beta &amp; \sin(-\beta) &amp; 0 \\
+    -\sin(-\beta) &amp; \cos\beta &amp; 0 \\
+    0 &amp; 0 &amp; 1
+  \end{matrix}\right]
+  \left\{\begin{matrix}
+    -D \\ Y_\mathrm{W} \\ -L
+  \end{matrix}\right\}
+\label{eq:DYL:To:XYZB}  
+\]</div>
+<p>in terms of drag, side force and lift.</p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 28, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../simulation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Simulation" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Simulation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../units/" class="md-footer__link md-footer__link--next" aria-label="Next: Units" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Units
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      	
+        Maintained by <a href="https://github.com/JSBSim-Team">JSBSim-Team</a> —
+      
+	  (c) Jon S. Berndt, and Agostino De Marco, Università degli Studi di Napoli Federico II
+    </div>
+  
+  
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" target="_blank" rel="noopener" title="JSBSim-Team on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../../javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>

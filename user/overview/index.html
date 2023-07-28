@@ -1,0 +1,1331 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="JSBSim User Manual overview.">
+      
+      
+      
+        <link rel="canonical" href="https://jsbsim-team.github.io/jsbsim-reference-manual/user/overview/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../concepts/simulation/">
+      
+      <link rel="icon" href="../../assets/favicon.ico">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Overview - JSBSim Manual</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#overview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JSBSim Manual" class="md-header__button md-logo" aria-label="JSBSim Manual" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_jsbsim_globe_no_text.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JSBSim Manual
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/JSBSim-Team/jsbsim-reference-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsbsim-reference-manual
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JSBSim Manual" class="md-nav__button md-logo" aria-label="JSBSim Manual" data-md-component="logo">
+      
+  <img src="../../assets/img/logo_jsbsim_globe_no_text.png" alt="logo">
+
+    </a>
+    JSBSim Manual
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/JSBSim-Team/jsbsim-reference-manual" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    jsbsim-reference-manual
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acknowledgements/" class="md-nav__link">
+        Acknowledgements
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../preface/" class="md-nav__link">
+        Preface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../quickstart/">Quickstart</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Quickstart
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/getting-the-source/" class="md-nav__link">
+        Getting the source
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/building-the-program/" class="md-nav__link">
+        Building the program
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/building-using-visualstudio/" class="md-nav__link">
+        Building using Visual Studio
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/running-the-program/" class="md-nav__link">
+        Running the program
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/getting-support/" class="md-nav__link">
+        Getting support
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">User Manual</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          User Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Overview
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-exactly-is-jsbsim" class="md-nav__link">
+    What, exactly, is JSBSim?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-it-for-and-how-can-it-be-used" class="md-nav__link">
+    Who is it for, and how can it be used?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-use" class="md-nav__link">
+    Examples of use
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples of use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerocross-echo-hawk" class="md-nav__link">
+    Aerocross Echo Hawk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dupont-aerospace-company" class="md-nav__link">
+    DuPont Aerospace Company
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitre-air-traffic-studies" class="md-nav__link">
+    MITRE Air Traffic Studies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-department-of-transportation" class="md-nav__link">
+    U.S. Department of Transportation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-university-of-naples-italy-federico-ii" class="md-nav__link">
+    The University of Naples, Italy, Federico II
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraunhofer-institute-for-wind-energy-systems" class="md-nav__link">
+    Fraunhofer Institute for Wind Energy Systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfasa-test-flying-academy-of-south-africa" class="md-nav__link">
+    TFASA - Test Flying Academy of South Africa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4_3" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_4_3" id="__nav_2_4_3_label" tabindex="0">
+          Concepts
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          Concepts
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/simulation/" class="md-nav__link">
+        Simulation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/frames-of-reference/" class="md-nav__link">
+        Frames of reference
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/units/" class="md-nav__link">
+        Units
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/properties/" class="md-nav__link">
+        Properties
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/math/" class="md-nav__link">
+        Math
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/forces-and-moments/" class="md-nav__link">
+        Forces and moments
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../concepts/flight-control-and-systems-modeling/" class="md-nav__link">
+        Flight Control and System Modelling
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../authoring-config-files/" class="md-nav__link">
+        Authoring configuration files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../programmer/">Programmer Manual</a>
+          
+            <label for="__nav_2_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          Programmer Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programmer/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../programmer/class-hierarchy/" class="md-nav__link">
+        Class hierarchy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../formulation/">Formulation Manual</a>
+          
+            <label for="__nav_2_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          Formulation Manual
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../formulation/overview/" class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../formulation/earth-modeling/" class="md-nav__link">
+        Earth modeling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../formulation/quaternions/" class="md-nav__link">
+        Quaternions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../formulation/equations-of-motion/" class="md-nav__link">
+        Equations of motion
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../formulation/equations-of-motion-ii/" class="md-nav__link">
+        Earth modeling II
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        References
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        Contact
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        Licensing
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-exactly-is-jsbsim" class="md-nav__link">
+    What, exactly, is JSBSim?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#who-is-it-for-and-how-can-it-be-used" class="md-nav__link">
+    Who is it for, and how can it be used?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples-of-use" class="md-nav__link">
+    Examples of use
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples of use">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aerocross-echo-hawk" class="md-nav__link">
+    Aerocross Echo Hawk
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dupont-aerospace-company" class="md-nav__link">
+    DuPont Aerospace Company
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mitre-air-traffic-studies" class="md-nav__link">
+    MITRE Air Traffic Studies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-department-of-transportation" class="md-nav__link">
+    U.S. Department of Transportation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-university-of-naples-italy-federico-ii" class="md-nav__link">
+    The University of Naples, Italy, Federico II
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fraunhofer-institute-for-wind-energy-systems" class="md-nav__link">
+    Fraunhofer Institute for Wind Energy Systems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tfasa-test-flying-academy-of-south-africa" class="md-nav__link">
+    TFASA - Test Flying Academy of South Africa
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+
+
+
+  
+  
+
+
+<h1 id="overview">Overview</h1>
+<h2 id="what-exactly-is-jsbsim">What, exactly, is JSBSim?</h2>
+<p>From an application programming perspective, JSBSim is a collection of program code mostly written in the C++ programming language (but some C language routines are included). Some of the C++ classes that comprise JSBSim model physical entities such as the atmosphere, a flight control system, or an engine. Some of the classes encapsulate concepts or mathematical constructs such as the equations of motion, a matrix, quaternion, or vector. Some classes manage collections of other objects. Taken together, the JSBSim application takes control inputs, calculates and sums the forces and moments that result from those control inputs and the
+environment, and advances the state of the vehicle (velocity, orientation, position, etc.) in discrete time steps.</p>
+<p>JSBSim has been built and run on a wide variety of platforms such as a PC running Windows or Linux, Apple Macintosh, and even the IRIX operating system from Silicon Graphics. The free GNU g++ compiler easily compiles JSBSim, and other compilers such as those from Borland and Microsoft also work well. See the Programmers Guide for more information.</p>
+<p>From an end-user perspective (perhaps a student doing research), JSBSim can be viewed as sort of a “black box” which is supplied with input files in XML format. These XML files contain descriptions of an aerospace vehicle, engines, scripts, and so on. When these files are loaded into JSBSim, they direct it to model the flight of that vehicle in real-time as part of a larger simulation framework (such as FlightGear or OpenEaagles), or faster than real-time in a batch mode. Each run of JSBSim would result in data files showing performance and dynamics of the vehicle being simulated and studied.</p>
+<p>From a software integrator perspective (such as someone integrating JSBSim within a larger simulation framework), JSBSim is a library that can be called, supplied with inputs (such as control inputs from the pilot), and returning outputs (describing where the vehicle is at any moment in time).</p>
+<h2 id="who-is-it-for-and-how-can-it-be-used">Who is it for, and how can it be used?</h2>
+<p>The JSBSim flight dynamics model (FDM) software library is meant to be reasonably easy to comprehend, and is designed to be useful to advanced aerospace engineering students. Due to the ease with which it can be configured, it has also proven to be useful to industry professionals in a number of ways. It has been incorporated into larger, full-featured, flight simulation applications and architectures (such as FlightGear, Outerra, and OpenEaagles), and has been used as a batch simulation tool in industry and academia.</p>
+<h2 id="examples-of-use">Examples of use</h2>
+<h3 id="aerocross-echo-hawk">Aerocross Echo Hawk</h3>
+<p>JSBSim has been used for Hardware-in-the-Loop (HITL) testing of the Aerocross Echo Hawk UAV. Custom code was written to interface with the flight hardware (PC/104-based system) via RS-232/422/485, proportional analog I/O, discrete I/O, and sockets, but the core simulation code was unaltered JSBSim code. Pilot/operator training also relies on JSBSim as the 6-DoF code.</p>
+<h3 id="dupont-aerospace-company">DuPont Aerospace Company</h3>
+<p>JSBSim was used at duPont Aerospace Company along with Matlab for real-time HITL simulation and pilot/operator training. Rex duPont of duPont Aerospace Company explained the project:</p>
+<blockquote>
+<p>In the 1990s duPont Aerospace Company was building an airplane to test its concept for a vertical takeoff fan jet transport plane. We had developed a Microsoft Windows-based flight simulator that we had used to test the flying qualities of the proposed craft. However, we needed a simulation that we could use in real time so that we could test the flight characteristics on a full-sized mockup with the flight actuators operating in the loop. We settled on the FlightGear simulator, using the JSBSim flight dynamics model because we could get the full code, it was nicely organized so that we could create new subprograms to match our aircraft, and support was readily available.</p>
+<p>We developed simultaneously a Matlab simulator for the use in developing more effective autopilot guidance systems, since our primary task became to take the aircraft off using the autopilot alone and to hover in place for 30 seconds. This would show definitively that the control system was sufficiently robust. Therefore, we built into each relevant module of the Matlab simulator and the JSBSim derivative simulator a series of unit tests that provided a sequence of inputs to each model that could be cross verified to ensure that the two systems stayed in sync.</p>
+<p>We used the JSBSim system to test a number of dynamic issues that were not easily testable with the Matlab model, especially issues involving pilot feel and the controllability during transition to and from hover. These issues are hard to evaluate in the pure control-
+system world of Matlab because during transition the underlying force structure is continuously varying as aerodynamic forces become more important and pure thrust control forces less.</p>
+<p>We also did parametric studies on such issues as the sensitivity of the key parameters in the aerodynamic simulation to possible errors in estimation. These were done by having the pilot fly a series of standard maneuvers designed to test the aircraft's response when one or more parameter was degraded by as much as 50% (without the pilot knowing which one was changed).</p>
+<p>We simulated various servo bandwidths as well, testing to see at what point the flying characteristics became unacceptable. This helped define the characteristics needed. What pilots desire from control systems is almost always different from the optimal theoretical parameters.</p>
+<p>Additionally, we developed a number of HUD display systems that facilitated operations during hover, where very precise control of ground speed is required. Eventually we achieved a system that allowed a young engineer who did not even have a pilot's license to take off and hold a hover at constant altitude to within one foot for over 30 seconds.</p>
+<p>We finally achieved our goal of autopilot controlled take-off and hover in two flights of approximately 45 seconds duration on September 30, 2007. Both flights were terminated because one of the engines ran out of fuel, rather than for any control problems.</p>
+</blockquote>
+<h3 id="mitre-air-traffic-studies">MITRE Air Traffic Studies</h3>
+<p>JSBSim is being used at MITRE in developing a 6-DoF simulation of the FMS (Flight Management System) behavior during CDAs (Continuous Descent Arrival) and OPDs (Optimized Profile Descent). Both the standalone version of JSBSim (for batch runs) and a version integrated with FlightGear have been used. Additional control system components have been created to support specific lateral and vertical navigation studies.</p>
+<p>JSBSim has also been extended to handle output of messages over a socket to another application used at MITRE which provides a view
+similar to what an Air Traffic Control operator would see.</p>
+<h3 id="us-department-of-transportation">U.S. Department of Transportation</h3>
+<p>In work done with and for the U.S. D.O.T., a human pilot math model was developed using JSBSim as the 6-DoF (six degree-of-freedom) simulation core.</p>
+<h3 id="the-university-of-naples-italy-federico-ii">The University of Naples, Italy, Federico II</h3>
+<p>The University of Naples has a motion base flying/driving simulator that is driven by FlightGear and JSBSim. The simulator has a three-screen visual presentation that provides a 190 degree field-of-view. The JSBSim source code was modified to provide a force feedback capability.</p>
+<p>JSBSim has been used at the University of Naples as a tool supporting risk level evaluations of near-ground flight operations. One of the practical problems considered in those collision risk studies consisted in the evaluation of threat posed to flight operations when a new obstacle (such as a building or radar tower) is placed inside the airport area. The risk evaluation has been
+performed by varying the obstacle geometry and location. The risk assessment procedure has been based on the analysis of statistical deviations of aircraft trajectories from the “normal” flight path, evaluating the probability of a generic trajectory to cross a given “protection” area enveloping the potential obstacle. Within this framework, the operational scenario has been formally described and implemented in order to run multiple computer simulations.</p>
+<h3 id="fraunhofer-institute-for-wind-energy-systems">Fraunhofer Institute for Wind Energy Systems</h3>
+<p>In a joint research with the Italian University of Naples Federico II, researchers of Fraunhofer Institute for Wind Energy Systems (IWES) have studied the wake encounter problem occurring when light airplanes fly through or nearby wind turbine wakes.</p>
+<p>For this research, a framework of software applications has been developed for generating and controlling a population of flight simulation scenarios in presence of assigned wind and turbulence fields. JSBSim was used in the framework as a flight dynamics model, with its autopilot systems adapted for simulating a realistic pilot behavior during navigation.
+The wind distribution in the turbine wakes were calculated with OpenFOAM, and provided as input for the dynamic model.</p>
+<h3 id="tfasa-test-flying-academy-of-south-africa">TFASA - Test Flying Academy of South Africa</h3>
+<p>The Test Flying Academy of South Africa has been using JSBSim as the basis for a ground based Variable Stability System (VSS) simulator for test pilot training. The aerodynamic stability and control coefficients of a base aircraft model are modified to demonstrate their effect on flying tasks. Actuators are also modelled to show their potential effect on PIO given varying amounts of lag, delay and rate limits.</p>
+<p>Both fixed wing aircraft and rotary aircraft are simulated with programmable force-feedback inceptors in order to also demonstrate the effects of Flight Control Mechanical Characteristics (FCMC).</p>
+<p>JSBSim is integrated with Prepar3D to make use of Prepar3D's outside visuals which are rendered on either three large LCDs or connected to a triple projector setup rendering a 180 degree view.</p>
+<hr />
+<div class="admonition note">
+<p class="admonition-title">TODO</p>
+<p>Add updated examples of use, 2014+.</p>
+</div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 28, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: User Manual" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                User Manual
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../concepts/simulation/" class="md-footer__link md-footer__link--next" aria-label="Next: Simulation" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Simulation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <!-- Copyright and theme information -->
+<div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      	
+        Maintained by <a href="https://github.com/JSBSim-Team">JSBSim-Team</a> —
+      
+	  (c) Jon S. Berndt, and Agostino De Marco, Università degli Studi di Napoli Federico II
+    </div>
+  
+  
+    Made with
+    <a
+      href="https://squidfunk.github.io/mkdocs-material/"
+      target="_blank" rel="noopener"
+    >
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://github.com/JSBSim-Team/jsbsim" target="_blank" rel="noopener" title="JSBSim-Team on GitHub" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.footer"], "search": "../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+        
+          <script src="../../javascripts/mathjax.js"></script>
+        
+      
+        
+          <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        
+      
+        
+          <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        
+      
+    
+  </body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>                                       
+
+<!-- 
+Set the aircraft initial condition
+at 1000 feet above Sea Level, 
+over Naples, and precisely St. Elmo castle
+on a heading of -5 degrees,
+on a horizontal flight path,
+with engine running.
+-->
+
+<initialize name="EngineRunning">
+
+    <vt unit="KTS">        100.0        </vt>
+    <latitude unit="DEG">   40.843874   </latitude>
+    <longitude unit="DEG">  14.239150   </longitude>
+    <psi unit="DEG">        -5.0        </psi>
+    <altitude unit="FT">  1000.0        </altitude>
+    <gamma unit="DEG">       0.0        </gamma>
+    <phi unit="DEG">         0.0        </phi>
+    <running>                0          </running>                                 
+
+</initialize>

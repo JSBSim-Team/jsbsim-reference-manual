@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" 
+    href="http://jsbsim.sourceforge.net/JSBSimScript.xsl"?>
+
+
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+    name="Script for C172x Tutorial 01 ">
+  
+  
+  <!--
+    This run is for trimming the aircraft while in cruise
+  -->
+
+  <use aircraft="c172x" initialize="init_tutorial01" />
+  <run start="0.0" end="60" dt="0.0083333">                     
+  <!-- dt = 0.008333 is freq = 120 Hz -->
+
+<!--
+      For "do_simple_trim" (Classic trim):
+      0: Longitudinal
+      1: Full
+      2: Ground
+      3: Pullup
+      4: Custom
+      5: Turn
+      6: None
+-->
+
+<!-- Create event for trimming -->
+    <event name="Trim">
+      <description>Trim at the initial conditions state</description>
+      <condition> simulation/sim-time-sec ge 2 </condition>
+      
+      <!-- set values to properties -->
+      <set name="simulation/do_simple_trim" value="1" />
+      
+      <!-- set notifications at runtime -->
+      
+      <!-- 
+      <notify>
+        <property>velocities/vc-kts</property>
+        <property>velocities/vt-fps</property>
+        <property>attitude/phi-rad</property>
+        <property>attitude/theta-rad</property>
+        <property>attitude/psi-rad</property>
+      </notify>
+      -->
+    </event>
+  </run>
+</runscript>

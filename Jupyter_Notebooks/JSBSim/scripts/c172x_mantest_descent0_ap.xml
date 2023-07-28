@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" 
+	href="http://jsbsim.sourceforge.net/JSBSimScript.xsl"?>
+
+
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+		name="Script for C172x - Descent with autopilot">
+
+
+    <!--
+		C172x performing a descent with autopilot to
+        keep the correct route and wings leveled. The descent
+        trajectory is set-up in the initialization script.
+        Ground effect on lift can be appreciated.
+    -->
+
+    <use aircraft="c172x_unina" initialize="init_mantest_descent0_ap" />
+    <run start="0.0" end="120" dt="0.0083333"> 
+
+        <property value="1">simulation/notify-time-trigger</property>
+
+
+        <event name="Flaps">
+            <description>Flaps out for landing</description>
+            <condition> simulation/sim-time-sec ge 0.0 </condition>
+            <set name="fcs/flap-pos-deg" value="30" />
+            <notify>
+                <property>fcs/flap-cmd-norm</property>
+                <property>fcs/flap-pos-deg</property>
+            </notify>
+        </event>
+
+
+        <event name="Brakes">
+            <description>Make sure brakes are released</description>
+            <condition>simulation/sim-time-sec ge 0.0</condition>
+            <set name="fcs/left-brake-cmd-norm" value="0"/>
+            <set name="fcs/right-brake-cmd-norm" value="0"/>
+            <set name="fcs/center-brake-cmd-norm" value="0"/>
+            <notify>
+                <property>fcs/left-brake-cmd-norm</property>
+                <property>fcs/right-brake-cmd-norm </property>
+                <property>fcs/center-brake-cmd-norm </property>
+            </notify>    
+        </event>
+
+
+        <event name="Trim">
+            <description>Trim the aircraft in the initial conditions</description>
+            <condition> simulation/sim-time-sec ge 0.0 </condition>
+            <set name="simulation/do_simple_trim" value="1" />
+            <set name="ap/heading-setpoint" value="90" />
+            <notify>
+                <property>velocities/vc-kts</property>
+                <property>velocities/vt-fps</property>
+                <property>attitude/phi-deg</property>
+                <property>attitude/theta-deg</property>
+                <property>attitude/psi-deg</property>
+                <property>ic/h-agl-ft</property>
+                <property>simulation/trim-completed</property>
+                <property>ap/heading-setpoint</property>
+            </notify>
+        </event>
+
+
+        <!-- Controlled descent -->
+
+        <event name="Roll autopilot ON">
+            <description>Activate heading hold on wing leveler</description>
+            <condition> simulation/sim-time-sec ge 5 </condition>
+            <set name="ap/attitude-hold" value="1" />
+            <set name="ap/heading-hold" value="1" />
+            <notify>
+                <property>ap/attitude-hold</property>
+                <property>ap/heading-hold</property>
+            </notify>
+        </event>
+
+
+        <!-- 
+        <event name="Time Notify" persistent="true">
+            <description>Output message every second to see altitude_setpoint time histry</description>
+            <condition>
+                simulation/sim-time-sec ge simulation/notify-time-trigger
+                simulation/sim-time-sec le 45
+            </condition>
+            <set name="simulation/notify-time-trigger" value="1" type="delta"/>
+            <notify>
+                <property>gear/wow</property>
+                <property>simulation/sim-time-sec</property>
+                <property>position/h-sl-meters</property>
+                <property>position/h-agl-ft</property>
+            </notify>
+        </event> 
+        -->
+
+
+    </run>
+</runscript>
