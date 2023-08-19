@@ -3,22 +3,30 @@ on:
   push:
     branches:
       - master
-permissions:
-  contents: write
 jobs:
   deploy:
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: 3.x
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        with:
-          key: mkdocs-material-${{ env.cache_id }}
-          path: .cache
-          restore-keys: |
-            mkdocs-material-
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
-      - run: mkdocs gh-deploy --force
+      - run: mkdocs build
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          # upload entire directory
+          path: 'site'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
