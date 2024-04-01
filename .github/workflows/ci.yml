@@ -21,7 +21,7 @@ jobs:
       - run: pip install mkdocs-material mkdocs-git-revision-date-localized-plugin
       - run: mkdocs build
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v5
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
