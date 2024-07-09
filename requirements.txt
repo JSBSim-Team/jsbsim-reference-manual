@@ -29,4 +29,4 @@ six==1.16.0
 smmap==5.0.0
 urllib3==2.2.2
 watchdog==3.0.0
-zipp==3.16.2
+zipp==3.19.1
