@@ -37,6 +37,7 @@ nav:
     - 'Formulation Manual':
       - 'formulation/index.md'
       - 'formulation/overview.md'
+      - 'formulation/state-propagation-contract.md'
       - 'formulation/earth-modeling.md'
       - 'formulation/quaternions.md'
       - 'formulation/equations-of-motion.md'
