@@ -20,9 +20,9 @@ The simulation is expressed as a **discrete-time integration problem**, where ti
 
 The propagated state vector is defined as:
 
-```math
+$$
 \boldsymbol{x} = \big[ u, v, w,\, p, q, r,\, x_{\text{cg}}, y_{\text{cg}}, z_{\text{cg}},\, q_0, q_1, q_2, q_3,\, \text{masses},\text{inertias}\big]
-```
+$$
 
 where:
 - $u, v, w$: CG's translational velocity components **w.r.t. ECI**, expressed in the **standard body-fixed frame**
@@ -34,11 +34,13 @@ where:
 
 ## 1.2 Derivative (Dynamics) Model
 
-At each discrete time $t_i$, the derivative is defined as:
-```math
-\dot{\boldsymbol{x}}(t_i) = \boldsymbol{f}\!\left(
-  \boldsymbol{x}(t_i), \boldsymbol{u}(t_i), \dot{\boldsymbol{x}}(t_{i-1}), t_i \right)
-```
+At each discrete time $t_k$, the derivative is defined as:
+
+$$
+\dot{\boldsymbol{x}}(t_k) = \boldsymbol{f} \left(
+  \boldsymbol{x}(t_k), \boldsymbol{u}(t_k), \dot{\boldsymbol{x}}(t_{k-1}), t_k \right)
+$$
+
 where:
 - $\boldsymbol{x}(t_i)$: current state
 - $\boldsymbol{u}(t_i)$: current inputs (controls, propulsion, environment, etc.)
@@ -57,9 +59,11 @@ This formulation clarifies the conceptual boundary between:
 ## 1.3 Numerical Integration Step
 
 The state update is:
-```math
+
+$$
 \boldsymbol{x}(t_{i+1}) = \boldsymbol{x}(t_i) + \int_{t_i}^{t_{i+1}} \dot{\boldsymbol{x}}(t)\,dt
-```
+$$
+
 The integral is approximated using the integrator selected inside `FGPropagate`.
 This makes explicit that:
 - `FGPropagate` performs numerical integration
@@ -69,10 +73,12 @@ This makes explicit that:
 # 2. Observation Equation (Published Outputs)
 
 In addition to propagation, the simulator produces outputs:
-```math
-\boldsymbol{y}(t_i) = \boldsymbol{g}\!\left(
-  \boldsymbol{x}(t_i), \boldsymbol{u}(t_i), \ldots \right)
-```
+
+$$
+\boldsymbol{y}(t_i) = \boldsymbol{g}\big(
+  \boldsymbol{x}(t_i), \boldsymbol{u}(t_i), \ldots \big)
+$$
+
 where:
 - $\boldsymbol{y}(t_i)$: published or observable outputs (aero angles, derived velocities, accelerations, navigation quantities, atmosphere values, etc.)
 - $\boldsymbol{g}(\cdot)$: output mapping
