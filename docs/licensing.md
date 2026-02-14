@@ -14,4 +14,4 @@ To grow the commons of free knowledge and free culture, all users contributing t
 
 ## Information for non-text media contributors
 
-Non-text media on the FlightGear wiki are available under a variety of different licenses. Where not specified, non-text media are licensed under Creative Commons.
+Non-text media on the JSBSim online repositories are available under a variety of different licenses. Where not specified, non-text media are licensed under Creative Commons.
