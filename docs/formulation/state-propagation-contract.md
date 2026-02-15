@@ -5,13 +5,12 @@ description: JSBSim's process driving state propagation.
 
 # State propagation contract
 
-DISCLAIMER: this section is a work in progress.
----
+## 0. DISCLAIMER: this section is a work in progress.
 
 The state of the vehicle is propagated according to the following equation:
 
 $$
-\dot{\boldsymbol{x}}(t_{k}) = \boldsymbol{f}\big( \boldsymbol{x}(t_{k}),\dot{\boldsymbol{x}}(t_{k-1}),\boldsymbol{u} \big)
+\dot{\boldsymbol{x}}(t_{k}) = \boldsymbol{f}\big( t_k, \boldsymbol{x}(t_{k}), \dot{\boldsymbol{x}}(t_{k-1}), \boldsymbol{u} \big)
 $$
 
 The simulation is expressed as a **discrete-time integration problem**, where time is sampled at $t_k$ and $k$ is an integer index.
@@ -43,21 +42,21 @@ where:
 At each discrete time $t_k$, the derivative is defined as:
 
 $$
-\dot{\boldsymbol{x}}(t_k) = \boldsymbol{f} \left(
-  \boldsymbol{x}(t_k), \boldsymbol{u}(t_k), \dot{\boldsymbol{x}}(t_{k-1}), t_k \right)
+\dot{\boldsymbol{x}}(t_k) = \boldsymbol{f} \big(
+   t_k, \boldsymbol{x}(t_k), \dot{\boldsymbol{x}}(t_{k-1}), \boldsymbol{u}(t_k) \big)
 $$
 
 where:
 
-- $\boldsymbol{x}(t_i)$: current state
+- $\boldsymbol{x}(t_k)$: current state
 
-- $\boldsymbol{u}(t_i)$: current inputs (controls, propulsion, environment, etc.)
+- $\boldsymbol{u}(t_k)$: current inputs (controls, propulsion, environment, etc.)
 
-- $\dot{\boldsymbol{x}}(t_{i-1})$: previous-step state derivative
+- $\dot{\boldsymbol{x}}(t_{k-1})$: previous-step state derivative
 
 - $\boldsymbol{f}(\cdot)$: vector-valued function representing the RHS of the EOM in explicit form.
 
-Including $\dot{\boldsymbol{x}}(t_{i-1})$ makes explicit what is already implicit in many simulator implementations:
+Including $\dot{\boldsymbol{x}}(t_{k-1})$ makes explicit what is already implicit in many simulator implementations:
 
 - Predictor/corrector schemes  
 
@@ -76,7 +75,7 @@ This formulation clarifies the conceptual boundary between:
 The state update is:
 
 $$
-\boldsymbol{x}(t_{i+1}) = \boldsymbol{x}(t_i) + \int_{t_i}^{t_{i+1}} \dot{\boldsymbol{x}}(t)\,dt
+\boldsymbol{x}(t_{k+1}) = \boldsymbol{x}(t_k) + \int_{t_k}^{t_{k+1}} \dot{\boldsymbol{x}}(\tau)\,\mathrm{d}\tau
 $$
 
 The integral is approximated using the integrator selected inside `FGPropagate`.
@@ -93,17 +92,15 @@ This makes explicit that:
 In addition to propagation, the simulator produces outputs:
 
 $$
-\boldsymbol{y}(t_i) = \boldsymbol{g}\big(
-  \boldsymbol{x}(t_i), \boldsymbol{u}(t_i), \ldots \big)
+\boldsymbol{y}(t_k) = \boldsymbol{g}\big(
+  t_k, \boldsymbol{x}(t_k), \dot{\boldsymbol{x}}(t_{k-1}), \boldsymbol{u}(t_k) \big)
 $$
 
 where:
 
-- $\boldsymbol{y}(t_i)$: published or observable outputs (aero angles, derived velocities, accelerations, navigation quantities, atmosphere values, etc.)
+- $\boldsymbol{y}(t_k)$: published or observable outputs (aero angles, derived velocities, accelerations, navigation quantities, atmosphere values, etc.)
 
 - $\boldsymbol{g}(\cdot)$: output mapping
-
-- $\ldots $: additional internal variables (environment state, intermediate model results, property tree values)
 
 This observation equation formalizes what is currently scattered across model execution and property publication.
 
